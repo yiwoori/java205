@@ -14,10 +14,11 @@ public class Calculator {
 		return (double)a/b;
 	}
 	
-	double circle1 (double r) {
-		return 2*Math.PI*r;
-	} double circle2 (double r) {
-		return Math.PI*r*r;
+	final float PI = 3.14f;
+	float circle1 (float r) {
+		return 2*PI*r;
+	} float circle2 (float r) {
+		return PI*r*r;
 	}
 	
 	public static void main(String[] args) {
