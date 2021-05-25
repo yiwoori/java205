@@ -1,4 +1,5 @@
 package ch04;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Member {
@@ -9,15 +10,15 @@ public class Member {
 		boolean check2 = !(age>=15 || age<65);
 		
 		if(check1) {
-			System.out.println("¹«·á ¿¹¹æÁ¢Á¾ÀÌ °¡´ÉÇÕ´Ï´Ù.");
+			System.out.println("ë¬´ë£Œ ì˜ˆë°©ì ‘ì¢…ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 		} else {
-			System.out.println("¹«·áÁ¢Á¾ ´ë»óÀÌ ¾Æ´Õ´Ï´Ù.");
+			System.out.println("ë¬´ë£Œì ‘ì¢… ëŒ€ìƒì´ ì•„ë‹™ë‹ˆë‹¤.");
 		}
 							
 //		if(15>age||age>64) {
-//			System.out.println("¹«·á ¿¹¹æÁ¢Á¾ÀÌ °¡´ÉÇÕ´Ï´Ù.");
+//			System.out.println("ë¬´ë£Œ ì˜ˆë°©ì ‘ì¢…ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 //		} else {
-//			System.out.println("¹«·áÁ¢Á¾ ´ë»óÀÌ ¾Æ´Õ´Ï´Ù.");
+//			System.out.println("ë¬´ë£Œì ‘ì¢… ëŒ€ìƒì´ ì•„ë‹™ë‹ˆë‹¤.");
 //		}
 		
 	}
@@ -27,20 +28,26 @@ public class Member {
 		if(age>19) {
 			for(int i=20; i<100; i++) {
 				if(age%2!=0 && age>39) {
-					System.out.println("¿ÃÇØ °ËÁø ´ë»óÀÔ´Ï´Ù.");
-					System.out.println("¾Ï °Ë»çµµ °¡´ÉÇÕ´Ï´Ù.");
+					System.out.println("ì˜¬í•´ ê²€ì§„ ëŒ€ìƒì…ë‹ˆë‹¤.");
+					System.out.println("ì•” ê²€ì‚¬ë„ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 					break;
 				} else if(age%2!=0) {
-					System.out.println("¿ÃÇØ °ËÁø ´ë»óÀÔ´Ï´Ù.");
+					System.out.println("ì˜¬í•´ ê²€ì§„ ëŒ€ìƒì…ë‹ˆë‹¤.");
 					break;
 				} else {
-					System.out.println("³»³â °ËÁø ´ë»óÀÔ´Ï´Ù.");
+					System.out.println("ë‚´ë…„ ê²€ì§„ ëŒ€ìƒì…ë‹ˆë‹¤.");
 					break;
 				}
 			}
 		} else {
-			System.out.println("°ËÁø ´ë»óÀÌ ¾Æ´Õ´Ï´Ù.");	
+			System.out.println("ê²€ì§„ ëŒ€ìƒì´ ì•„ë‹™ë‹ˆë‹¤.");	
 		}
+	}
+	
+	//ë‚˜ì´ë°˜í™˜ ë©”ì†Œë“œ
+	int ageCal(int year) {
+		int currentYear = Calendar.getInstance().get(Calendar.YEAR); //í˜„ì¬ ë…„ë„
+		return 0;
 	}
 	
 	public static void main(String[] args) {
@@ -48,15 +55,15 @@ public class Member {
 		Member m = new Member();
 		
 		Scanner scn = new Scanner(System.in);
-		System.out.println("ÅÂ¾î³­ ÇØ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä ¡å ");
+		System.out.println("íƒœì–´ë‚œ í•´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” â–¼ ");
 		int birthYear = scn.nextInt();
 		
 		System.out.println();
-		System.out.println("<µ¶°¨¿¹¹æÁ¢Á¾>");
+		System.out.println("<ë…ê°ì˜ˆë°©ì ‘ì¢…>");
 		m.vac(birthYear);
 		
 		System.out.println();
-		System.out.println("<°Ç°­°ËÁø>");
+		System.out.println("<ê±´ê°•ê²€ì§„>");
 		m.checkUp(birthYear);
 		
 	}

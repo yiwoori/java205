@@ -1,23 +1,23 @@
 package ch02;
 public class Member {
 	public static void main(String[] args) {
-		System.out.println("ÀÌ¿ì¸®");
+		System.out.println("ì´ìš°ë¦¬");
 		
-		String name = "ÀÌ¿ì¸®";
+		String name = "ì´ìš°ë¦¬";
 		int age = 10;
 		double height = 100.0;
 		boolean hasBooks = true;
 		
 		System.out.println();
-		System.out.println("ÀÌ¸§ : "+name);
-		System.out.println("³ªÀÌ : "+age);
-		System.out.println("Å° : "+height);
-		System.out.println("Ã¥ º¸À¯ ¿©ºÎ : "+hasBooks);
+		System.out.println("ì´ë¦„ : "+name);
+		System.out.println("ë‚˜ì´ : "+age);
+		System.out.println("í‚¤ : "+height);
+		System.out.println("ì±… ë³´ìœ  ì—¬ë¶€ : "+hasBooks);
 		
 		if(hasBooks) {
-			System.out.println("Ã¥ ÀÖ¾î¿ä!");
+			System.out.println("ì±… ìˆì–´ìš”!");
 		} else {
-			System.out.println("Ã¥ ¾ø¾î¿ä!");
+			System.out.println("ì±… ì—†ì–´ìš”!");
 		}
 	}
 }

@@ -28,22 +28,22 @@ public class Calculator {
 		System.out.println("sub(20-10) = "+calc.sub(20, 10));
 		System.out.println("mult(3*10) = "+calc.mult(3, 10));
 		System.out.println("div(10/30) = "+calc.div(10, 30));
-		System.out.println("¿øÀÇ µÑ·¹(r=3) = "+calc.circle1(3));
-		System.out.println("¿øÀÇ ³ĞÀÌ(r=5) = "+calc.circle2(5));
+		System.out.println("ì›ì˜ ë‘˜ë ˆ(r=3) = "+calc.circle1(3));
+		System.out.println("ì›ì˜ ë„“ì´(r=5) = "+calc.circle2(5));
 		System.out.println();
 		
-		//Scanner : ÀÚ¿øÀ» ÇÁ·Î±×·¥À¸·Î ¹Ş¾Æ¿À´Â ¿ªÇÒ
-		System.out.println("<¿¬»ê°ª ÀÔ·Â>");
+		//Scanner : ìì›ì„ í”„ë¡œê·¸ë¨ìœ¼ë¡œ ë°›ì•„ì˜¤ëŠ” ì—­í• 
+		System.out.println("<ì—°ì‚°ê°’ ì…ë ¥>");
 		Scanner scn = new Scanner(System.in);
-		System.out.print("Ã¹¹øÂ° ¼ıÀÚ ÀÔ·Â : ");
+		System.out.print("ì²« ë²ˆì§¸ ìˆ«ì ì…ë ¥ : ");
 		int num1 = scn.nextInt();
-		System.out.print("µÎ¹øÂ° ¼ıÀÚ ÀÔ·Â : ");
+		System.out.print("ë‘ ë²ˆì§¸ ìˆ«ì ì…ë ¥ : ");
 		int num2 = scn.nextInt();
 		Scanner scn2 = new Scanner(System.in);
-		System.out.print("¹İÁö¸§ °ª ÀÔ·Â : ");
+		System.out.print("ë°˜ì§€ë¦„ ê°’ ì…ë ¥: ");
 		int num3 = scn.nextInt();
 		System.out.println();
-		System.out.println("<¿¬»ê °á°ú>");
+		System.out.println("<ì—°ì‚° ê²°ê³¼>");
 		System.out.printf("add(%d+%d) = "+calc.add(num1, num2),num1,num2);
 		System.out.println();
 		System.out.printf("sub(%d-%d) = "+calc.sub(num1, num2),num1,num2);
@@ -52,9 +52,9 @@ public class Calculator {
 		System.out.println();
 		System.out.printf("div(%d/%d) = "+calc.div(num1, num2),num1,num2);
 		System.out.println();
-		System.out.printf("¿øÀÇ µÑ·¹(r=%d) = "+calc.circle1(num3),num3);
+		System.out.printf("ì›ì˜ ë‘˜ë ˆ(r=%d) = "+calc.circle1(num3),num3);
 		System.out.println();
-		System.out.printf("¿øÀÇ ³ĞÀÌ(r=%d) = "+calc.circle2(num3),num3);
+		System.out.printf("ì›ì˜ ë„“ì´(r=%d) = "+calc.circle2(num3),num3);
 		
 	}
 }

@@ -10,10 +10,10 @@ public class Person {
 	public static void main(String[] args) {
 		
 		Person p = new Person();
-		p.personName = "�̿츮";		
-		System.out.println("�̸� : "+p.personName);
-		System.out.println("��ȭ��ȣ : "+p.phoneNumber);
-		System.out.println("�ֹι�ȣ : "+p.idNumber1);
+		p.personName = "이우리";		
+		System.out.println("이름 : "+p.personName);
+		System.out.println("전화번호 : "+p.phoneNumber);
+		System.out.println("주민번호 : "+p.idNumber1);
 		
 	}
 }
