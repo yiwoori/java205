@@ -32,6 +32,7 @@ public class Calculator {
 		System.out.println("원의 넓이(r=5) = "+calc.circle2(5));
 		System.out.println();
 		
+		//Scanner : 자원을 프로그램으로 받아오는 역할
 		System.out.println("<연산값 입력>");
 		Scanner scn = new Scanner(System.in);
 		System.out.print("첫번째 숫자 입력 : ");
