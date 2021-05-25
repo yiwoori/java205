@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Calculator {
 	
-	int add(int a, int b) {
+	long add(int a, int b) {
 		return a+b;
-	} int sub(int a, int b) {
+	} long sub(int a, int b) {
 		return a=b;
-	} int mult(int a, int b) {
+	} long mult(int a, int b) {
 		return a*b;
-	} int div(int a, int b) {
+	} double div(double a, double b) {
 		return a/b;
 	}
 	
