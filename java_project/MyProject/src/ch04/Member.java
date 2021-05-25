@@ -3,15 +3,27 @@ import java.util.Scanner;
 
 public class Member {
 	
-	void vac (int age) {
-		if(15>age||age>64) {
+	void vac (int birthYear) {
+		int age = 2021-birthYear-1;
+		boolean check1 = age<15 || age>=65;
+		boolean check2 = !(age>=15 || age<65);
+		
+		if(check1) {
 			System.out.println("무료 예방접종이 가능합니다.");
 		} else {
 			System.out.println("무료접종 대상이 아닙니다.");
 		}
+							
+//		if(15>age||age>64) {
+//			System.out.println("무료 예방접종이 가능합니다.");
+//		} else {
+//			System.out.println("무료접종 대상이 아닙니다.");
+//		}
+		
 	}
 	
-	void checkUp (int age) {
+	void checkUp (int birthYear) {
+		int age = 2021-birthYear-1;
 		if(age>19) {
 			for(int i=20; i<100; i++) {
 				if(age%2!=0 && age>39) {
@@ -36,16 +48,16 @@ public class Member {
 		Member m = new Member();
 		
 		Scanner scn = new Scanner(System.in);
-		System.out.println("나이를 입력해주세요 ▼ ");
-		int age = scn.nextInt();
+		System.out.println("태어난 해를 입력해주세요 ▼ ");
+		int birthYear = scn.nextInt();
 		
 		System.out.println();
 		System.out.println("<독감예방접종>");
-		m.vac(age);
+		m.vac(birthYear);
 		
 		System.out.println();
 		System.out.println("<건강검진>");
-		m.checkUp(age);
+		m.checkUp(birthYear);
 		
 	}
 }
