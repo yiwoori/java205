@@ -3,19 +3,17 @@ package ch02;
 public class Person {
 	
 	String personName;
-	String phoneNumber;
-	String idNumber;
+	String phoneNumber = "000-0000-0000";
+	String idNumber1 = "900000-0000000";
+	long idNumber2 = 900000-0000000;
 	
 	public static void main(String[] args) {
 		
 		Person p = new Person();
-		p.personName = "?´?š°ë¦?";
-		p.phoneNumber = "010-1234-5678";
-		p.idNumber = "123456-0987654";
-		
-		System.out.println("?´ë¦? : "+p.personName);
-		System.out.println("ë²ˆí˜¸ : "+p.phoneNumber);
-		System.out.println("ì£¼ë?¼ë“±ë¡ë²ˆ?˜¸ : "+p.idNumber);
+		p.personName = "ÀÌ¿ì¸®";		
+		System.out.println("ÀÌ¸§ : "+p.personName);
+		System.out.println("ÀüÈ­¹øÈ£ : "+p.phoneNumber);
+		System.out.println("ÁÖ¹Î¹øÈ£ : "+p.idNumber1);
 		
 	}
 }
