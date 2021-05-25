@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class Calculator {
 	
 	long add(int a, int b) {
-		return a+b;
+		return (long)a+b;
 	} long sub(int a, int b) {
-		return a=b;
+		return (long)a-b;
 	} long mult(int a, int b) {
-		return a*b;
-	} double div(double a, double b) {
-		return a/b;
+		return (long)a*b;
+	} double div(int a, int b) {
+		return (double)a/b;
 	}
 	
 	double circle1 (double r) {
