@@ -1,86 +1,66 @@
 package ch06;
 
 public class Student {
-	
-	//①학생이름, 국어점수, 영어점수, 수학점수를 저장하는 변수를 정의 합니다.
+
+	// 2.Student 클래스를 정의해봅시다.
+	// ①학생이름, 국어점수, 영어점수, 수학점수를 저장하는 변수를 정의 합니다.
 	private String name;
 	private int korScore;
 	private int engScore;
 	private int mathScore;
 	
-	public Student (String name, int korScore,
-			int engScore, int mathScore) {
+	public Student (String name, int korScore, int engScore, int mathScore) {
 		this.name = name;
 		this.korScore = korScore;
 		this.engScore = engScore;
 		this.mathScore = mathScore;
 	}
 	
-	
-	
-	//②변수는 캡슐화를 합니다. getter/setter 메소드를 정의합니다.
+	// ②변수는 캡슐화를 합니다. getter/setter 메소드를 정의합니다.
 	public void setName(String name) {
 		this.name = name;
-	} public String getName() {
-		return this.name;
+	} String getName() {
+		return name;
 	}
 	public void setKorScore(int korScore) {
 		this.korScore = korScore;
-	} public int getKorScore() {
-		return this.korScore;
+	} int getKorScore() {
+		return korScore;
 	}
 	public void setEngScore(int engScore) {
 		this.engScore = engScore;
-	} public int getEngScore() {
-		return this.engScore;
+	} int getEngScore() {
+		return engScore;
 	}
 	public void setMathScore(int mathScore) {
 		this.mathScore = mathScore;
-	} public int getMathScore() {
-		return this.mathScore;
+	} int getMathScore() {
+		return mathScore;
 	}
 	
 	
-	
-	//③총점과 평균을 구해 결과를 반환하는 메소드를 정의합니다.
-	int total() {
-		return korScore+engScore+mathScore;
+	// ③총점과 평균을 구해 결과를 반환하는 메소드를 정의합니다.
+	int sum() {
+		return this.korScore+this.engScore+this.mathScore;
 	}
-	double average() {
-		double avr = (double)(total())/3;
-		return (Math.round(avr*100)/100.0);
-	}
-	void stuInfo() {
-		System.out.println("학생 이름 : "+name);
-		System.out.println("국어 점수 : "+korScore);
-		System.out.println("영어 점수 : "+engScore);
-		System.out.println("수학 점수 : "+mathScore);
-		System.out.println("총점 : "+total());
-		System.out.println("평균 : "+average());
+	float avg() {
+		float avg = (float)(sum())/3f;
+		return (float)(Math.round(avg*100)/100.0);
 	}
 	
 	public static void main(String[] args) {
 		
-		//①Student 타입의 배열을 선언하고,
-		//요소 10개를 저장할 수 있는 배열 인스턴스를 생성해 봅시다.
-		Student[] stuArr = new Student[5];
-		
-		
-		//②Student 타입의 인스턴스를 생성하고
-		//배열에 저장하는 코드를 정의해봅시다.
-		stuArr[0] = new Student ("학생1", 83, 54, 98);
-		stuArr[1] = new Student ("학생2", 65, 76, 94);
-		stuArr[2] = new Student ("학생3", 90, 43, 70);
-		stuArr[3] = new Student ("학생4", 71, 52, 94);
-		stuArr[4] = new Student ("학생5", 87, 85, 61);
-		
-		
-		//③배열에 저장된 Student 타입의 인스턴스의 메소드를 이용해
-		//모든 데이터를 출력해봅시다.
-		for(int i=0; i<5; i++) {
-			stuArr[i].stuInfo();
-			System.out.println("===========");
-		}
+		Student stu1 = new Student("학생1",87,54,78);
+		System.out.println(stu1.getName()+"의 총점 : "+stu1.sum());
+		System.out.println(stu1.getName()+"의 평균 : "+stu1.avg());
+		System.out.println("=======================");
+		Student stu2 = new Student("학생2", 67, 45, 90);
+		System.out.println(stu2.getName()+"의 총점 : "+stu2.sum());
+		System.out.println(stu2.getName()+"의 평균 : "+stu2.avg());
+		System.out.println("=======================");
+		Student stu3 = new Student("학생3", 98, 76, 87);
+		System.out.println(stu3.getName()+"의 총점 : "+stu3.sum());
+		System.out.println(stu3.getName()+"의 평균 : "+stu3.avg());
 		
 	}
 }
