@@ -77,15 +77,10 @@ public class Student {
 		
 		//③배열에 저장된 Student 타입의 인스턴스의 메소드를 이용해
 		//모든 데이터를 출력해봅시다.
-		stuArr[0].stuInfo();
-		System.out.println("================");
-		stuArr[1].stuInfo();
-		System.out.println("================");
-		stuArr[2].stuInfo();
-		System.out.println("================");
-		stuArr[3].stuInfo();
-		System.out.println("================");
-		stuArr[4].stuInfo();
+		for(int i=0; i<5; i++) {
+			stuArr[i].stuInfo();
+			System.out.println("===========");
+		}
 		
 	}
 }
