@@ -46,8 +46,9 @@ public class Student {
 	int total() {
 		return korScore+engScore+mathScore;
 	}
-	int average() {
-		return (korScore+engScore+mathScore)/3;
+	double average() {
+		double avr = (double)(korScore+engScore+mathScore)/3;
+		return (Math.round(avr*100)/100.0);
 	}
 	void stuInfo() {
 		System.out.println("학생 이름 : "+name);
@@ -62,14 +63,16 @@ public class Student {
 		
 		//①Student 타입의 배열을 선언하고,
 		//요소 10개를 저장할 수 있는 배열 인스턴스를 생성해 봅시다.
-		Student[] stuArr = new Student[10];
+		Student[] stuArr = new Student[5];
 		
 		
 		//②Student 타입의 인스턴스를 생성하고
 		//배열에 저장하는 코드를 정의해봅시다.
-		stuArr[0] = new Student ("학생1", 80, 90, 70);
-		stuArr[1] = new Student ("학생2", 65, 50, 80);
-		stuArr[2] = new Student ("학생3", 90, 45, 70);
+		stuArr[0] = new Student ("학생1", 83, 54, 98);
+		stuArr[1] = new Student ("학생2", 65, 76, 94);
+		stuArr[2] = new Student ("학생3", 90, 43, 70);
+		stuArr[3] = new Student ("학생4", 71, 52, 94);
+		stuArr[4] = new Student ("학생5", 87, 85, 61);
 		
 		
 		//③배열에 저장된 Student 타입의 인스턴스의 메소드를 이용해
@@ -79,6 +82,10 @@ public class Student {
 		stuArr[1].stuInfo();
 		System.out.println("================");
 		stuArr[2].stuInfo();
+		System.out.println("================");
+		stuArr[3].stuInfo();
+		System.out.println("================");
+		stuArr[4].stuInfo();
 		
 	}
 }
