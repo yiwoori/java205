@@ -47,7 +47,7 @@ public class Student {
 		return korScore+engScore+mathScore;
 	}
 	double average() {
-		double avr = (double)(korScore+engScore+mathScore)/3;
+		double avr = (double)(total())/3;
 		return (Math.round(avr*100)/100.0);
 	}
 	void stuInfo() {
