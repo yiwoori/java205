@@ -1,5 +1,7 @@
 package ch07;
 
+import java.util.Calendar;
+
 public class Person {
 //	1.Person 이라는 클래스를 정의해봅시다.
 //	①이름을 저장하는 변수, 주민등록번호를 저장하는 변수를 정의해봅시다.
@@ -9,6 +11,8 @@ public class Person {
 	
 	String name;
 	String idNum;
+	Calendar cal = Calendar.getInstance();
+	int year = cal.get(Calendar.YEAR);
 
 	Person(String name, String idNum) {
 		this.name = name;
@@ -20,13 +24,11 @@ public class Person {
 	}
 
 	int age() {
-		String year = idNum.substring(0);
-		if(year!="0") {
-			int age = Integer.parseInt(idNum.substring(0, 2))+1900;
-			return 2021-age;
+		String a = idNum.substring(0);
+		if(a!="0") {
+			return year-(Integer.parseInt(idNum.substring(0, 2))+1900);
 		} else {
-			int age = Integer.parseInt(idNum.substring(0, 2))+2000;
-			return 2021-age;
+			return year-(Integer.parseInt(idNum.substring(0, 2))+2000);
 		}
 	}
 
