@@ -10,5 +10,6 @@ public class MemberMain {
 		member1.setName("영희");
 		member1.printData();
 		System.out.println(member1.getName());
+		
 	}
 }
