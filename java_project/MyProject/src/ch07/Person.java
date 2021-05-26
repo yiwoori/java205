@@ -24,11 +24,11 @@ public class Person {
 	}
 
 	int age() {
-		String a = idNum.substring(0);
-		if(a!="0") {
-			return year-(Integer.parseInt(idNum.substring(0, 2))+1900);
+		String a = idNum.substring(0, 1);
+		if(a=="0") {
+			return year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
 		} else {
-			return year-(Integer.parseInt(idNum.substring(0, 2))+2000);
+			return year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
 		}
 	}
 
