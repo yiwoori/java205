@@ -24,9 +24,9 @@ public class Person {
 	}
 
 	int age() {
-		String a = idNum.substring(0);
+		String a = idNum.substring(0,1);
 		int age=0;
-		if(a=="0") {
+		if(a.equals("0")) {
 			//return year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
 			age = year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
 		} else {
