@@ -24,12 +24,15 @@ public class Person {
 	}
 
 	int age() {
-		String a = idNum.substring(0, 1);
+		String a = idNum.substring(0);
+		int age=0;
 		if(a=="0") {
-			return year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
+			//return year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
+			age = year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
 		} else {
-			return year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
-		}
+			//return year-(Integer.parseInt(idNum.substring(0, 2))+1900)+1;
+			age = year-(Integer.parseInt(idNum.substring(0, 2))+1900)+1;
+		} return age;
 	}
 
 	public static void main(String[] args) {
