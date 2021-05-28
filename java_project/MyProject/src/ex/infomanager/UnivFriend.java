@@ -20,7 +20,7 @@ public class UnivFriend extends Friend {
 	public void showBasicInfo() {
 		System.out.println("이름 : "+name);
 		System.out.println("전화번호 : "+phoneNumber);
-		System.out.println("주      소 : "+address);
+		System.out.println("전      공 : "+major);
 	}
 
 }

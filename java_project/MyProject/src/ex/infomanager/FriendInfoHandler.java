@@ -29,7 +29,22 @@ public class FriendInfoHandler {
 		
 		if(choice==1) { //고교친구
 			System.out.println("직업 입력 : ");
+			String work = s.nextLine();
 			
+			//인스턴스 생성
+			HighFriend hFriend = new HighFriend(name, phoneNumber, address, work);
+			friends[numOfFriend] = hFriend;
+			numOfFriend++;
+		} else { //대학친구
+			System.out.println("전공 입력 : ");
+			String major = s.nextLine();
+			
+			//인스턴스 생성
+			UnivFriend uFriend = new UnivFriend(name, phoneNumber, address, major);
+			
+			//배열에 요소 추가
+			friends[numOfFriend] = uFriend;
+			numOfFriend++;
 		}
 		
 		
