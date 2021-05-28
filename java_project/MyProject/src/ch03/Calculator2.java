@@ -53,14 +53,27 @@ public class Calculator2 {
 		//콘솔에서 사용자에게 데이터를 받아 메소드를 호출할 때 사용자에게 받은 데이터를
 		//매개변수의 인자 전달하는 코드 추가
 		Scanner scn = new Scanner(System.in);
+		
+		System.out.println("===========================================");
 		System.out.println("연산할 두 값을 입력해주세요");
-		System.out.print("첫번째 값 : ");
+		System.out.print(" * 첫번째 값 : ");
 		int value1 = scn.nextInt();
-		System.out.print("두번째 값 : ");
+		System.out.print(" * 두번째 값 : ");
 		int value2 = scn.nextInt();
+		System.out.println();
 		System.out.println("덧셈 결과 : "+cal.add(value1, value2));
 		System.out.println("뺄셈 결과 : "+cal.sub(value1, value2));
 		System.out.println("곱셈 결과 : "+cal.mult(value1, value2));
 		System.out.println("나눗셈 결과 : "+cal.div(value1, value2));
+		System.out.println("===========================================");
+		System.out.print("원의 둘레를 구할 반지름 값을 입력해주세요(실수) : ");
+		float r1 = scn.nextFloat();
+		System.out.println("원의 둘레 : "+cal.circlePeri(r1));
+		System.out.println("===========================================");
+		System.out.print("원의 넓이를 구할 반지름 값을 입력해주세요(실수) : ");
+		float r2 = scn.nextFloat();
+		System.out.println("원의 넓이 : "+cal.circleArea(r2));
+		System.out.println("===========================================");
+		
 	}
 }
