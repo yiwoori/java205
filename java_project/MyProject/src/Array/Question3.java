@@ -19,7 +19,7 @@ public class Question3 {
 		
 		int[] arrTem = {};
 		for(int i=0; i<arr[i].length; i++) {
-			arrTem = arr[0];
+			arrTem = arr[i];
 			arr[0] = arr[1];
 			arr[arr.length-1] = arrTem;
 		} //System.out.println(arr[i]);
