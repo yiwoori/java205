@@ -32,34 +32,51 @@ public class FriendInfoHandler {
 			String work = s.nextLine();
 			
 			//인스턴스 생성
-			HighFriend hFriend = new HighFriend(name, phoneNumber, address, work);
-			friends[numOfFriend] = hFriend;
-			numOfFriend++;
+//			HighFriend hFriend = new HighFriend(name, phoneNumber, address, work);
+			addFriendInfo(new HighFriend(name, phoneNumber, address, work));
+			
+			//배열에 요소 추가
+//			friends[numOfFriend] = hFriend;
+//			numOfFriend++;
+			
 		} else { //대학친구
 			System.out.println("전공 입력 : ");
 			String major = s.nextLine();
 			
 			//인스턴스 생성
-			UnivFriend uFriend = new UnivFriend(name, phoneNumber, address, major);
+//			UnivFriend uFriend = new UnivFriend(name, phoneNumber, address, major);
+			addFriend(new UnivFriend(name, phoneNumber, address, major));
 			
 			//배열에 요소 추가
-			friends[numOfFriend] = uFriend;
-			numOfFriend++;
+//			friends[numOfFriend] = uFriend;
+//			numOfFriend++;
+			
+			addFriendInfo(uFriend);
+			
+		}
+
+		
+		// Friend 클래스를 상속하는 타입의 인스턴스를 받아 배열에 저장
+		public void addFriendInfo(Friend f) {
+			
+			//배열에 요소 추가
+			friends[numOfFriend++];
+			
 		}
 		
-		
-		
-		
-		
-		
-		
-		
+		//모든 데이터를 출력하는 메소드
+		public void showAllData() {
+			for(int i=0; i<numOfFriend; i++) {
+				System.out.println("친구의 모든 정보를 출력합니다.");
+				System.out.println("===================================");
+				if(numOfFriend>0) {
+					friends[i].showDate();
+					System.out.println("===================================");
+				} else {
+					System.out.println("입력된 정보가 없습니다.");
+				}
+			} System.out.println("===================================");
 		
 	}
-	
-	
-	
-	
-	
 	
 }
