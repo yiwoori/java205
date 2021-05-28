@@ -24,12 +24,14 @@ public class Calculator2 {
 	
 	//실수 반지름 하나를 매개변수의 인자로 전달받아 원의 둘레를 구해 반환하는 메소드 정의
 	float circlePeri (float r) {
-		return (float)(2*Math.PI*r);
+		float circlePeri = (float)(2*Math.PI*r); 
+		return (float)(Math.round(circlePeri*100)/100.0);
 	}
 	
 	//실수 반지름 하나를 매개변수의 인자로 전달받아 원의 넓이를 구해 반환하는 메소드 정
 	float circleArea (float r) {
-		return (float)(Math.PI*r*r);
+		float circleArea = (float)(Math.PI*r*r);
+		return (float)(Math.round(circleArea*100)/100.0);
 	}
 	
 	public static void main(String[] args) {
@@ -41,7 +43,7 @@ public class Calculator2 {
 		System.out.println(cal.sub(10, 4));
 		System.out.println(cal.mult(9, 4));
 		System.out.println(cal.div(45, 2));
-		System.out.println(cal.circlePeri(4.5f));
+		System.out.println(cal.circlePeri(4.3f));
 		System.out.println(cal.circleArea(3.2f));
 		
 		
