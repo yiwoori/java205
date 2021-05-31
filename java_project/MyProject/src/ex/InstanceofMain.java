@@ -40,9 +40,9 @@ class PaperBox extends Box {
 	public void paperWrap() {
 		System.out.println("PaperWrap");
 	}
-	public void wrap() {
-		System.out.println("PaperWrap");
-	}
+//	public void wrap() {
+//		System.out.println("PaperWrap");
+//	}
 }
 
 class GoldPaperBox extends PaperBox {

@@ -2,7 +2,7 @@ package ex;
 
 public class Product {
 
-	int price;
+	final int price;
 	int bonusPoint;
 	
 	Product(int price) {
