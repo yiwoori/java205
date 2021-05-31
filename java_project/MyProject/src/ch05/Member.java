@@ -40,7 +40,7 @@ public class Member {
 		this.grade = grade;
 		this.email = email;
 		this.address = address;
-		this.birthDay = birthDay;	
+		this.birthDay = birthDay;
 	}
 	
 	//오버로딩의 조건 : 
