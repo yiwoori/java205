@@ -8,7 +8,6 @@ public class FriendBook {
 		
 		//Friend friend = new Friend("","","");
 		
-
 		FriendInfoHandler handler = new FriendInfoHandler(100);
 
 		Scanner s = new Scanner(System.in);
@@ -46,4 +45,11 @@ public class FriendBook {
 
 	}
 
+}
+
+
+
+
+interface Menu {
+	
 }
