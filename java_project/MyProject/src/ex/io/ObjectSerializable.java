@@ -67,11 +67,11 @@ public class ObjectSerializable {
 
 class Circle implements Serializable {
 	
-	//implements Serializable : 
+	//implements Serializable : 직렬화 대상임을 의미
 	
 	int x;
 	int y;
-	double r;
+	transient double r;
 	
 	public Circle(int x, int y, double r) {
 		this.x = x;
@@ -82,6 +82,10 @@ class Circle implements Serializable {
 	public void showData() {
 		System.out.println("원점 ["+x+", "+y+"]");
 		System.out.println("반지름 : "+r);
+	}
+	
+	public String toString() {
+		return "Circle [x="+x+", y= "+y+", r= "+r+"]";
 	}
 }
 

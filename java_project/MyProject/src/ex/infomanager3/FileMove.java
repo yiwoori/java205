@@ -1,4 +1,4 @@
-package ex.io;
+package ex.infomanager3;
 import java.io.File;
 
 public class FileMove {
@@ -7,7 +7,7 @@ public class FileMove {
 		//File myFile = new File("C:\\myjava", "origin.pdf");
 		//File myFile = new File("C:\\myjava\\origin.pdf");
 		File myFile = new File
-				("C:"+File.separator+"myJava"+File.separator+"origin");
+				("C:"+File.separator+"myJava"+File.separator+"origin.pdf");
 		System.out.println(myFile);
 		
 		if(!myFile.exists()) {
