@@ -5,7 +5,9 @@ public class FileMove {
 	public static void main(String[] args) {
 		
 		//File myFile = new File("C:\\myjava", "origin.pdf");
-		File myFile = new File("C:\\myjava\\origin.pdf");
+		//File myFile = new File("C:\\myjava\\origin.pdf");
+		File myFile = new File
+				("C:"+File.separator+"myJava"+File.separator+"origin");
 		System.out.println(myFile);
 		
 		if(!myFile.exists()) {
