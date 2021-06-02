@@ -23,10 +23,11 @@ public class FileReaderStream {
 			
 			readLen = in.read(cbuf, 0, cbuf.length);
 			
-			for(int i=0; i<readLen; i++) {
+			/*for(int i=0; i<readLen; i++) {
 				System.out.println(cbuf[i]);
-			}
-			
+			}*/
+			//System.out.println(new String(cbuf));
+			System.out.println(cbuf);
 			
 			in.close();
 			System.out.println("읽기 완료");
