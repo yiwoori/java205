@@ -43,7 +43,7 @@ public class ObjectSerializable {
 			ArrayList<Circle> list2 = (ArrayList<Circle>) in.readObject();
 			
 			for(Circle circle : list2) {
-				System.out.println(circle);;
+				System.out.println(circle);
 			}
 			
 			System.out.println("복원된 인스턴스의 데이터를 출력");
