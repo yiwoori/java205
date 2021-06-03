@@ -1,6 +1,6 @@
 package ch08;
 
-public  class Calculator2 implements Calculator {
+public class Calculator2 implements Calculator {
 
 	public long add(long n1, long n2) {
 		return n1+n2;
