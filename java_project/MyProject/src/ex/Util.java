@@ -21,6 +21,8 @@ public class Util {
 		}
 	}
 	
+	
+	
 	public static void close(Socket s) {
 		
 		if(s != null) {
@@ -31,6 +33,8 @@ public class Util {
 			}
 		}
 	}
+	
+	
 	
 	public static void close(FilterInputStream fin) {
 		
@@ -43,6 +47,8 @@ public class Util {
 		}
 	}
 	
+	
+	
 	public static void close(FilterOutputStream fout) {
 		
 		if(fout != null) {
@@ -53,5 +59,7 @@ public class Util {
 			}
 		}
 	}
+	
+	
 	
 }
