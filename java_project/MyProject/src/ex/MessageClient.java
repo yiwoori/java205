@@ -11,6 +11,7 @@ public class MessageClient {
 	public static void main(String[] args) {
 		
 		Socket socket = null;
+		
 		DataInputStream din = null;
 		DataOutputStream dout = null;
 		
@@ -22,27 +23,29 @@ public class MessageClient {
 			
 			Scanner sc = new Scanner(System.in);
 			
-			String str1 = null; //받는 데이터
-			String str2 = ""; //보내는 데이터
+			String str1 = null; // 받는 데이터
+			String str2 = ""; // 보내는 데이터
 			
-			while(!str2.equals("exit")) {
-				str1 = din.readUTF();
-				System.out.println("Server Message : "+str1);
-				
-				//데이터 전송
+			while(!str2.equals("exit")) {				
+
+				// 데이터 전송
 				str2 = sc.nextLine();
 				dout.writeUTF(str2);
-			}
-			
+				
+				str1 = din.readUTF();
+				System.out.println("Server Message : " + str1);
+				
+			} 
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			Util.close(socket);
 			
+			Util.close(socket);
 		}
-		
+
 	}
 
 }
+
+
