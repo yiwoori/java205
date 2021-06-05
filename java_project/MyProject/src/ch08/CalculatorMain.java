@@ -8,8 +8,10 @@ public class CalculatorMain {
 		Calculator cal = new Calculator2();
 		
 		Scanner scn = new Scanner(System.in);
+		
 		System.out.print("첫번째 숫자 입력 : ");
 		long n1 = scn.nextLong();
+		
 		System.out.print("두번째 숫자 입력 : ");
 		long n2 = scn.nextLong();
 		
