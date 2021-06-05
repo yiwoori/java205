@@ -42,6 +42,7 @@ public class Calculator {
 		Scanner scn2 = new Scanner(System.in);
 		System.out.print("반지름 값 입력: ");
 		int num3 = scn.nextInt();
+		
 		System.out.println();
 		System.out.println("<연산 결과>");
 		System.out.printf("add(%d+%d) = "+calc.add(num1, num2),num1,num2);

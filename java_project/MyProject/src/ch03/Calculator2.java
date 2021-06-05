@@ -49,7 +49,6 @@ public class Calculator2 {
 //		System.out.println(cal.circlePeri(4.3f));
 //		System.out.println(cal.circleArea(3.2f));
 		
-		
 		//콘솔에서 사용자에게 데이터를 받아 메소드를 호출할 때 사용자에게 받은 데이터를
 		//매개변수의 인자 전달하는 코드 추가
 		Scanner scn = new Scanner(System.in);
