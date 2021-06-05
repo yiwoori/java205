@@ -16,8 +16,6 @@ public class Student1 {
 		this.mathScore = mathScore;
 	}
 	
-	
-	
 	//②변수는 캡슐화를 합니다. getter/setter 메소드를 정의합니다.
 	public void setName(String name) {
 		this.name = name;
@@ -39,8 +37,6 @@ public class Student1 {
 	} public int getMathScore() {
 		return this.mathScore;
 	}
-	
-	
 	
 	//③총점과 평균을 구해 결과를 반환하는 메소드를 정의합니다.
 	int total() {

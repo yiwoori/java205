@@ -38,7 +38,6 @@ public class Student {
 		return mathScore;
 	}
 	
-	
 	// ③총점과 평균을 구해 결과를 반환하는 메소드를 정의합니다.
 	int sum() {
 		return this.korScore+this.engScore+this.mathScore;

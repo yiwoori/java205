@@ -1,7 +1,6 @@
 package ch06;
 
 public class Score {
-
 	public static void main(String[] args) {
 		
 		//1. 국어, 영어, 수학 점수 10개씩을 저장하는 배열을 정의하고
