@@ -5,7 +5,7 @@ public class Person {
 	String personName;
 	String phoneNumber = "000-0000-0000";
 	String idNumber1 = "900000-0000000";
-	long idNumber2 = 900000-0000000;
+	long idNumber2 = 90000000000l;
 	
 	public static void main(String[] args) {
 		

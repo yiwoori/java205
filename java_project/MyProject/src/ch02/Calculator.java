@@ -23,7 +23,7 @@ public class Calculator {
 		return value;
 	}
 	int div2(int n1, int n2) {
-		return n1/n2;		//한줄로 처
+		return n1/n2;		//한줄로 처리
 	}
 	
 	public static void main(String[] args) {
