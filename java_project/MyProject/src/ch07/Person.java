@@ -9,7 +9,6 @@ public class Person {
 //	②인사하는 메소드를 정의해봅시다.
 //		- “안녕하세요. 저는 OOO입니다. 00살 입니다.”라는 문자열이 출력하도록 정의합시다.
 	
-	
 	String name;
 	String idNum;
 	Calendar cal = Calendar.getInstance();
@@ -27,7 +26,7 @@ public class Person {
 	int age() {
 		String a = idNum.substring(0,1);
 		int age=0;
-		if(a.equals("0")) {
+		if(a.equals("0")) {	//equals
 			//return year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
 			age = year-(Integer.parseInt(idNum.substring(0, 2))+2000)+1;
 		} else {
