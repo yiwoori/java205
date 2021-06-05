@@ -14,13 +14,7 @@ public class Member {
 		} else {
 			System.out.println("무료접종 대상이 아닙니다.");
 		}
-							
-//		if(15>age||age>64) {
-//			System.out.println("무료 예방접종이 가능합니다.");
-//		} else {
-//			System.out.println("무료접종 대상이 아닙니다.");
-//		}
-		
+									
 	}
 	
 	void checkUp (int birthYear) {

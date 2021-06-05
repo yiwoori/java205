@@ -31,44 +31,25 @@ public class Member2 {
 	
 	void vaccinCheck2(int birthYear) {
 		
-		if(age>19) {
-			for(int i=0; i<150; i++) {
-				if(age%2!=0 && age>39) {
-					System.out.println("올해 무료 건강검진 대상입니다.");
-					System.out.println("암 검사도 가능합니다.");
-					break;
-				} else if(age%2!=0) {
-					System.out.println("올해 무료 건강검진 대상입니다.");
-					break;
-				} else {
-					System.out.println("올해 건강검진 대상이 아닙니다.");
-					break;
-				}
+		if(age>=20) {
+			if((year%2==0)&&(age%2==0)) {
+				System.out.println("올해 무료 건강검진 대상입니다.");
+			} else {
+				System.out.println("내년 건강검진 대상입니다.");
 			}
+			if(age>=40) {
+				System.out.println("무료 암 검사도 가능합니다.");
+			}
+		} else {
+			System.out.println("무료 건강검진 대상이 아닙니다.");
 		}
-		
-		
-		
-//		if(age>=20) {
-//			if((year%2==0)&&(age%2==0)) {
-//				System.out.println("올해 무료 건강검진 대상입니다.");
-//			} else {
-//				System.out.println("내년 건강검진 대상입니다.");
-//			}
-//			if(age>=40) {
-//				System.out.println("무료 암 검사도 가능합니다.");
-//			}
-//		} else {
-//			System.out.println("무료 건강검진 대상이 아닙니다.");
-//		}
 		
 	}
 
 	public static void main(String[] args) {
 		
 		Member2 m = new Member2();
-		//m.vaccinCheck(1956);
-		m.vaccinCheck2(1992);
+		m.vaccinCheck2(1956);
 
 		
 		
