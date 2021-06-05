@@ -4,13 +4,11 @@ public class Member {
 	
 //	1. Member 클래스에는 아래 요구사항에 맞는 변수와 메소드를 정의하고, 
 //	   main()메소드 에 해당 메소드를 호출해서 결과를 확인해보세요.
-	
 //	단 인스턴스의 생성은 생성자를 이용해서 초기화하는 코드를 작성해 봅시다.
 //	생성자 -> 초기화 메소드, 인스턴스를 생성할 때 단 한번, 인스턴스 변수를 초기화 한다
 	
 //	① 아래의 데이터를 저장 이름, 전화번호, 전공, 학년, email, 생일, 주소
 //	데이터를 저장-> 변수를 이용해서 메모리에 저장
-
 	private String name;
 	final String phoneNumber;
 	private String major;
