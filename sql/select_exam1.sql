@@ -75,8 +75,7 @@ order by hiredate;
 -- 10. 관리자가 없는 사원의 이름과 담당 업무를 출력하시오.
 select ename, job
 from emp
-where not job='MANAGER'
-order by job;
+where mgr is null;
 
 
 
