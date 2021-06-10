@@ -83,7 +83,7 @@ where mgr is null;
 -- 급여 및 커미션을 기준으로 내림차순 정렬하여 표시하시오.
 select ename, sal, comm
 from emp
-where comm is not null
+where comm is not null or comm=0
 order by comm desc;
 
 
