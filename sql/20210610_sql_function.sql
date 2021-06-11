@@ -4,7 +4,7 @@
 -- 단일행 함수 : 하나의 행이 포함하는 특정 컬럼의 값 하나를 처리하고 반환
 -- 다중행(집합) 함수 : 여러 행의 특정 컬럼 값을 대상으로 연산하고 반환
 
--- 숫자 함수
+-- 1.숫자 함수
 select abs(10), abs(-10)
 from dual; --dual : 테스트를 위한 테이블
 
@@ -24,6 +24,7 @@ from dual; --15.7, 15
 select MOD(11,5)
 from dual;
 
+--
 -- 사원들의 급여 표현
 select sal, mod(sal, 2)
 from emp   --나머지값
@@ -33,12 +34,10 @@ where mod(sal,2)=1;
 
 
 
--- 문자 함수
+-- 2. 문자 함수
 -- comcat(문자열, 문자열, ...) -> ''||''
 select concat('abc','efg'), 'abc'||'efg'
 from dual;
-
-
 
 -- substr : 문자열 추출
 -- substr(문자열, 시작 위치, 길이)
@@ -49,8 +48,6 @@ from dual; --app
 select substr('apple',-3)
 from dual; --ple
 
-
-
 -- replace : 특정 문자열(패턴) 다른 문자열(패턴)으로 변경
 -- '문자열', '변경될 문자', '변경할 문자'
 select REPLACE('JACK and JUE','J','BL')
@@ -59,13 +56,30 @@ from dual; --BLACK and BLUE
 select sysdate
 from dual; --오늘 날짜 출력
 
+select empno, ename, replace(ename, 'A', 'L'), sal, round(sal, -2)
+from emp;
+
+
+
+
+
+------------------------------------
+-- 2021.06.11
 
 -- 형변환 함수
---
+-- 날짜 -> 문자, 숫자 -> 문자
+-- to_char(날짜 데이터, '패턴'), to_char(숫자, '패턴')
 
+select sysdate, to_char(sysdate, 'YYYY.MM.DD. HH24:MI:SS')
+from dual;
 
-select orderid, orderdate, to_char(orderdate, 'YYYY.MM.DD')
-from orders;
+select ename, hiredate, to_char(hiredate, 'YYYY.MM.DD')
+from emp;
+
+select * from orders;
+select orderid orderdate, to_char(orderdate, 'YYYY.MM.DD')
+from emp;
+
 
 
 
