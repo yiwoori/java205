@@ -42,3 +42,51 @@ from book;
 -- from 테이블
 -- where
 -- group by 그룹핑할 기준의 칼럼
+
+-- 부서별
+select deptno, count(*), sum(sal), trunc(avg(sal)), max(sal),min(sal)
+from emp
+group by deptno
+order by deptno;
+
+-- 직급별
+select distinct job
+from emp;
+select job, count(*)
+from emp
+group by job
+order by job;
+
+-- 부서별로 사원 수와 커미션을 받는 사원의 수를 계산해 출력
+select deptno, count(*), count(comm)
+from emp
+group by deptno
+order by deptno;
+
+
+
+-- group by의 그룹함수의 결과 비교시에는 having절 사용
+-- select
+-- from
+-- where
+-- gruop by
+-- having 그룹함수 연산자 값 / 연산자 : = != > < >= <=
+
+-- 각 부서별 평균 급여가 2000이상인
+-- 부서번호와 부서별 평균 급여 출력
+select deptno, round(avg(sal)) as svg
+from emp
+group by deptno
+having avg(sal)>=2000
+order by deptno;
+
+
+
+-- 각 부서 급여의 최대값 최소값을 구하되
+-- 최대 급여가 2900인 부서만 출력
+select deptno, max(sal), min(sal)
+from emp
+group by deptno
+having max(sal)>2900;
+
+
