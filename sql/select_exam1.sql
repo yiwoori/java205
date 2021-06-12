@@ -155,7 +155,8 @@ from emp;
 -- 20. 올해 며칠이 지났는지 출력하시오.
 -- 현재 날짜에서 올해 1월 1일을 뺀 결과를 출력하고
 -- to_date 함수를 사용하여 데이터 형을 일치 시키시오
-select trunc(sysdate-to_date('2021.01.01', 'YYYY.MM.DD'))as day
+select sysdate,
+        trunc(sysdate-to_date('2021.01.01', 'YYYY.MM.DD'))as day
 from dual;
 
 
