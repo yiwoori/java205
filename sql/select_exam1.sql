@@ -254,7 +254,8 @@ group by deptno;
 select job, deptno as dno,
     nvl(decode(deptno, 10, sum(sal)),(null)) as "부서 10",
     nvl(decode(deptno, 20, sum(sal)),(null)) as "부서 20",
-    nvl(decode(deptno, 30, sum(sal)),(null)) as "부서 30"
+    nvl(decode(deptno, 30, sum(sal)),(null)) as "부서 30",
+    sum(sal) as "총액"
 from emp
 group by deptno, job
 order by deptno;
