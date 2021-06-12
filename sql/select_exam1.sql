@@ -50,7 +50,8 @@ where hiredate between '81.2.20' and '81.5.1';
 -- 이름을 기준(내림차순)으로 영문자순으로 출력하시오.
 select ename, deptno
 from emp
-where deptno=20 or deptno=30
+--where deptno=20 or deptno=30
+where deptno in(20, 30)
 order by ename desc;
 
 
@@ -83,7 +84,7 @@ where mgr is null;
 -- 급여 및 커미션을 기준으로 내림차순 정렬하여 표시하시오.
 select ename, sal, comm
 from emp
-where comm is not null or comm=0
+where comm is not null
 order by sal desc, comm desc;
 
 
