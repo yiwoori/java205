@@ -205,15 +205,13 @@ order by job;
 
 
 -- 26. 관리자 수를 출력하시오.
-select job, count(*)
-from emp
-where job = 'MANAGER'
-group by job;
+select count(distinct mgr)
+from emp;
 
 
 
 -- 27. 급여 최고액, 급여 최저액의 차액을 출력하시오.
-select max(sal)-min(sal) as
+select max(sal)-min(sal)
 from emp;
 
 
@@ -238,13 +236,13 @@ order by deptno;
 
 
 
--- 30. 각 부서에 대해 부서번호 이름, 지역명, 사원수, 부서내의 모든 사원의 평균 급여를 출력하시오
+-- 30. 각 부서에 대해 부서번호, 이름, 지역명, 사원수, 부서내의 모든 사원의 평균 급여를 출력하시오
 -- 평균급여는 정수로 반올림하시오
 -- DECODE 사용
 select deptno, decode(deptno, 10, 'ACCOUNTING', 20, 'RESEARCH',
                                 30, 'SALES', 40, 'OPERATIONS') as DNAME,
                 decode(deptno, 10, 'NEW YORK', 20, 'DALLAS',
-                                30, 'CHICAGO', 40, 'BOSTON') as LOCAL,
+                                30, 'CHICAGO', 40, 'BOSTON') as LOC,
         count(*), round(avg(sal))
 from emp
 group by deptno;
