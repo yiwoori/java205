@@ -18,7 +18,7 @@ where custid=1;
 -- (4) 박지성이구매한도서의수(박지성의고객번호는1번으로놓고작성)
 select count(custid)
 from orders
-where custid=1;
+where custid=1; 
 
 
 
