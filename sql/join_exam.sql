@@ -42,6 +42,11 @@ from emp e inner join dept d
 using (deptno)
 where d.loc='NEW YORK';
 
+select e.ename, e.job, d.deptno, d.dname
+from emp e, dept d
+where e.deptno=d.deptno
+    and d.loc='NEW YORK';
+
 
 -- 38. SELF JOIN을 사용하여
 -- 사원의 이름, 사원번호, 관리자 이름 출력
