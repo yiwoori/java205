@@ -6,13 +6,14 @@ select d.deptno, e.ename
 from emp e, dept d
 where e.deptno=d.deptno
     and e.ename='SCOTT';
-    
-    
+
+
 -- 33. INNER JOIN과 ON 연산자를 사용해
 -- 사원이름, 그 사원이 소속된 부서 이름, 지역명 출력
 select e.ename, d.dname, d.loc
 from emp e inner join dept d
-on e.deptno=d.deptno;
+on e.deptno=d.deptno
+order by d.dname;
 
 
 -- 36. 조인과 WildCARD를 사용하여
@@ -77,9 +78,4 @@ select e.ename, e.hiredate as "E_HIREDATE",
 from emp e, emp m
 where e.mgr=m.empno and m.hiredate > e.hiredate
 ;
-
-
-
-
-
 
