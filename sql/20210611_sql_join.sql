@@ -101,7 +101,27 @@ on e.mgr=m.empno
 ;
 
 
+-- 회원별 구매내역 출력
+select c.name, o.orderid
+from orders o, customer c
+where o.custid=c.custid
+order by c.name; --박세리는 출력x
 
+select c.name, o.orderid
+from orders o, customer c
+where o.custid(+)=c.custid --회원 아이디는 모두 출력(orderid가 null이어도 출력)
+order by c.name;
 
+select c.name, count(*) as "구매회수", avg(saleprice)
+from orders o, customer c
+where o.custid=c.custid
+group by c.name
+order by c.name;
+
+select c.name, count(o.orderid) as "구매회수", avg(saleprice)
+from orders o, customer c
+where o.custid(+)=c.custid
+group by c.name
+order by c.name;
 
 
