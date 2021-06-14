@@ -6,6 +6,7 @@ select d.deptno, e.ename
 from emp e, dept d
 where e.deptno=d.deptno
     and e.ename='SCOTT';
+--ansi 활용**************************************
 
 
 -- 33. INNER JOIN과 ON 연산자를 사용해
@@ -71,6 +72,7 @@ select e.ename, e.deptno
 from emp e, emp s
 where e.deptno=s.deptno
     and s.ename='SCOTT'; --***
+--**************************************
 
 
 -- 41. SELF JOIN을 사용하여
