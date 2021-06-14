@@ -47,10 +47,61 @@ select * from orders;
 select * from customer;
 select * from book;
 
-select 
+select o.orderid, c.name, b.bookname
 from orders o, customer c, book b
-where o.custid=c.custid and o.bookid=b.bookid 
+where o.custid=c.custid and o.bookid=b.bookid
+    --왼쪽 테이블을 기준으로 몇개의 테이블을 붙이든 공통된 조건을 찾아 묶을 수 있다
 order by o.orderid;
+
+
+-- ANSI -> INNER JOIN
+-- 오라클 EQUI JON
+select *
+from emp, dept
+where emp.deptno=dept.deptno;
+--inner join 사용
+select *
+from emp e inner join dept d
+on e.deptno=d.deptno;
+
+-- 이름이 SCOTT인 사람의  -->where e.ename='SCOTT'
+-- 부서명을 출력해봅시다.
+select *
+from emp e inner join dept d
+on e.deptno=d.deptno
+where e.ename='SCOTT';
+---------------------------------------------------
+
+--USING
+--on 절을 생략하고 -> using을 이용하면 조건식 더 간략하게 처리 가능
+--단, 비교하는 컬럼의 이름이 같을 때
+select *
+from emp e inner join dept d
+--on e.deptno=d.deptno
+using(deptno)
+where e.ename='SCOTT';
+
+
+--NATURAL JOIN
+select *
+from emp natural join dept;
+
+
+--OUTER JOIN
+select e.empno, e.ename, e.mgr, m.ename
+from emp e, emp m
+where e.mgr=m.empno(+); -->표현하고자하는 컬림이 테이블의 반대쪽, null값을 가지는 위치
+----------------------------------
+
+-- [left | right | full] OUTER JOIN
+select e.ename, e.mgr, m.ename as"관리자"
+--from emp e left outer join emp m
+from emp m right outer join emp e
+on e.mgr=m.empno
+;
+
+
+
 
 
 
