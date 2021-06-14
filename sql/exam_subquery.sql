@@ -24,11 +24,10 @@ where sal=(select min(sal) from emp);
 
 -- 46. 평균 급여가 가장 적은 직급의
 -- 직급 이름과 직급의 평균 급여를 구하시오.
---*********************************************************************
 select job, avg(sal)
 from emp
 group by job
-having avg(sal) < (select avg(sal) from emp);
+having avg(sal) = (select min(avg(sal)) from emp group by job);
 
 
 
@@ -59,7 +58,6 @@ where not ename = any (select distinct(m.ename)
 from emp e, emp m
 where e.mgr=m.empno)
 order by ename;
-
 -- 부하직원이 있는 사원
 select distinct(m.ename) from emp e, emp m where e.mgr=m.empno;
 
@@ -82,7 +80,6 @@ select ename, hiredate
 from emp
 where deptno = (select deptno from emp where ename='BLAKE')
     and ename!='BLAKE';
-
 -- BLAKE의 부서
 select deptno from emp where ename='BLAKE';
 
@@ -137,16 +134,10 @@ where sal > (select avg(sal) from emp)
 
 
 -- 58. 평균 급여가 가장 적은 업무를 찾으시오.
---****************************************************************
 select job, avg(sal)
 from emp
-where job = any(select job from emp where );
-
--- 가장 작은 평균 급여
-select job
-from emp
-where avg(sal) > min
-group by job;
+group by job
+having avg(sal) = (select min(avg(sal)) from emp group by job);
 
 
 
