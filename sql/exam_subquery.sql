@@ -108,14 +108,53 @@ where deptno = any (select deptno from emp where ename like '%K%');
 -- 54. 부서위치가 DALLAS인 사원의 이름과 부서번호 및 담당업무를 표시하시오.
 select ename, deptno, job
 from emp
-where 
+where deptno = any (select deptno from dept where loc = 'DALLAS');
 
 
 
+-- 55. KING에게 보고하는 사원의 이름과 급여를 표시하시오.
+select ename, sal
+from emp
+where ename = any (select ename from emp where mgr=7839);
 
 
 
+-- 56. RESEARCH 부서의 사원에 대한 부서번호, 사원이름 및 담당 업무를 표시하시오.
+select deptno, ename, job
+from emp
+where deptno = any(select deptno from dept where dname='RESEARCH');
 
+
+
+-- 57. 평균 월급보다 많은 급여를 받고 
+--이름에 M이 포함된 사원과 같은 부서에서 근무하는 사원의 
+--사원 번호, 이름, 급여를 표시하시오.
+select empno, ename, sal
+from emp
+where sal > (select avg(sal) from emp)
+    and deptno = any(select deptno from emp where ename like '%M%');
+
+
+
+-- 58. 평균 급여가 가장 적은 업무를 찾으시오.
+--****************************************************************
+select job, avg(sal)
+from emp
+where job = any(select job from emp where );
+
+-- 가장 작은 평균 급여
+select job
+from emp
+where avg(sal) > min
+group by job;
+
+
+
+-- 59. 담당업무가 MANAGER 인 사원이
+-- 소속된 부서와 동일한 부서의 사원을 표시하시오.
+select ename
+from emp
+where deptno = any(select deptno from emp where job='MANAGER');
 
 
 
