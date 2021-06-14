@@ -47,6 +47,8 @@ where o.bookid=b.bookid and o.custid=1;
 
 
 
+
+
 -- 2 마당서점의운영자와경영자가요구하는다음질문에대해SQL 문을작성하시오.
 
 -- (8) 주문하지않은고객의이름(부속질의사용)
@@ -68,16 +70,38 @@ from orders;
 
 
 -- (10) 고객의 이름과 고객별 구매액
-select *
-from 
+select (select distinct(name)
+        from customer c
+        where c.custid in (o.custid)) as "NAME",
+    sum(saleprice)
+from orders o
+group by o.custid;
+
+--구매한 고객의 이름
+select distinct(name)
+from customer c, orders o
+where c.custid in (o.custid);
 
 
 
 -- (11) 고객의 이름과 고객이 구매한 도서 목록
+select c.name, b.bookname
+from orders o, customer c, book b
+where o.custid=c.custid and o.bookid=b.bookid
+order by c.name;
 
 
 
--- (12) 도서의 가격(Book 테이블)과 판매가격(Orders 테이블)의 차이가 가장 많은 주문
+-- (12) 도서의 가격(Book 테이블)과
+--  판매가격(Orders 테이블)의 차이가 가장 많은 주문
+select *
+from orders o
+where ;
+
+select orderid
+from orders o, book b
+where o.bookid=b.bookid
+    and max(b.price < o.saleprice);
 
 
 
