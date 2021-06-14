@@ -28,6 +28,12 @@ from emp e inner join dept d
 using (deptno)
 where e.ename like '%A%';
 
+select e.ename, d.dname
+from emp e, dept d
+where e.deptno=d.deptno
+    and e.ename like '%A%'
+order by e.ename;
+
 
 -- 37. JOIN을 이용하여 NEWYORK에서 근무하는
 -- 모든 사원의 이름, 업무, 부서번호, 부서명 출력
