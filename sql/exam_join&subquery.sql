@@ -119,9 +119,6 @@ having avg(saleprice) > (select avg(saleprice) from orders);
 -- (2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
 
 
-select *
-from emp, dept
-where emp.deptno=dept.deptno;
 
 
 

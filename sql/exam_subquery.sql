@@ -1,14 +1,17 @@
 
 --2021.06.14
 
--- 43. 사원 번호가 7788인 사원과 담당 업무가 같은 사원을 표시 (사원 이름, 담당 업무)
+-- 43. 사원 번호가 7788인 사원과 담당 업무가 같은 -->서브쿼리
+-- 사원을 표시 (사원 이름, 담당 업무)
 select ename, job
 from emp
 where job = (select job from emp where empno=7788);
 
 
 
--- 44. 사원 번호가 7499인 사원보다 급여가 많은 사원을 표시 (사원 이름, 담당 업무)
+-- 44. 사원 번호가 7499인 사원보다 --> 조건의 값=서브쿼리
+-- 급여가 많은 사원을 표시
+-- (사원 이름, 담당 업무)
 select ename, job
 from emp
 where sal>(select sal from emp where empno = 7499);
@@ -27,7 +30,10 @@ where sal=(select min(sal) from emp);
 select job, avg(sal)
 from emp
 group by job
-having avg(sal) = (select min(avg(sal)) from emp group by job);
+--having avg(sal) = (select min(avg(sal)) from emp group by job);
+--*********************************************************
+having avg(sal) <= all (
+select avg(sal) from emp group by job);
 
 
 
@@ -37,6 +43,10 @@ select ename, sal, deptno
 from emp
 where sal = any (select min(sal) from emp group by deptno)
 order by deptno;
+--*************************************
+select ename, deptno, min(sal)
+from emp
+group by deptno;
 
 
 
@@ -46,7 +56,7 @@ order by deptno;
 select empno, ename, job, sal
 from emp
 where job != 'ANALYST'
-    and sal < any (select sal from emp where job='ANALYST')
+    and sal < all (select sal from emp where job='ANALYST')
 order by empno;
 
 
