@@ -95,17 +95,18 @@ order by c.name;
 -- (12) 도서의 가격(Book 테이블)과
 --  판매가격(Orders 테이블)의 차이가 가장 많은 주문
 select *
-from orders o
-where ;
-
-select orderid
-from orders o, book b
-where o.bookid=b.bookid
-    and max(b.price < o.saleprice);
+from orders o natural join book b
+where price-saleprice = (select max(b.price-o.saleprice)
+from orders o join book b
+using(bookid));
 
 
 
 -- (13) 도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
+select c.name
+from orders o natural join customer c
+group by c.name
+having avg(saleprice) > (select avg(saleprice) from orders);
 
 
 
@@ -118,7 +119,9 @@ where o.bookid=b.bookid
 -- (2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
 
 
-
+select *
+from emp, dept
+where emp.deptno=dept.deptno;
 
 
 
