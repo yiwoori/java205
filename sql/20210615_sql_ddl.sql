@@ -131,22 +131,43 @@ desc emp02;
 
 
 
+select * from emp02;
 
 drop table emp02;
 
+--컬럼 레에서 제약사항 정의 
 create table emp02 (
-    empno number(4) primary key,
-    ename varchar2(20) not null,
-    sal number(6,2) check (sal>500 and sal<5000),
-    job varchar(20) DEFAULT '미지정' --입력값이 없으면 '미지정'으로
+    empno number(4) constraint emp02_empno_pk primary key,
+    ename varchar2(20) constraint emp02_ename_nn not null,
+    sal number(6,2) constraint emp02_sal_ck check (sal>500 and sal<5000),
+    job varchar(20) DEFAULT '미지정', --입력값이 없으면 '미지정'으로
+    deptno number constraint emp02_deptno_fk REFERENCES dept(deptno) -- dept 테이블의 deptno 참조 
 );
 desc emp02;
 
-insert into emp02 (empno, ename, sal, job) values(100, 'SON', 3000, 'MANAGER');
+insert into emp02 (empno, ename, sal, job, deptno) values(2000, 'SON', 4000, 'MANAGER', 40);
 insert into emp02 (empno, ename, sal) values(200, 'SON', 3000);
 
-select * from emp02;
+
+desc dept;
 
 
 
 
+
+
+
+--테이블 레벨에서 제약사항 정의 
+create table emp03 (
+    empno number(4), -- constraint emp02_empno_pk primary key,
+    ename varchar2(20) constraint emp03_ename_nn not null,
+    sal number(6,2) constraint emp03_sal_ck check (sal>500 and sal<5000),
+    job varchar(20), -- DEFAULT '미지정', --입력값이 없으면 '미지정'으로
+    deptno number, -- constraint emp02_deptno_fk REFERENCES dept(deptno) -- dept 테이블의 deptno 참조 
+    --------------------------
+    --제약 정의
+    constraint emp03_empno_pk PRIMARY KEY (empno), --pk제약 
+    --constraint emp03_ename_nn not null, --not null은 컬럼 레벨에서만 정의 가능
+    --contsraint emp03_sal_ck check (sal>500 and sal<5000), --컬럼레벨에서 정의
+    constraint emp03_deptno FOREIGN KEY (deptno) REFERENCES dept(deptno) 
+);
