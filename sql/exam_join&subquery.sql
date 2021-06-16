@@ -1,49 +1,28 @@
 
--- 2021.06.14
+-- 2021.06.16
 
 -- 1.마당서점의고객이요구하는다음질문에대해SQL 문을작성하시오.
 
 -- (5) 박지성이구매한도서의출판사수
--- 5.1
-select count(b.publisher)
-from orders o, book b
-where o.bookid=b.bookid
-    and b.bookid = any (select bookid from orders where custid=1);
---박지성이 구매한 도서
-select bookid from orders where custid=1;
-
---5.2
 select count(publisher)
 from book
-where bookid = any (select o.bookid
-                    from orders o, book b
-                    where o.bookid=b.bookid
-                        and o.custid=1);
---박지성이 구매한 도서
-select o.bookid from orders o, book b
-where o.bookid=b.bookid and o.custid=1;
+where bookid = any (select bookid
+                        from orders
+                        where custid=1);
 
 
 
 -- (6) 박지성이구매한도서의이름, 가격, 정가와판매가격의차이
-select b.bookname, o.saleprice as "판매가", b.price as "정가",
-    b.price-o.saleprice as "PRICEGAP"
-from orders o, book b
-where o.bookid=b.bookid
-    and b.bookid = any (select bookid from orders where custid=1);
+select DISTINCT(bookname), b.price-o.saleprice as "PRICEGAP"
+from book b, orders o
+where b.bookid=o.bookid
+            and b.bookid = any (select bookid
+                        from orders
+                        where custid=1);
 
 
 
 -- (7) 박지성이구매하지않은도서의이름
-select bookname from book
-where not bookname = any (select b.bookname
-                from orders o, book b
-                where o.bookid=b.bookid
-                    and o.custid=1);
-
---박지성이 구매한 도서의 이름
-select b.bookname from orders o, book b
-where o.bookid=b.bookid and o.custid=1;
 
 
 
@@ -52,61 +31,30 @@ where o.bookid=b.bookid and o.custid=1;
 -- 2 마당서점의운영자와경영자가요구하는다음질문에대해SQL 문을작성하시오.
 
 -- (8) 주문하지않은고객의이름(부속질의사용)
-select name
-from customer
-where not custid = any (
-                    select o.custid
-                    from orders o, customer c
-                    where o.custid=c.custid
-                        and o.custid in(o.custid));
 
 
 
 -- (9) 주문금액의 총액과 주문의 평균금액
-select sum(saleprice) as "TOTAL",
-        avg(saleprice) as "AVGSALEPRICE"
-from orders;
+
 
 
 
 -- (10) 고객의 이름과 고객별 구매액
-select (select distinct(name)
-        from customer c
-        where c.custid in (o.custid)) as "NAME",
-    sum(saleprice)
-from orders o
-group by o.custid;
-
---구매한 고객의 이름
-select distinct(name)
-from customer c, orders o
-where c.custid in (o.custid);
 
 
 
 -- (11) 고객의 이름과 고객이 구매한 도서 목록
-select c.name, b.bookname
-from orders o, customer c, book b
-where o.custid=c.custid and o.bookid=b.bookid
-order by c.name;
 
 
 
 -- (12) 도서의 가격(Book 테이블)과
 --  판매가격(Orders 테이블)의 차이가 가장 많은 주문
-select *
-from orders o natural join book b
-where price-saleprice = (select max(b.price-o.saleprice)
-from orders o join book b
-using(bookid));
 
 
 
 -- (13) 도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
-select c.name
-from orders o natural join customer c
-group by c.name
-having avg(saleprice) > (select avg(saleprice) from orders);
+
+
 
 
 
