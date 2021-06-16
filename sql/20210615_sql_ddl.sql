@@ -135,7 +135,7 @@ select * from emp02;
 
 drop table emp02;
 
---컬럼 레에서 제약사항 정의 
+--컬럼 레벨에서 제약사항 정의 
 create table emp02 (
     empno number(4) constraint emp02_empno_pk primary key,
     ename varchar2(20) constraint emp02_ename_nn not null,

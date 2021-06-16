@@ -2,7 +2,7 @@
 -- 2021.06.16
 
 -- DML
-
+ 
 
 
 -- 테스트 테이블 생성
@@ -129,6 +129,54 @@ where ename='SCOTT';
 update emp01
 set hiredate=sysdate, sal=50, comm=4000
 where ename='SCOTT';
+
+-- 20번 부서의 지역명을 40번 부서의 지역명으로 변경하기 위한 서브쿼리문
+
+TRUNCATE table dept01;
+
+insert into dept01 select * from dept;
+
+select loc from dept01 where deptno=40;
+
+update dept01
+set loc = (select loc from dept01 where deptno=40)
+where deptno=20;
+
+select * from dept01;
+
+
+-- 부서번호가 20번 부서의 부서명과 지역명을 부서번호가 10인 부서와 동일하게 변경
+update dept01
+set (dname, loc) = (select dname, loc from dept01 where deptno=10)
+where deptno=20;
+
+
+
+
+
+-- 데이터의 삭제 : 행단위 삭제
+-- delete from 테이블명 where 조건
+
+-- dept01 테이블의 모든 데이터를 삭제
+delete from dept01;
+
+-- 이름이 SCOTT인 사원을 삭제
+delete from emp01 where ename='SCOTT';
+select * from emp01;
+
+
+-- 사원 테이블에서 부서명이 sales인 사원을 모두 삭제
+select * from dept where dname = 'SALES';
+
+delete from emp01
+where deptno = (select deptno from dept where dname = 'SALES');
+
+
+
+
+
+
+
 
 
 
