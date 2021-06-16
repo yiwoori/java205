@@ -60,3 +60,16 @@ where ROWNUM<6 --top5
 ;
 
 
+
+
+
+
+-- sequence : 번호 재생기
+create sequence pi_idx_pk;
+
+select pi_idx_pk.nextval
+from dual; --실행할때마다 새롭게 생성
+
+select pi_idx_pk.currval
+from dual;
+
