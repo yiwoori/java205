@@ -106,6 +106,17 @@ desc phoneInfo_com;
 
 
 
+-- 전체 친구 정보
+select *
+from phoneInfo_basic pb, phoneinfo_univ pu, phoneinfo_com pc
+--where pb.idx=pu.fr_u_ref and pb.idx=pc.fr_ref;
+where pb.idx=pu.fr_u_ref(+) and pb.idx=pc.fr_ref(+)
+order by pb.idx;
+
+
+
+
+
 
 
 
