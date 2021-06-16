@@ -84,16 +84,33 @@ where price-saleprice = (select MAX(price-saleprice)
 
 
 -- (13) 도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
+--*
 select name
 from customer c natural join orders o
 group by name
 having avg(saleprice) > (select avg(saleprice) from orders);
---*
+
 
 
 -- 3. 마당서점에서 다음의 심화된 질문에 대해 SQL 문을 작성하시오.
 
--- (1) 박지성이 구매한 도서의 출판사와 같은 출판사에서 도서를 구매한 고객의 이름
+-- (1) 박지성이 구매한 도서의 출판사와
+-- 같은 출판사에서 도서를 구매한 고객의 이름
+-------------------------------------------------------------------------------------------
+select name
+from book b natural join customer c
+--where publisher = any (select publisher
+                        --from orders natural join book
+                        --where custid=1)
+group by name, publisher
+having publisher = any (select publisher
+                        from orders natural join book
+                        where custid=1)
+;
+select name
+from book b, customer c, orders o
+where b.bookid=o.bookid and o.custid=c.custid
+;
 
 
 
