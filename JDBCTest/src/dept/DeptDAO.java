@@ -7,12 +7,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.print.attribute.standard.RequestingUserName;
 
 //정보가 저장된 dept에서 정보 가져와 반환
 public class DeptDAO {
-
 	
+/*
+	//싱글톤 패턴 : 여러개의 인스턴스를 생성하지 못하도록 하는 디자인 패턴
+	// 1.외부 클래스 또는 인스턴스에서 해당 클래스로 인스턴스를 생성하지 못하도록 처리
+	private DeptDAO(){
+		
+	}
+	
+	// 2.클래스 내부에서 인스턴스를 만들고
+	static private DeptDAO dao = new DeptDAO(); //static***
+	
+	// 3.메소드를 통해서 반환하도록 처리
+	public static DeptDAO getInstance() { //static***
+		return dao;
+	}
+*/
 	
 	// 1.전체 데이터 검색 기능
 	// 반환타입 List<Dept>
@@ -39,7 +52,9 @@ public class DeptDAO {
 			
 			// 데이터를 Dept 객체로 생성 -> list에 저장
 			while(rs.next()) {
+				
 				list.add(new Dept(rs.getInt(1), rs.getString(2), rs.getString(3)));
+				
 			}
 			
 			
@@ -70,11 +85,7 @@ public class DeptDAO {
 			
 		}
 		
-		
-		
 		return list;
-		
-		
 		
 	}
 
@@ -90,15 +101,13 @@ public class DeptDAO {
 		//전달받은 Dept 객체의 데이터로 Dept 테이블에 저장 -> 결과 값을 반환
 		PreparedStatement pstmt = null;
 		
-		
 		try {
-			String sql = "insert into dept01 values (dept01_deptno_seq.nextval, ?, ?)";
+			String sql = "insert into dept values (dept01_deptno_seq.nextval, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dept.getDname());
 			pstmt.setString(2, dept.getLoc());
 			
 			result = pstmt.executeUpdate();
-			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -116,11 +125,9 @@ public class DeptDAO {
 			}
 		}
 
-		
 		return result;
 		
-		
-	};
+	}
 	
 	
 	
@@ -128,7 +135,6 @@ public class DeptDAO {
 	// 반영된 행의 개수 반환
 	// 사용자로부터 데이터를 받아서 처리 -> Dept 객체
 	int editDept(Connection conn, Dept dept) {
-		
 
 		int result = 0;
 		
@@ -137,6 +143,7 @@ public class DeptDAO {
 		
 		
 		try {
+			
 			String sql = "update dept set dname=?, loc=? where deptno=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dept.getDname());
@@ -152,6 +159,7 @@ public class DeptDAO {
 		} finally {
 			if(pstmt != null) {
 				
+				
 				try {
 					pstmt.close();
 				} catch (SQLException e) {
@@ -160,8 +168,50 @@ public class DeptDAO {
 				}
 				
 			}
+			
 		}
 		
+		return result;
+		
+	}
+	
+
+	
+	// 4. DEPT 테이블의 데이터를 삭제
+	// 삭제된 행의 개수를 반환
+	// 사용자로부터 deptno 받아서 처리 (매개변수)
+	
+	int deleteDept(Connection conn, int deptno) {
+		
+		int result = 0;
+		
+		// 데이터베이스의 처리 sql
+		PreparedStatement pstmt = null;
+		String sql = "delete from dept where deptno = ?";
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, deptno);
+			
+			result = pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}
+	
 		return result;
 		
 	}

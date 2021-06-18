@@ -6,15 +6,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-import com.sun.corba.se.spi.orb.StringPair;
-
 public class DeptMain {
 
 	public static void main(String[] args) {
 		
 		Connection conn = null;
 		
-
+		
 		// 1. 드라이버 로드
 		try {
 			
@@ -32,6 +30,7 @@ public class DeptMain {
 
 			DeptDAO dao = new DeptDAO();
 			
+			
 			/* 리스트로 출력하는 방법
 			List<Dept> list = dao.getDeptList(conn);
 			
@@ -40,7 +39,9 @@ public class DeptMain {
 			}
 			*/
 			
+			
 			Scanner sc = new Scanner(System.in);
+			
 			
 			/*
 			System.out.println("부서 입력을 시작합니다.");
@@ -58,9 +59,9 @@ public class DeptMain {
 			} else {
 				System.out.println("입력 실패");
 			}
-			*/
+			//*/
 			
-			
+			/*
 			System.out.println("부서 수정을 시작합니다.");
 			System.out.println("수정하고자 하는 부서번호, 새 부서이름, 새 부서위치 순으로 입력해주세요");
 			System.out.println("ex) 50 dev seoul");
@@ -76,6 +77,19 @@ public class DeptMain {
 			} else {
 				System.out.println("수정 실패");
 			}
+			*/
+			
+			System.out.println("부서 정보를 삭제합니다.");
+			System.out.println("삭제할 부서 번호를 입력해주세요.");
+			String deptno = sc.nextLine();
+			int result = dao.deleteDept(conn, Integer.parseInt(deptno)); //deptno=정수
+			
+			if(result > 0) {
+				System.out.println("삭제 완료");
+			} else {
+				System.out.println("삭제 실패 : 해당 부서의 번호가 존재하지 않습니다.");
+			}
+			
 			
 			
 		} catch (ClassNotFoundException e) {
