@@ -9,23 +9,23 @@ import java.util.ArrayList;
 
 
 //정보가 저장된 dept에서 정보 가져와 반환
-public class DeptDAO {
+public class DeptDao {
 	
-/*
+
 	//싱글톤 패턴 : 여러개의 인스턴스를 생성하지 못하도록 하는 디자인 패턴
 	// 1.외부 클래스 또는 인스턴스에서 해당 클래스로 인스턴스를 생성하지 못하도록 처리
-	private DeptDAO(){
+	private DeptDao(){
 		
 	}
 	
 	// 2.클래스 내부에서 인스턴스를 만들고
-	static private DeptDAO dao = new DeptDAO(); //static***
+	static private DeptDao dao = new DeptDao(); //static***
 	
 	// 3.메소드를 통해서 반환하도록 처리
-	public static DeptDAO getInstance() { //static***
+	public static DeptDao getInstance() { //static***
 		return dao;
 	}
-*/
+
 	
 	// 1.전체 데이터 검색 기능
 	// 반환타입 List<Dept>
