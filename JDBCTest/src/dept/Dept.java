@@ -1,6 +1,6 @@
 package dept;
 
-// 부서정보를 저장하ㅡㄴ 기능 클래스
+// 부서정보를 저장하는 기능 클래스
 public class Dept {
 
 	private int deptno; //부서번호

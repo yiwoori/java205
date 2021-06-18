@@ -69,7 +69,7 @@ public class JDBCTestDeptDML3 {
 			pstmt.setString(1, inputs[1]);
 			pstmt.setString(2, inputs[2]);
 			pstmt.setInt(3, Integer.parseInt(inputs[0]));
-			k
+
 			int result = pstmt.executeUpdate();
 			
 			if(result > 0) {
