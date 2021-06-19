@@ -115,7 +115,12 @@ order by pb.idx;
 
 
 
+-- 대학 친구, 회사 ㅣㄴ구 테이블 -> 기본키(대리키) -> 시퀀스 생성 -> insert 개선 
 
+-- sequence : 번호 재생기
+create sequence pi_idx_pk;
+create sequence pi_u_idx_pk start with 7 increment by 1; --중복되지 않는 위치에서 시작
+create sequence pi_c_idx_pk start with 7 increment by 1;
 
 
 
