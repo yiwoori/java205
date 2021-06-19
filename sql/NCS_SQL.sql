@@ -65,12 +65,3 @@ SET DEPTNO = (
     FROM EMP
     WHERE ENAME = 'SCOTT');
 
-
-
-SELECT * FROM DEPT;
-
-
-
-
-
-
