@@ -115,7 +115,7 @@ order by pb.idx;
 
 
 
--- 대학 친구, 회사 ㅣㄴ구 테이블 -> 기본키(대리키) -> 시퀀스 생성 -> insert 개선 
+-- 대학 친구, 회사 친구 테이블 -> 기본키(대리키) -> 시퀀스 생성 -> insert 개선 
 
 -- sequence : 번호 재생기
 create sequence pi_idx_pk;
