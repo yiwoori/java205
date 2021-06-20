@@ -113,26 +113,3 @@ having count(distinct b.publisher) >=2
 ;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
