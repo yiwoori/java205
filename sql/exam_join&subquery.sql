@@ -97,17 +97,20 @@ having avg(saleprice) > (select avg(saleprice) from orders);
 -- (1) 박지성이 구매한 도서의 출판사와
 -- 같은 출판사에서 도서를 구매한 고객의 이름
 select name
-from book b, orders o, customer c
-where b.bookid=o.bookid and c.custid=o.custid
-    and publisher = any(select publisher
+from book b natural join orders o natural join customer c
+where publisher = any(select publisher
                 from book b natural join orders o
                 where custid=1)
-    and not c.custid = 1;
+    and not custid = 1;
 
 
 
 -- (2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
-
+select c.name
+from customer c natural join orders o natural join book b
+group by c. name
+having count(distinct b.publisher) >=2
+;
 
 
 
