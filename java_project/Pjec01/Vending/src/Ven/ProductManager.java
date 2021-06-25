@@ -273,39 +273,39 @@ public class ProductManager {
 
 //전체 리스트 출력 메소드
 	// DAO 에서 데이터 리스트를 받고 출력 처리
-//	void buyList(int num) {
-//		// Connection 객체 생성 -> 트렌젝션 처리
-//		Connection conn = null;
-//		Scanner sc = new Scanner(System.in);
-//		// 2.연결
-//		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-//		String user = "hr";
-//		String pw = "tiger";
-//
-//		try {
-//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
-//
-//			System.out.println("주문 하실 음료의 수량 입력해 >>");
-//			int num2 = sc.nextInt();
-//
-//			ProductList numlist = new ProductList(num);
-//
-//			List<ProductList> list = dao.getBuylist(conn, numlist);
-//
-//			System.out.println("음료이름 \t 음료가격 \t");
-//			System.out.println("---------------------------------");
-//
-//			for (ProductList pl : list) {
-//				System.out.printf("%s \t %d \t \n", pl.getName(), (pl.getPrice() * num2));
-//			}
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (NumberFormatException e) {
-//			System.out.println("잘못된정보입니다. 다시입력해주세요");
-//		}
-//
-//	}
+	void buyList(int num) {
+		// Connection 객체 생성 -> 트렌젝션 처리
+		Connection conn = null;
+		Scanner sc = new Scanner(System.in);
+		// 2.연결
+		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "hr";
+		String pw = "tiger";
+
+		try {
+			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+
+			System.out.println("주문 하실 음료의 수량 입력해 >>");
+			int num2 = sc.nextInt();
+
+			ProductList numlist = new ProductList(num);
+
+			List<ProductList> list = dao.getBuylist(conn, numlist);
+
+			System.out.println("음료이름 \t 음료가격 \t");
+			System.out.println("---------------------------------");
+
+			for (ProductList pl : list) {
+				System.out.printf("%s \t %d \t \n", pl.getName(), (pl.getPrice() * num2));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			System.out.println("잘못된정보입니다. 다시입력해주세요");
+		}
+
+	}
 
 }
