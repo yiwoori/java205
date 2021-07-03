@@ -13,14 +13,14 @@
     <style>
         div{
             background-color: yellowgreen;
-            margin-top: 10px;
+            margin-top: 10px; /* div=블록형식 : 높이,폭 설정 가능 */
             height: 50px;
         }
         span {
             background-color: yellow;
             margin-right: 10px;
-            width: 100px;
-            height: 100px;
+            width: 100px; /* span=인라인 : 구현받지 않음 */
+            height: 100px; /* span=인라인 : 구현받지 않음 */
         }
     </style>
     <script></script>
@@ -28,6 +28,29 @@
 </head>
 
 <body>
+
+    <video
+        src="media/trailer.mp4"
+        controls
+        preload="auto"
+        poster="image/mini3.png"
+        loop
+        autoplay
+        width="400"
+        height="300"
+    ></video>
+    <br><br><br>
+    
+    <audio src="media/old_pop.mp3"
+        controls
+        autoplay
+        preload="auto"
+        loop
+        muted
+    ></audio>
+
+    <br><br><br>
+
     <div> div -1 </div>
     <div> div -2 </div>
     <div> div -3 </div>
