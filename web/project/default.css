@@ -97,6 +97,7 @@ div.msg {
     left: 50%;
     top: 10px;
     margin-left: -175px; /*왼쪽으로*/
+    display : none;
 }
 #div_header {
     border-bottom: 1px solid #aaa;

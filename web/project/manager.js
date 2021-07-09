@@ -2,9 +2,9 @@
 //Member라는 생성자 함수를 정의
 
 function Member(id, pw, name) {
-    this.userId = id;
+    this.userid = id;
     this.pw = pw;
-    this.userName = name;
+    this.username = name;
 };
 
 //객체가 가지는 메소드는 공통으로 사용 : prototype
@@ -12,10 +12,17 @@ Member.prototype.makeHtml = function() {
     return '[ id : '+this.userId+', pw : '+this.pw+', name : '
     +this.userName+' ]'
 };
+
 /////////////////////////////
 
 //회원의 정보를 저장하는 배열
 var members = []; //[] or new Array();
+
+//배열 -> JSON(문자열) -> localStorage에 저장
+//저장
+//수정
+//삭제
+//setItem('members', JSON.stringify(members))
 
 /////////////////////////////
 
@@ -23,9 +30,21 @@ var members = []; //[] or new Array();
 //submit 이벤트 연결
 window.onload = function() {
 
-    //테이블 세팅
-    setList();
+    //localStorage에 저장된 데이터가 있는지 확인
+    //if(localStorage.getItem('members') 없으면 null 반환
+    //로컬스토리지는 문자열만 저장 가능 : JSON을 통해 객체로 변환해 저장
+    if(localStorage.getItem('members')==null) {
+        //배열 members를 저장
+        localStorage.setItem('members', JSON.stringify(members));
+    } else {
+        members=JSON.parse(localStorage.getItem('members')); //JSON 문자열 -> 객체로 변환
+        console.log(members);
+        //테이블 세팅
+        setList();
+    }
 
+
+    //var userid : 변수, document.querySelector : 캐스팅? 호출?
     var userid = document.querySelector('#userID');
     var pw = document.querySelector('#pw');
     var repw = document.querySelector('#repw');
@@ -95,6 +114,9 @@ window.onload = function() {
         //배열에 사용자 정보를 추가
         members.push(new Member(userid.value, pw.value, userName.value));
 
+        //저장
+        localStorage.setItem('members', JSON.stringify(members));
+
         alert('등록 완료');
         console.log('회원리스트', members);
 
@@ -131,8 +153,12 @@ window.onload = function() {
 
 }
 
-//배열에 있는 요소를 table의 tr행을 만들어 출력
+//배열에 있는 요소를 -> table의 tr행을 만들어 출력
 function setList() {
+
+    console.log(members);
+    //console.log(JSON.stringify(members));
+    //localStorage.setItem('members', JSON.stringify(members));
     
     //table의 tbody 캐스팅
     var list = document.querySelector('#list');
@@ -175,6 +201,9 @@ function setList() {
         if(confirm('삭제하시겠습니까?')) {
             members.splice(index,1); //(삭제코드)
             alert('삭제되었습니다.');
+
+            //저장
+            localStorage.setItem('members', JSON.stringify(members));
             
             //테이블 리스트 갱신 (삭제 테이블 제외한 리스트)
             setList();
@@ -222,7 +251,12 @@ function setList() {
             members[editIndex.value].pw = editPw.value;
             members[editIndex.value].userName = editName.value;
 
+            //저장
+            localStorage.setItem('members', JSON.stringify(members));
+
             alert('수정 완료');
+
+            //테이블 세팅
             setList();
 
             editMemberClose();
