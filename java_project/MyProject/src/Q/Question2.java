@@ -1,4 +1,4 @@
-package Array;
+package Q;
 public class Question2 {
 //다음 메서드는 int형 1차원 배열에 저장된 값을 두 번째 매개변수로 전달될 값의 크기만큼 전부 증가시킨다
 	

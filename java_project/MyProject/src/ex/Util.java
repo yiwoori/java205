@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import com.sun.istack.internal.FinalArrayList;
-
 public class Util {
 
 	public static void close(ServerSocket ss) {
