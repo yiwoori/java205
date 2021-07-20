@@ -10,9 +10,9 @@ public class Person {
 		this.personNumber = personNumber;
 	}
 	
-	public boolean equals(Object o) {
-		if(o)
-	}
+//	public boolean equals(Object o) {
+//	
+//	}
 	
 }
 
