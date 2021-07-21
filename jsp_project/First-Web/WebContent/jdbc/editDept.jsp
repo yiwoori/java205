@@ -1,3 +1,6 @@
+<%@page import="dept.domain.Dept"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="dept.dao.DeptDao"%>
 <%@page import="jdbc.util.ConnectionProvider"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -17,35 +20,22 @@ pageEncoding="UTF-8"%>
 	
 	int resultCnt = 0;
 	
-	
-	
 	//2. DB처리 : insert
-	
-	//데이터 베이스 드라이버 로드
-	Class.forName("com.mysql.cj.jdbc.Driver");
+	//데이터 베이스 드라이버 로드 -> 서블릿 등록(jdbc.util.Loader)
 	
 	Connection conn = null;
-	PreparedStatement pstmt = null;
+	DeptDao dao = null;
 	
-		//jdbcurl
-		/* String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
-		String user = "bit";
-		String pw = "bit";
-		 = static 메소드 ConnectionProvider로 해결
-		*/
+	try {
 		
-	conn = ConnectionProvider.getConnection();
-	/* conn = DriverManager.getConnection(jdbcUrl, user, pw); */
-	
-	String sqlUpdate = "update dept set dname=?, loc=? where deptno=?";
-	pstmt = conn.prepareStatement(sqlUpdate);
-	pstmt.setString(1, dname);
-	pstmt.setString(2, loc);
-	pstmt.setInt(3, Integer.parseInt(deptno));
-
-	resultCnt = pstmt.executeUpdate(); //데이터 가져오기
-	
-	
+		conn = ConnectionProvider.getConnection();
+		dao = DeptDao.getInstance();
+		
+		resultCnt = dao.updateDept(conn, new Dept(Integer.parseInt(deptno), dname, loc));
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
 	
 	//실행결과에 맞는 응답
 	if(resultCnt>0) {

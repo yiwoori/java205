@@ -50,7 +50,8 @@ pageEncoding="UTF-8"%>
 			<td>							<!-- ~.jsp?이후->pk 전달받아 해당 데이터 수정/삭제 진행(공백불가) -->
 				<a href="dept_editForm.jsp?deptno=<%= list.get(i).getDeptno() %>">수정</a>
 				<%-- <a href="dept_delete.jsp?deptno=<%= list.get(i).getDeptno() %>">삭제</a></td> --%>
-				<a href="javascript:delDept(<%= list.get(i).getDeptno() %>)">삭제</a></td>			
+				<a href="javascript:delDept(<%= list.get(i).getDeptno() %>)">삭제</a>
+			</td>			
 		</tr>
 					<%
 				}
