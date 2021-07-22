@@ -1,4 +1,4 @@
-package NCS_jdbc;
+package ncs.jdbc;
 
 import java.sql.Timestamp;
 

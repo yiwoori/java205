@@ -1,5 +1,5 @@
-<%@page import="NCS_jdbc.Member"%>
-<%@page import="NCS_jdbc.MemberDao"%>
+<%@page import="ncs.jdbc.Member"%>
+<%@page import="ncs.jdbc.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 

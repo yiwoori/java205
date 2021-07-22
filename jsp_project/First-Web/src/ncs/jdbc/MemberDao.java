@@ -1,4 +1,4 @@
-package NCS_jdbc;
+package ncs.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import NCS_jdbc.Member;
 import jdbc.util.JdbcUtil;
+import ncs.jdbc.Member;
 
 public class MemberDao {
 

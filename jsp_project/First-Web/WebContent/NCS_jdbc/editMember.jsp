@@ -1,7 +1,7 @@
+<%@page import="ncs.jdbc.Member"%>
+<%@page import="ncs.jdbc.MemberDao"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="NCS_jdbc.Member"%>
 <%@page import="jdbc.util.ConnectionProvider"%>
-<%@page import="NCS_jdbc.MemberDao"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.sql.Timestamp"%>

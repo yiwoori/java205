@@ -1,7 +1,7 @@
 <%@page import="jdbc.util.JdbcUtil"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="jdbc.util.ConnectionProvider"%>
-<%@page import="NCS_jdbc.MemberDao"%>
+<%@page import="ncs.jdbc.MemberDao"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
