@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 <body>
 
 	<%
-	//로그인 후 사용자(회원)의 이름은 세션 속성에 저
+	//로그인 후 사용자(회원)의 이름은 세션 속성에 저장
 		String userName=(String)session.getAttribute("userName");
 		//getAttribute는 오브젝트를 반환 -> String으로 형변환 필요 (session.jsp의 "손흥민"이 문자열)
 		

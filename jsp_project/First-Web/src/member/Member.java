@@ -10,6 +10,7 @@ public class Member {
 	
 	//beans 클래스는 기본 생성자 필수
 	public Member(){}
+	public Member(String name) {}
 	
 	//setter
 	public void setId(String id) {

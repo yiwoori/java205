@@ -17,7 +17,9 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 
-	<h1>세션에 사용자 이름을 저장했습니다 : <%= session.getAttribute("userName") %></h1>
+	<h1>세션에 사용자 이름을 저장했습니다 : <br><br>
+	표현식 : <%= session.getAttribute("userName") %><br>
+	표현언어 : ${userName}</h1>
 	<h3><a href="sessionView.jsp">세션의 속성 정보 확인</a></h3>
 
 </body>
