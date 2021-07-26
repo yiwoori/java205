@@ -1,4 +1,3 @@
-<%@page import="domain.Member"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="util.ConnectionProvider"%>
 <%@page import="dao.MemberDao"%>
@@ -8,36 +7,23 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<%-- 
 <jsp:useBean id="member" class="domain.Member" />
 <jsp:setProperty property="*" name="member" />
-  --%>
-  
-  	
+
 <%
-	//out.println(member);
-
-	String memberid = request.getParameter("memberid");
-	String password = request.getParameter("password");
-	String membername = request.getParameter("membername");
-
+	out.println(member);
 	int result = 0;
-	
 	Connection conn = null;
 	MemberDao dao = null;
-
 	try {
 		conn = ConnectionProvider.getConnection();
 		dao = MemberDao.getInstance();
-
-		result = dao.insertMember(conn, new Member(memberid, password, membername));
-
+		result = dao.insertMember(conn, member);
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-
 	//out.println(result);
-
+	
 	if (result > 0) {
 %>
 <script>
@@ -55,6 +41,3 @@
 <%
 	}
 %>
-
-
-

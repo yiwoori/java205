@@ -3,7 +3,6 @@
     pageEncoding="UTF-8"%>
 <%
 	LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
-
 	if(loginInfo == null){
 		%>
 <script>

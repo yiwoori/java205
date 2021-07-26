@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 
 <%
 	//사용자가 전달한 데이터의 한글 처리(method=post의 경우)
-	request.setCharacterEncoding("utf-8");
+	//request.setCharacterEncoding("utf-8");	//필터로 처리
 
 	//request.getParameter() : 데이터 가져오는 메소드
 	String userName = request.getParameter("username");
