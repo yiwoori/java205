@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 				@WebInitParam(name = "encoding", value = "utf-8")
 		})
 public class CharacterEncodingFilter implements Filter {
-	
-	private String encoding;
 
+	private String encoding;
+	
     public CharacterEncodingFilter() {
         // TODO Auto-generated constructor stub
     }
