@@ -32,7 +32,8 @@
 	
 	<table border=1>
 		<tr>
-			<th>idx</th>			
+			<th>idx</th>
+			<th>사진</th>			
 			<th>아이디</th>
 			<th>비밀번호</th>
 			<th>이름</th>
@@ -45,7 +46,8 @@
 			for(int i=0; i<list.size(); i++){
 				%>
 		<tr>
-			<td><%= list.get(i).getIdx() %></td>			
+			<td><%= list.get(i).getIdx() %></td>
+			<td><%= list.get(i).getMemberphoto() %></td>			
 			<td><%= list.get(i).getMemberid() %></td>
 			<td><%= list.get(i).getPassword() %></td>
 			<td><%= list.get(i).getMembername() %></td>

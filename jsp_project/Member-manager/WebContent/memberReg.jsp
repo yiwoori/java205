@@ -1,3 +1,4 @@
+<%@page import="service.MemberRegService"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="util.ConnectionProvider"%>
 <%@page import="dao.MemberDao"%>
@@ -7,11 +8,11 @@
 <%-- <%
 	request.setCharacterEncoding("utf-8");
 %> --%>
-<jsp:useBean id="member" class="domain.Member" />
-<jsp:setProperty property="*" name="member" />
+<%--  <jsp:useBean id="member" class="domain.Member" />
+<jsp:setProperty property="*" name="member" />  --%>
 
-<%
-	out.println(member);
+<%-- <%
+	//out.println(member);
 
 	int result = 0;
 	Connection conn = null;
@@ -24,12 +25,14 @@
 		result = dao.insertMember(conn, member);
 		
 	} catch (SQLException e) {
-		e.printStackTrace();
+	/e.printStackTrace();
 	}
 	//out.println(result);
 	
 	if (result > 0) {
-%>
+%> --%>
+
+<%-- 
 <script>
 	alert('등록되었습니다.');
 	location.href = '<%= request.getContextPath()%>/index.jsp';
@@ -45,3 +48,17 @@
 <%
 	}
 %>
+ --%>
+ 
+ 
+ 
+ 
+ 
+<%
+	int result = MemberRegService.getInstance().regMember(request);
+	//request.setAttribute("result", result);
+%>
+<jsp:forward page="reg_view.jsp"/>
+ 
+ 
+ 
