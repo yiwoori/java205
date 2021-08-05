@@ -1,8 +1,8 @@
-package Member.dao;
+package member.dao;
 
 import java.util.Collection;
 
-import Member.domain.Member;
+import member.domain.Member;
 
 public class GuestDao implements Dao {
 

@@ -1,4 +1,4 @@
-package Member.domain;
+package member.domain;
 
 public class RegRequest {
 
