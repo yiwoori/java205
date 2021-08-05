@@ -1,11 +1,11 @@
-package Member.main;
+package member.main;
 
 import java.util.Scanner;
 
-import Member.dao.MemberDao;
-import Member.domain.RegRequest;
-import Member.service.ChangePasswordService;
-import Member.service.MemberRegService;
+import member.domain.RegRequest;
+import member.service.ChangePasswordService;
+import member.service.MemberRegService;
+import member.dao.*;
 
 public class MainForMembermanager {
 	

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- MemberDao bean 등록 -->
+	<bean id="memberDao" class="Member.dao.MemberDao"></bean>
+	
+	<!-- MemberRegService bean 등록 -->
+	<bean id="regService" class="Member.service.MemberRegService" scope="prototype">
+		<constructor-arg ref="memberDao"/> <!-- constructor-arg : 기본생성자 없을때 -->
+	</bean>
+	
+	
+	
+	<bean id = "changePwService" class="Member.service.ChangePasswordService" scope="singleton">
+		<constructor-arg ref="memberDao"/>
+
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+

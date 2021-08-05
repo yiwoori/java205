@@ -1,14 +1,14 @@
-package Member.main;
+package member.main;
 
 import java.util.Scanner;
 
 import org.springframework.context.*;
 import org.springframework.context.support.*;
 
-import Member.dao.MemberDao;
-import Member.domain.RegRequest;
-import Member.service.ChangePasswordService;
-import Member.service.MemberRegService;
+import member.domain.RegRequest;
+import member.service.ChangePasswordService;
+import member.service.MemberRegService;
+import member.dao.*;
 
 public class SpringMain1 {
 	
@@ -16,7 +16,9 @@ public class SpringMain1 {
 
 	public static void main(String[] args) {
 		
-		ctx = new GenericXmlApplicationContext("classpath:appCtx1.xml");
+		//ctx = new GenericXmlApplicationContext("classpath:appCtx1.xml");
+		//ctx = new GenericXmlApplicationContext("classpath:appCtx2.xml");
+		ctx = new GenericXmlApplicationContext("classpath:appCtx3.xml");
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -69,7 +71,6 @@ public class SpringMain1 {
 		//MemberRegService service = new MemberRegService(dao);
 		//MemberRegService service = assembler.getRegService();
 		MemberRegService service = ctx.getBean("regService", MemberRegService.class);
-		
 		RegRequest request = new RegRequest();
 		request.setEmail(values[1]);
 		request.setName(values[2]);

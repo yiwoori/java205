@@ -1,11 +1,10 @@
-package Member.main;
+package member.main;
 
 import javax.imageio.spi.RegisterableService;
 
-import Member.dao.GuestDao;
-import Member.dao.MemberDao;
-import Member.service.ChangePasswordService;
-import Member.service.MemberRegService;
+import member.service.ChangePasswordService;
+import member.service.MemberRegService;
+import member.dao.*;
 
 public class Assembler {
 

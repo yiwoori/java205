@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 프러퍼티방식의 주입 (생성자 방식 더 선호) -->
+
+	<!-- MemberDao bean 등록 -->
+	<bean id="memberDao" class="Member.dao.MemberDao"></bean>
+
+	<!-- MemberRegService bean 등록 -->
+	<!-- 인스턴스 생성 -> setter 메소드 호출(실행) -->
+	<bean id="regService"
+			class="Member.service.MemberRegService"
+			p:dao-ref="memberDao">
+<!-- 		<property name="dao">	name=set...맞춤 (MemberRegService의 setDao)
+			<ref bean="memberDao"/>
+		</property> -->
+	</bean>
+	
+	<bean id="changePwService"
+			class="Member.service.ChangePasswordService"
+			p:dao-ref="memberDao">
+		<!-- <property name="dao" ref="memberDao"/> -->
+	</bean>
+
+</beans>

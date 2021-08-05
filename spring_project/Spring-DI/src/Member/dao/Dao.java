@@ -1,8 +1,8 @@
-package Member.dao;
+package member.dao;
 
 import java.util.Collection;
 
-import Member.domain.Member;
+import member.domain.Member;
 
 public interface Dao {
 
@@ -17,8 +17,5 @@ public interface Dao {
 	
 	// 전체 데이터 출력
 	Collection<Member> selectAll();
-	
-	
-	
 	
 }

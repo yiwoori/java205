@@ -3,17 +3,42 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 생성자 주입 방식 -->
 
-	<!-- MemberDao bean 등록 -->
-	<bean id="memberDao" class="Member.dao.MemberDao"></bean>
+	<!-- MemberDao bean 등록 (객체) -->
+	<bean id="memberDao" class="member.dao.MemberDao"></bean>
 	
 	<!-- MemberRegService bean 등록 -->
-	<bean id="regService" class="Member.service.MemberRegService">
-		<constructor-arg ref="memberDao"/> <!-- 기본생성자 없을 -->
+	<bean id="regService" class="member.service.MemberRegService">
+		<constructor-arg ref="memberDao"/> <!-- constructor-arg : 기본생성자 없을때 -->
 	</bean>
 	
-	<bean id = "changePwService" class="Member.service.ChangePasswordService">
-		<constructor-arg ref="memberDao"/>
+	<!-- 기본형 타입의 데이터 주입 (잘 사용x)-->
+	<bean id="regService1" class="member.service.MemberRegService">
+		<constructor-arg value="10"/>
+	</bean>
+	
+	<!-- 기본형 + 참조형 둘 다 사용 -->
+	<bean id="regService2" class="member.service.MemberRegService">
+		<constructor-arg index="0" value="memberDao"/>	<!-- 참조형 -->
+		<constructor-arg index="1" value="10"/>			<!-- 기본형 -->
+	</bean>
+	
+	<bean id = "changePwService" class="member.service.ChangePasswordService">
+		<!-- <constructor-arg ref="memberDao"/> -->
+		<constructor-arg>
+			<bean class="member.dao.MemberDao"/> <!-- 위에서 만들어놓은 dao 객체를 주입 -->
+		</constructor-arg>
 	</bean>
 
 </beans>
+
+
+
+
+
+
+
+
+

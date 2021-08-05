@@ -1,11 +1,21 @@
-package Member.service;
+package member.service;
 
-import Member.dao.Dao;
-import Member.domain.Member;
+import member.domain.Member;
+import member.dao.*;
 
 public class ChangePasswordService {
 	
-	Dao dao;
+	private Dao dao;
+	
+	// dao 주입을 위한  setter
+	public void setDao(Dao dao) {
+		this.dao = dao;
+	}
+	
+	// 기본생성자
+	public ChangePasswordService() {
+		System.out.println("ChangePasswordService()");
+	}
 	
 	public ChangePasswordService(Dao dao) {
 		this.dao = dao;
