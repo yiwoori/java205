@@ -61,6 +61,9 @@ public class LoginController {
 		
 		System.out.println(loginrequest);
 		
+		//세션 속성에 loginInfo 등록
+		request.getSession(false).setAttribute("loginInfo", new LoginInfo());
+		
 		return "member/login"; // /WEB-INF/views/member/login.jsp
 	}
 
