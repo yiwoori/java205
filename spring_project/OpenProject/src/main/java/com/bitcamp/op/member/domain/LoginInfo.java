@@ -5,17 +5,15 @@ public class LoginInfo {
 	private int idx;
 	private String memberId;
 	private String memberName;
-	private String memberphoto;
+	private String memberPhoto;
 
-	public LoginInfo(int idx, String memberId, String memberName, String memberphoto) {
+	public LoginInfo(int idx, String memberId, String memberName, String memberPhoto) {
 		this.idx = idx;
 		this.memberId = memberId;
 		this.memberName = memberName;
-		this.memberphoto = memberphoto;
+		this.memberPhoto = memberPhoto;
 	}
 
-	
-	//getter만
 	public int getIdx() {
 		return idx;
 	}
@@ -28,18 +26,16 @@ public class LoginInfo {
 		return memberName;
 	}
 
-	public String getMemberphoto() {
-		return memberphoto;
+	public String getMemberPhoto() {
+		return memberPhoto;
 	}
 
-	
-	
 	@Override
 	public String toString() {
-		return "LoginInfo [idx=" + idx + ", memberId=" + memberId + ", memberName=" + memberName + ", memberphoto="
-				+ memberphoto + "]";
+		return "LoginInfo [idx=" + idx + ", memberId=" + memberId + ", memberName=" + memberName + ", memberPhoto="
+				+ memberPhoto + "]";
 	}
-	
+
 	
 
 }

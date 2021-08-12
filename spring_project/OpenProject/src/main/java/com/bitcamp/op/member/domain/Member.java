@@ -31,7 +31,6 @@ public class Member {
 //		this.membername = username;
 //	}
 
-
 	public int getIdx() {
 		return idx;
 	}
@@ -79,29 +78,21 @@ public class Member {
 	public void setMemberphoto(String memberphoto) {
 		this.memberphoto = memberphoto;
 	}
-
-	
 	
 //	// java.sql.TimeStamp -> java.util.Date
 //	public Date getDate() {
 //		return new Date(getRegdate().getTime());
 //	}
-
-	
 	
 	@Override
 	public String toString() {
 		return "Member [idx=" + idx + ", memberid=" + memberid + ", password=" + password + ", membername=" + membername
 				+ ", memberphoto=" + memberphoto + ", regdate=" + regdate + "]";
 	}
-	
-	
 
 	// Member -> LoginInfo
 	public LoginInfo toLoginInfo() {
 		return new LoginInfo(this.idx, this.memberid, this.membername, this.memberphoto);
 	}
-	
-	
 
 }

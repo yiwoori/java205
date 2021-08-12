@@ -1,6 +1,6 @@
 package com.bitcamp.op.member.domain;
 
-import org.springframework.web.multipart.*;
+import org.springframework.web.multipart.MultipartFile;
 
 public class MemberRegRequest {
 
@@ -8,8 +8,6 @@ public class MemberRegRequest {
 	private String password;
 	private String membername;
 	private MultipartFile photo;
-	
-	public MemberRegRequest(){}
 
 	public String getMemberid() {
 		return memberid;
@@ -45,19 +43,18 @@ public class MemberRegRequest {
 
 	@Override
 	public String toString() {
-		return "RegRequest [memberid=" + memberid + ", password=" + password + ", membername=" + membername
-				+ ", memberPhoto=" + photo.getOriginalFilename() + "]";
+		return "MemberRegRequest [memberid=" + memberid + ", password=" + password + ", membername=" + membername
+				+ ", photo=" + photo.getOriginalFilename() + "]";
 	}
 	
 	// MemberRegRequest -> Member
-	public Member toMemter() {
+	public Member toMember() {
 		return new Member(
-				0,
-				memberid,
-				password,
-				membername,
-				photo.getOriginalFilename(),
+				0, 
+				memberid, 
+				password, 
+				membername, 
+				null, 
 				null);
 	}
-	
 }

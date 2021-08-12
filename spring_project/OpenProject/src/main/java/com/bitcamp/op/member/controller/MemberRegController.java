@@ -38,7 +38,7 @@ public class MemberRegController {
 		
 		String view = "member/reg" ;
 		if(result == 1) {
-			// 인텍스 페이지로 리다이렉트
+			// index로 redirect
 			view = "redirect:/index";
 		}
 		return view;
