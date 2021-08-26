@@ -23,7 +23,7 @@ button:hover, input:hover, a:hover {
     font-weight: bold;
 }
 /* .container>button {
-    닫기 버튼 활성화
+    닫기 버튼
 } */
 .container>button>img {
     position: absolute;
