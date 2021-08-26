@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        background: beige;
+        height: 100vh;
+        display: flex;
+        /* flex-direction: row; 가로정렬(왼1->오5)*/
+        /* flex-direction: row-reverse; 가로정렬(왼5<-오1)*/
+        /* flex-direction: column; 세로정렬(위1->아래5) */
+        /* flex-direction: column-reverse; 세로정렬(위5<-아래1) */
+        /* flex-wrap: nowrap; 화면이 좁아져도 한줄에 고정 (기본값) */
+        /* flex-wrap: wrap; 화면이 좁아지면 밑줄로 이동 */
+        /* flex-wrap: wrap-reverse; 밑에서부터 좁아지면 윗줄로 이동 */
+        /* flex-flow: column nowrap; 한번에 정의 */
+
+        /* justify-content: flex-start; 앞/위정렬(row일때 가로정렬) */
+        /* justify-content: flex-end; 뒤/아래정렬(column일때 세로정렬) */
+        /* justify-content: center; 가운데정렬 */
+        /* justify-content: space-around; 각 박스마다 공간 확보 */
+        /* justify-content: space-evenly; 같은 간격 확보 */
+        /* justify-content: space-between; 각 끝은 끝에 맞추고 안쪽 간격 확보 */
+        /* align-items: center; 세로 기준 가운데 정렬 */
+        /* align-items: baseline; 텍스트 기준으로 정렬 */
+        /* align-content: space-between; */
+        /* align-content: center; */
+    
+    }
+
+    .item {
+        width: 40px;
+        height: 40px;
+        border: 1px solid black;
+    }
+
+    .item1 {
+        background: cadetblue;
+        /* order: 2; 맞춰서 순서 이동*/
+        /* flex-grow: 1; 영역 채워 반응(늘리기) */
+        /* flex-shrink: 1; 반응형 줄이기 */
+        /* flex-basis: 60%; 전체 영역 중 60% 항상 차지 */
+        /* align-self: center; 컨테이너에서 벗어나 정렬 */
+    }
+    .item2 {
+        background: darkblue;
+        /* flex-grow: 2; 영역 채워 반응(1의 2배 크기로) */
+        /* flex-shrink: 2; 반응형 줄이기(2배로) */
+    }
+    .item3 {
+        background: firebrick;
+    }
+    .item4 {
+        background: salmon;
+    }
+    .item5 {
+        background: black;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+        <div class="item item4">4</div>
+        <div class="item item5">5</div>
+    </div>
+</body>
+</html>
