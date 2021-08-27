@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEED MAIN</title>
+    <link rel="stylesheet" href="feedmain2.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="action">
+            <div id="home" class="big-bg">
+                <div class="header wrapper">
+                    <div class="logo">
+                        <h1><a href="#">오를래</a></h1>
+                    </div>
+                    <div class="nav">
+                        <ul>
+                            <li><a href="#">MAIN</a></li>
+                            <li><a href="#">HIKING</a></li>
+                            <li><a href="#">CREW</a></li>
+                            <li><a href="#">COMMUNITY</a></li>
+                            <div class="icon" onclick="menuToggle();">
+                                <a href="#"><i class="far fa-user"></i></a>
+                            </div>
+                    </div>
+                    <div class="menu">
+                        <ul>
+                            <li><a href="#">로그인</a></li>
+                            <li><a href="#">회원가입</a></li>
+                            <li><a href="#">내 크루</a></li>
+                            <li><a href="#">내 피드</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="#">로그아웃</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- body -->
+    <!-- 최신/인기 표시 --> <!-- 페이징 표시 --> <!-- 좋아요 표시 -->
+    <div class="feedmain">
+        <div class="top"></div>
+        <div class="main">
+            <div class="leftbox"></div>
+            <div class="mainbox">
+                <div class="mountain">
+                    <img src="images/mountain.png">
+                </div>
+                <div class="feednav">
+                    <div class="keyword">
+                        <a href="#">최신순</a>
+                        <a href="#">인기순</a>
+                    </div>
+                    <div class="search">
+                        <input type="text" placeholder="search">
+                        <button type="submit">
+                            <img src="images/search.png" alt="search">
+                        </button>
+                    </div>
+                </div>
+                <div class="feedbox">
+                    <div class="feed1">
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed1">
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed1">
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed">
+                            <div class="feedsize">
+                                <a href="#">
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                </a>
+                            </div>
+                            <div class="feedinfo">
+                                <div class="nickname">
+                                    <a href="#">NICKNAME</a>
+                                </div>
+                                <div>
+                                    <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pageline">
+                    <div class="page"><a href="#">1</a></div>
+                    <div class="page"><a href="#">2</a></div>
+                    <div class="page"><a href="#">3</a></div>
+                </div>
+                
+            </div>
+            <div class="rightbox"></div>
+        </div>
+        <div class="bottom"></div>
+    </div>
+
+
+    <!-- footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer-col">
+                <ul class="footer-1">
+                    <h3 class="footer-01">PROJECT-OLLULAY</h3>
+                    <li><a href="#">BITCAMP -205</a></li>
+                    <li><a href="#">final project</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul class="footer-2">
+                    <h3 class="footer-02">CATAGORY</h3>
+                    <li><a href="#">Mountain</a></li>
+                    <li><a href="#">Crew</a></li>
+                    <li><a href="#">Feed</a></li>
+                    <li><a href="#">Mypage</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul class="footer-3">
+                    <h3 class="footer-03">GIT HUB</h3>
+                    <li><a href="#">Soyeon Jung</a></li>
+                    <li><a href="#">Soyeon Jung</a></li>
+                    <li><a href="#">Soyeon Jung</a></li>
+                    <li><a href="#">Soyeon Jung</a></li>
+                    <li><a href="#">Soyeon Jung</a></li>
+                    <li><a href="#">Soyeon Jung</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul class="footer-4">
+                    <h3 class="footer-04">구현기술</h3>
+                    <li><a href="#">JAVA</a></li>
+                    <li><a href="#">WEB STANDARD</a></li>
+                    <li><a href="#">MYSQL</a></li>
+                    <li><a href="#">SPRING</a></li>
+                    <li><a href="#">MYBATIS</a></li>
+                    <li><a href="#">AWS</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
