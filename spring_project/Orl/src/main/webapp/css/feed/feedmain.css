@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.feedmain {
+  display: flex;
+  flex-direction: column;
+}
+.top { /* 상단 여백 */
+  height: 300px;
+}
+.main {
+  height: 1650px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.mountain {
+  width: 1000px;
+}
+.mountain>img {
+  width: 100px;
+  padding-left: 950px;
+}
+
+.feednav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #C9C0AE;
+}
+.keyword>a { /* 최신순/인기순 */
+  color: gray;
+  padding-left: 10px;
+}
+.keyword>a:hover {
+  /* 박스처리 */
+}
+.search {
+  position: relative;
+  padding-bottom: 5px;
+}
+.search>input { /* 검색창 */
+  width: 150px;
+  height: 30px;
+  outline: none;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 12px;
+}
+.search>button {
+  position: absolute;
+  left: 120px;
+  border: 0;
+  background-color: #00ff0000;
+}
+.search img { /* 검색 아이콘 */
+  width: 25px;
+  padding-top: 3px;
+}
+
+.feedbox {
+  width: 1000px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed1 { /* 피드라인 */
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+.feedsize {
+  width: 320px;
+  height: 320px;
+}
+.feedsize>a:hover {
+  /* 클릭 이미지 */
+}
+.feedimg { /* 사진 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.feedinfo {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+.nickname>a {
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+.feed button { /* 좋아요 버튼 */
+  border: 0;
+  background-color: #00ff0000;
+  padding-right: 5px;
+}
+.nolikeimg {
+  width: 27px;
+}
+
+.pageline { 
+  display: flex;
+  padding-left: 460px;
+  padding-top: 60px;
+}
+.page {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.page>a:hover {
+  /* 페이지 표시 */
+}
+
+.bottm { /* 하단 여백 */
+  height: 250px;
+}
