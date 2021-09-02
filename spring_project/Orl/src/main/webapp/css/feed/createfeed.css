@@ -76,17 +76,29 @@ button:hover {
             left: 110px;
             top: 40px;
         }
-        .profile>button { /* 사진 선택 버튼 */
-            position: absolute;
-            left: 340px;
+        .filebox label { /* 사진 선택 */
+         	position: absolute;
+        	left: 300px;
             top: 35px;
-
-            font-size: 13px;
-            border: 1px solid gray;
-            border-radius: 6px;
-            padding: 6px 12px;
-            background-color: #FDEF7B;
+			padding: 7px 30px;
+			font-size: 13px;
+			background-color: #FDEF7B;
+			cursor: pointer;
+			
+			border: 1px solid grey;
+			border-bottom-color: grey;
+			border-radius: 5px;
         }
+        .filebox>input {
+	        position: absolute;
+	        width: 10px;
+	        height: 10px;
+	        padding: 0;
+	        margin: -1px;
+	        overflow: hidden;
+	        clip:rect(0,0,0,0);
+	        border: 0;
+		}
     
 
 
@@ -172,7 +184,7 @@ button:hover {
         height: 90px;
         position: relative;
     }
-        .submit>button { /* 게시버튼 */
+        .submit>input { /* 게시버튼 */
             position: absolute;
             transform: translate(-50%, -50%);
             left: 50%;

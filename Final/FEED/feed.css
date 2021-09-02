@@ -22,16 +22,13 @@ button:hover, input:hover, a:hover {
 .nickname {
     font-weight: bold;
 }
-/* .container>button {
-    닫기 버튼
-} */
-.container>button>img {
-    position: absolute;
-    margin: 10px;
+.closebtn {
+    /* position: absolute;
+    margin: 0px;
     right: 0;
-    top: 0;
-    width: 20px;
+    top: 0; */
 }
+
 
 
 
@@ -54,6 +51,7 @@ button:hover, input:hover, a:hover {
 
 
 .rightbox {
+    padding-left: 7px;
     width: 45%;
     display: flex;
     flex-direction: column;

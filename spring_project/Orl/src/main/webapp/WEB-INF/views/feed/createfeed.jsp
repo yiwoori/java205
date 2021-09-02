@@ -11,24 +11,24 @@
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/frame/default/header.jsp"%>
-
 	<!-- 닫기버튼 -->
     <section class="container">
-        <button><img src="/FEED/images/닫기.png"></button>
+        <button><img src="<c:url value="/images/feed/feedw/닫기.png"/>"></button>
 
         <section class="leftbox">
-            <img src="/FEED/images/feed.png" alt="feed-img">
-            <!-- <img src=""> -->
+            <img src="<c:url value="/images/feed/feedw/feed.png"/>" alt="feed-img">
         </section>
 
         <section class="rightbox">
             <div class="profile">
                 <div class="photo">
-                    <button><img src="/FEED/images/profile.JPG" alt="profile-img"></button>
+                    <button><img src="<c:url value="/images/feed/feedw/profile.jpg"/>" alt="profile-img"></button>
                 </div>
                 <a href="#" class="nickname">NICKNAME</a>
-                <button>사진 선택</button>
+                <div class="filebox">
+                	<label for="fileupload">사진선택</label>
+                	<input type="file" id="fileupload">
+                </div>
             </div>
 
             <div class="contentsbox">
@@ -53,8 +53,6 @@
         </section>
 
     </section>
-
-	<%@ include file="/WEB-INF/frame/default/footer.jsp"%>
 
 </body>
 </html>

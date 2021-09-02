@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitcamp.orl.feed.dao.Dao">
+	
+		<insert id="createFeed"
+			parameterType="com.bitcamp.orl.feed.domain.Feed"
+			useGeneratedKeys="true"
+			keyProperty="idx"
+	>
+		insert into photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx)
+			values (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx});
+	</insert>
+	
+</mapper>

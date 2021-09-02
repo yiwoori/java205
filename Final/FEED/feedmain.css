@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
   padding: 0;
   margin: 0;
@@ -6,6 +8,69 @@ a {
   text-decoration: none;
   color: #000;
 }
+
+
+
+.modalbox {
+  position: absolute;
+  top: 440px;
+  left: 575px;
+  width: 1000px;
+  height: 1150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.modalline {
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  height: 320px;
+  padding-bottom: 50px;
+}
+.modalline>div {
+  width: 320px;
+  height: 320px;
+}
+
+.modalbtn { /* 모달버튼 */
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.modal { /* 모달-백그라운드 */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.modal_content { /* 모달-내용 */
+  width: 1010px;
+  height: 650px;
+  background: #fff;
+  /* border-radius: 10px; */
+  position: relative;
+  top: 350px;
+  left: 770px;
+  margin-top: -100px;
+  margin-left: -200px;
+  /* text-align: center; */
+  /* box-sizing: border-box; */
+  /* padding: 74px 0; */
+  /* line-height: 23px; */
+  /* cursor: pointer; */
+}
+
+
+
+
+
 
 .feedmain {
   display: flex;
@@ -86,15 +151,19 @@ a {
 .feedsize {
   width: 320px;
   height: 320px;
+  overflow: hidden;
 }
-.feedsize>a:hover {
-  /* 클릭 이미지 */
+/* .feedsize>a:hover img { */
+.feedsize>button:hover img {
+  filter: brightness(35%);
 }
 .feedimg { /* 사진 */
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+
 .feedinfo {
   display: flex;
   justify-content: space-between;
@@ -129,3 +198,8 @@ a {
 .bottm { /* 하단 여백 */
   height: 250px;
 }
+
+
+
+
+

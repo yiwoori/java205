@@ -216,6 +216,11 @@ a {
 .keyword>a:hover {
     /* 박스처리 */
 }
+
+.feedwrite {
+  background-color: aliceblue;
+}
+
 .search {
     position: relative;
     padding-bottom: 5px;

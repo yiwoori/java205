@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modaltest</title>
+    <link rel="stylesheet" href="feedmain.css">
+    <link rel="stylesheet" href="feed.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<script>
+    $(function () {
+
+        $("button").click(function () {
+            $(".modal").fadeIn();
+        });
+
+        $(".closebtn").click(function () {
+            $(".modal").fadeOut();
+        });
+
+    });
+
+    // $(".modal-content").load("/feed/feedview");
+
+</script>
+
+<body>
+    <div class="modalbox">
+        <div class="modalline">
+            <div><button class="modalbtn"></button></div>
+            <div><button class="modalbtn"></button></div>
+            <div><button class="modalbtn"></button></div>
+        </div>
+        <div class="modalline">
+            <div><button class="modalbtn"></button></div>
+            <div><button class="modalbtn"></button></div>
+            <div><button class="modalbtn"></button></div>
+        </div>
+        <div class="modalline">
+            <div><button class="modalbtn"></button></div>
+            <div><button class="modalbtn"></button></div>
+            <div><button class="modalbtn"></button></div>
+        </div>
+    </div>
+
+    <div class="modal">
+        <div class="modal_content">
+            <section class="container">
+        
+                <section class="leftbox">
+                    <img src="/FEED/images/feed.png" alt="feed-img">
+                    <button><img src="/FEED/images/icon-05.png"></button>
+                </section>
+        
+                <section class="rightbox">
+                    <button class="closebtn">X</button>
+                    <div class="profile">
+                        <div class="photo">
+                            <button><img src="/FEED/images/profile.JPG" alt="profile-img"></button>
+                        </div>
+                        <a href="#" class="nickname">NICKNAME</a>
+                        <button>팔로우</button>
+        
+                        <div class="contents">
+                            <p>피드는 스트리밍 형태로 제공되고 스크롤해서 볼 수 있는 콘텐츠입니다. </p>
+                            <div><a class="hashtag">#해시태그</a></div>
+                        </div>
+                    </div>
+        
+                    <section class="commentbox">
+                        <div>
+                            <div class="comments">
+                                <div class="cmt-profile">
+                                    <button><img src="/FEED/images/cmt-profile.jpg" alt="cmt-profile-img"></button>
+                                </div>
+                                <div class="comment">
+                                    <p><a href="#" class="nickname">NICKNAME</a>닫기 버튼 위치</p>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="cmt-profile">
+                                    <button><img src="/FEED/images/cmt-profile.jpg" alt="cmt-profile-img"></button>
+                                </div>
+                                <div class="comment">
+                                    <p><a href="#" class="nickname">NICKNAME</a>input박스 뒤로</p>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="cmt-profile">
+                                    <button><img src="/FEED/images/cmt-profile.jpg" alt="cmt-profile-img"></button>
+                                </div>
+                                <div class="comment">
+                                    <p><a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다</p>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="cmt-profile">
+                                    <button><img src="/FEED/images/cmt-profile.jpg" alt="cmt-profile-img"></button>
+                                </div>
+                                <div class="comment">
+                                    <p><a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다</p>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="cmt-profile">
+                                    <button><img src="/FEED/images/cmt-profile.jpg" alt="cmt-profile-img"></button>
+                                </div>
+                                <div class="comment">
+                                    <p><a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+        
+                    <section class="commentingbox">
+                        <div class="buttonline">
+                            <div>
+                                <button class="like">
+                                    <img src="/FEED/images/like-black.png" class="nolike" alt="like-img">
+                                    <!-- <img src="/images/like.png" class="like-red" alt="nolike-img"> -->
+                                </button>
+                                <button class="write"><img src="/FEED/images/comment.png" alt="comment-img"></button>
+                                <button class="share"><img src="/FEED/images/share.png" alt="share-img"></button>
+                            </div>
+                            <div class="likeline">
+                                <p>좋아요 1,000개</p>
+                            </div>
+                        </div>
+        
+                        <div class="commentingline">
+                            <div class="textbox">
+                                <input type="text" placeholder="댓글달기">
+                            </div>
+                            <div class="submitbox">
+                                <input type="submit" value="게시">
+                            </div>
+                        </div>
+                    </section>
+        
+                </section>
+        
+            </section>
+        </div>
+    </div>
+
+    <div>
+        <div class="feedmain">
+            <div class="top"></div>
+            <div class="main">
+                <div class="leftbox"></div>
+                <div class="mainbox">
+                    <div class="mountain">
+                        <img src="images/mountain.png">
+                    </div>
+                    <div class="feednav">
+                        <div class="keyword">
+                            <a href="#">최신</a>
+                            <a href="#">인기</a>
+                        </div>
+                        <div class="search">
+                            <input type="text" placeholder="search">
+                            <button type="submit">
+                                <img src="images/search.png" alt="search">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="feedbox">
+                        <div class="feed1">
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <button class="btn-open-popup"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </button> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <a onclick="popup();"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <a onclick="popup();"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed1">
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <a onclick="popup();"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <a onclick="popup();"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <a onclick="popup();"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed1">
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <a onclick="popup();"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <a onclick="popup();"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feed">
+                                <div class="feedsize">
+                                    <!-- <a onclick="popup();"> -->
+                                    <img src="images/feed.png" class="feedimg" alt="feedimg">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="feedinfo">
+                                    <div class="nickname">
+                                        <a href="#">NICKNAME</a>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/nolike.png" class="nolikeimg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pageline">
+                        <div class="page"><a href="#">1</a></div>
+                        <div class="page"><a href="#">2</a></div>
+                        <div class="page"><a href="#">3</a></div>
+                    </div>
+
+                </div>
+                <div class="rightbox"></div>
+            </div>
+            <div class="bottom"></div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
