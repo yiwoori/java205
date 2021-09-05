@@ -11,16 +11,13 @@
 </head>
 <body>
 
-	<!-- 좋아요 표시 -->
-	<!-- 닫기버튼 -->
-	<button class="closebtn">
-		<img src="<c:url value="/images/feed/feedw/close.png"/>">
-	</button>
-
 	<section class="container">
+		<button class="close">
+			<img src="<c:url value="/images/feed/feedw/close.png"/>">
+		</button>
 
 		<section class="leftbox">
-			<img src="<c:url value="/images/feed/feedw/feed.png"/>"
+			<img src="<c:url value="/images/feed/feedw/uploadfile/${Feed.boardPhoto}"/>"
 				alt="feed-img">
 			<button>
 				<img src="<c:url value="/images/feed/feedw/icon-05.png"/>">
@@ -35,7 +32,7 @@
 							alt="profile-img">
 					</button>
 				</div>
-				<a href="#" class="nickname">NICKNAME</a>
+				<a href="#" class="nickname">${member.memberNickname}</a>
 				<button>팔로우</button>
 
 				<div class="contents">
@@ -57,7 +54,7 @@
 						</div>
 						<div class="comment">
 							<p>
-								<a href="#" class="nickname">NICKNAME</a>사진 이름 : ${photo}
+								<a href="#" class="nickname">NICKNAME</a>파일이름:${filename}
 							</p>
 						</div>
 					</div>

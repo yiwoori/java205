@@ -5,48 +5,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CREATE FEED</title>
-    <link rel="stylesheet" href="createfeed.css">
+<link rel="stylesheet" href="createfeed.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <!-- 닫기버튼 -->
-    <section class="container">
-        <button><img src="/FEED/images/닫기.png"></button>
 
-        <section class="leftbox">
-            <img src="/FEED/images/feed.png" alt="feed-img">
-            <!-- <img src=""> -->
-        </section>
+	<!-- 닫기버튼 -->
+	<form action="feedview" method="post" enctype="multipart/form-data">
+		<section class="container">
+			<button>
+				<img src="images/close.png">
+			</button>
 
-        <section class="rightbox">
-            <div class="profile">
-                <div class="photo">
-                    <button><img src="/FEED/images/profile.JPG" alt="profile-img"></button>
-                </div>
-                <a href="#" class="nickname">NICKNAME</a>
-                <button>사진 선택</button>
-            </div>
+			<section class="leftbox" id="image_container">
+				<img src="images/feed.png"
+					alt="feed-img">
+			</section>
 
-            <div class="contentsbox">
-                <p>게시글</p>
-                <input type="text" placeholder="문구 입력">
-            </div>
+			<section class="rightbox">
+				<div class="profile">
+					<div class="photo">
+						<button>
+							<img src="images/profile.jpg"
+								alt="profile-img">
+						</button>
+					</div>
+					<a href="#" class="nickname">NICKNAME</a>
 
-            <div class="hashtabbox">
-                <p>해시태그</p>
-                <input type="text" placeholder="#...">
-            </div>
 
-            <div class="tagbox">
-                <p>태그</p>
-                <input type="text" placeholder="@...">
-            </div>
+					<div class="filebox">
+						<label for="fileupload">사진선택</label>
+						<input type="file" id="fileupload" name="boardPhoto">
+					</div>
 
-            <div class="submit">
-                <button type="submit">게 시</button>
-            </div>
 
-        </section>
+				</div>
 
-    </section>
+				<div class="contentsbox">
+					<p>게시글</p>
+					<input type="text" placeholder="문구 입력" name="boardDiscription">
+				</div>
+
+				<div class="hashtabbox">
+					<p>해시태그</p>
+					<input type="text" placeholder="#..." name="hashtag">
+				</div>
+
+				<div class="tagbox">
+					<p>태그</p>
+					<input type="text" placeholder="@..." name="tag">
+				</div>
+
+				<div class="submit">
+					<input type="submit" value="게시">
+				</div>
+
+			</section>
+
+		</section>
+	</form>
+
 </body>
 </html>

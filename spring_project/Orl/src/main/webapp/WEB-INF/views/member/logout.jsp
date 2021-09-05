@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%
-	session.invalidate();
+	session.invalidate();	/* 세션 만료 */
 %>
 <!DOCTYPE html>
 <html>

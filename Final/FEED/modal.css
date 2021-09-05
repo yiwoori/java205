@@ -17,8 +17,8 @@ button {
 
 .modalbox {
 	position: absolute;
-	top: 345px;
-	left: 575px;
+	top: 350px;
+	left: 524px;
 	width: 1000px;
 	height: auto;
 	display: flex;
@@ -76,7 +76,7 @@ button {
 	background: rgba(0, 0, 0, 0.8);
 	top: 0;
 	left: 0;
-	/* display: none; */
+	display: none;
 	z-index: 10;
 }
 

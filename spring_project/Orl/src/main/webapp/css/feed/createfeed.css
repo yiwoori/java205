@@ -20,22 +20,28 @@ button:hover {
     width: 1000px;
     height: 650px;
 }
+
+/* close button */
+.container>button {
+    position: absolute;
+    top: 7px;
+    right: 0;
+    z-index: 1;
+}
+.container>button>img {
+    width: 20px;
+}
+
 .nickname {
     font-weight: bold;
 }
-.container>button>img { /* 닫기 버튼 */
-    position: absolute;
-    margin: 10px;
-    right: 0;
-    top: 0;
-    width: 20px;
-}
+
 
 
 
 .leftbox { /* 사진 영역 */
     width: 55%;
-    background-color: ghostwhite;
+    /* background-color: ghostwhite; */
 }
     .leftbox>img { /* 사진 채우기 */
         width: 100%;

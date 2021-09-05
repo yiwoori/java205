@@ -14,24 +14,27 @@ import com.bitcamp.orl.feed.domain.*;
 import com.bitcamp.orl.feed.service.*;
 
 @Controller
+@RequestMapping("/feed/")
 public class CreateFeedController {
 
 	@Autowired
 	private CreateFeedService createService;
 
-	@RequestMapping("/feed/createfeed2")
+	@RequestMapping(value = "createfeed")
 	public String getCreateFeedForm() {
-		return "feed/createfeed2";
+		return "feed/createfeed";
 	}
 
-	@RequestMapping("/feed/feedview")
-	public String upload3(Feed feed, Model model, HttpServletRequest request)
+	@RequestMapping(method = RequestMethod.POST, value = "feedview")
+	public String upload(FeedCreateRequest feedrequest, Model model, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 
-		model.addAttribute("boardPhoto", feed.getBoardPhoto());
-		model.addAttribute("boardDiscription", feed.getBoardDiscription());
-		model.addAttribute("hashtag", feed.getHashtag());
-		model.addAttribute("tag", feed.getTag());
+		model.addAttribute("boardPhoto", feedrequest.getBoardPhoto());
+		model.addAttribute("boardDiscription", feedrequest.getBoardDiscription());
+		model.addAttribute("hashtag", feedrequest.getHashtag());
+		model.addAttribute("tag", feedrequest.getTag());
+		
+		createService.insert(feedrequest, request);
 
 		return "feed/feedview";
 	}

@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<c:url value='/css/feed/feedmain.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/feed/feedview.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/feed/createfeed.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -69,21 +71,228 @@
 	</div>
 
 
-	<!-- 모달창 -->
+
+
+
+	<!-- feed view -->
 	<div class="modal_feedview">
 		<div class="modal_content">
 			<section class="container">
-				<%@ include file="/WEB-INF/views/feed/feedview.jsp"%>
+				<section class="container">
+					<button class="close">
+						<img src="<c:url value="/images/feed/feedw/close.png"/>">
+					</button>
+
+					<section class="leftbox">
+						<img
+							src="<c:url value="/images/feed/feedw/uploadfile/${Feed.boardPhoto}"/>"
+							alt="feed-img">
+						<button>
+							<img src="<c:url value="/images/feed/feedw/icon-05.png"/>">
+						</button>
+					</section>
+
+					<section class="rightbox">
+						<div class="profile">
+							<div class="photo">
+								<button>
+									<img src="<c:url value="/images/feed/feedw/profile.jpg"/>"
+										alt="profile-img">
+								</button>
+							</div>
+							<a href="#" class="nickname">NICKNAME</a>
+							<button>팔로우</button>
+
+							<div class="contents">
+								<p>${content}</p>
+								<div>
+									<a class="hashtag">${hashtag}</a>
+								</div>
+							</div>
+						</div>
+
+						<section class="commentbox">
+							<div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img
+												src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
+												alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>파일이름:${newFileName}
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img
+												src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
+												alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>태그 : ${tag}
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img
+												src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
+												alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+											댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img
+												src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
+												alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img
+												src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
+												alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+											댓글입니다 댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section class="commentingbox">
+							<div class="buttonline">
+								<div>
+									<button class="like">
+										<img src="<c:url value="/images/feed/feedw/like-black.png"/>"
+											class="nolike" alt="like-img">
+										<!-- <img src="/images/like.png" class="like-red" alt="nolike-img"> -->
+									</button>
+									<button class="write">
+										<img src="<c:url value="/images/feed/feedw/comment.png"/>"
+											alt="comment-img">
+									</button>
+									<button class="share">
+										<img src="<c:url value="/images/feed/feedw/share.png"/>"
+											alt="share-img">
+									</button>
+								</div>
+								<div class="likeline">
+									<p>좋아요 1,000개</p>
+								</div>
+							</div>
+
+							<div class="commentingline">
+								<div class="textbox">
+									<input type="text" placeholder="댓글달기">
+								</div>
+								<div class="submitbox">
+									<input type="submit" value="게시">
+								</div>
+							</div>
+						</section>
+
+					</section>
+
+				</section>
 			</section>
 		</div>
 	</div>
+	
+	
+	
+	
+	
+	<!-- create feed -->
 	<div class="modal_createfeed">
 		<div class="modal_content">
 			<section class="container">
-				<%@ include file="/WEB-INF/views/feed/createfeed.jsp"%>
+				<form action="#" method="post" enctype="multipart/form-data">
+
+					<section class="container">
+						<button class="close">
+							<img src="<c:url value="/images/feed/feedw/close.png"/>">
+						</button>
+
+						<section class="leftbox" id="image_container">
+							<img src="#" id="preview-img" alt="preview">
+						</section>
+
+						<section class="rightbox">
+							<div class="profile">
+								<div class="photo">
+									<button>
+										<img src="<c:url value="/images/feed/feedw/profile.jpg"/>"
+											alt="profile-img">
+									</button>
+								</div>
+								<a href="#" class="nickname">${member.memberNickname}</a>
+
+
+								<div class="filebox">
+									<label for="fileupload">사진선택</label> <input type="file"
+										id="fileupload" name="boardPhoto" onchange="readURL(this);">
+								</div>
+
+
+							</div>
+
+							<div class="contentsbox">
+								<p>게시글</p>
+								<input type="text" placeholder="문구 입력" name="boardDiscription">
+							</div>
+
+							<div class="hashtabbox">
+								<p>해시태그</p>
+								<input type="text" placeholder="#..." name="hashtag">
+							</div>
+
+							<div class="tagbox">
+								<p>태그</p>
+								<input type="text" placeholder="@..." name="tag">
+							</div>
+
+							<div class="submit">
+								<input type="submit" value="게시">
+							</div>
+
+						</section>
+
+					</section>
+				</form>
 			</section>
 		</div>
 	</div>
+
+
 
 
 
@@ -312,6 +521,17 @@
 				$(".modal_createfeed").fadeOut();
 			});
 		});
+
+		/* Image Preview */
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#preview-img').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
 	</script>
 
 </body>

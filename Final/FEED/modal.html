@@ -4,56 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FEED MAIN</title>
-    <link rel="stylesheet" href="feedmain.css">
+    <title>vscode_modal test</title>
+    <link rel="stylesheet" href="modal.css">
 </head>
 <body>
 
-    <!-- <%@ include file="/WEB-INF/frame/default/header.jsp"%> -->
-
-	<!-- 모달 버튼 -->
+    <!-- 모달 버튼 -->
 	<div class="modalbox">
-		<div class="modalline">
+	
+		<div class="div_createfeed">
 			<div>
-				<button class="modalbtn"></button>
+                <button class="modalbtn_createfeed">
+                    <img src="images/plus.png">
+                </button>
+            </div>
+		</div>
+
+		<div class="space"></div>
+
+		<div class="div_feedview">
+			<div>
+				<button class="modalbtn_feedview"></button>
 			</div>
 			<div>
-				<button class="modalbtn"></button>
+				<button class="modalbtn_feedview"></button>
 			</div>
 			<div>
-				<button class="modalbtn"></button>
+				<button class="modalbtn_feedview"></button>
 			</div>
 		</div>
-		<div class="modalline">
+        <div class="feedview_space"></div>
+		<div class="div_feedview">
 			<div>
-				<button class="modalbtn"></button>
+				<button class="modalbtn_feedview"></button>
 			</div>
 			<div>
-				<button class="modalbtn"></button>
+				<button class="modalbtn_feedview"></button>
 			</div>
 			<div>
-				<button class="modalbtn"></button>
-			</div>
-		</div>
-		<div class="modalline">
-			<div>
-				<button class="modalbtn"></button>
-			</div>
-			<div>
-				<button class="modalbtn"></button>
-			</div>
-			<div>
-				<button class="modalbtn"></button>
+				<button class="modalbtn_feedview"></button>
 			</div>
 		</div>
+        <div class="feedview_space"></div>
+		<div class="div_feedview">
+			<div>
+				<button class="modalbtn_feedview"></button>
+			</div>
+			<div>
+				<button class="modalbtn_feedview"></button>
+			</div>
+			<div>
+				<button class="modalbtn_feedview"></button>
+			</div>
+		</div>
+        <div class="feedview_space"></div>
 	</div>
 
 
 	<!-- 모달창 -->
-	<div class="modal">
+	<div class="modal_feedview">
 		<div class="modal_content">
 			<section class="container">
 				<!-- <%@ include file="/WEB-INF/views/feed/feedview.jsp"%> -->
+			</section>
+		</div>
+	</div>
+	<div class="modal_createfeed">
+		<div class="modal_content">
+			<section class="container">
+				<!-- <%@ include file="/WEB-INF/views/feed/createfeed.jsp"%> -->
 			</section>
 		</div>
 	</div>
@@ -73,7 +92,6 @@
 					<div class="feednav">
 						<div class="keyword">
 							<a href="#">최신</a> <a href="#">인기</a>
-							<a href="">작성</a>
 						</div>
 						<div class="search">
 							<input type="text" placeholder="search">
@@ -264,28 +282,5 @@
 		</div>
 	</div>
 
-	<!-- <%@ include file="/WEB-INF/frame/default/footer.jsp"%> -->
-
-	<script>
-		$(function() {
-
-			$("button").click(function() {
-				$(".modal").fadeIn();
-				$('body').css("overflow", "hidden");
-			});
-
-			$(".closebtn").click(function() {
-				$(".modal").fadeOut();
-			});
-
-		});
-		
-	</script>
-
 </body>
 </html>
-
-
-
-
-

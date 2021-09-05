@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<insert id="createFeed"
 			parameterType="com.bitcamp.orl.feed.domain.Feed"
 			useGeneratedKeys="true"
-			keyProperty="idx"
+			keyProperty="boardIdx"
 	>
 		insert into photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx)
 			values (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx});

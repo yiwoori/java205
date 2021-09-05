@@ -4,12 +4,12 @@ import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping ("/feed/feedmain")
+@RequestMapping ("/feed/feedmain2")
 public class FeedmainController {	
 
-	@RequestMapping ("/feed/feedmain")
+	@RequestMapping
 	public String getFeedmain() {
-		return "feed/feedmain";
+		return "feed/feedmain2";
 	}
 
 }

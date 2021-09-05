@@ -30,7 +30,7 @@ button:hover, input:hover, a:hover {
 /* close button */
 .container>button {
     position: absolute;
-    top: 7px;
+    top: 5px;
     right: 0;
     z-index: 1;
 }
