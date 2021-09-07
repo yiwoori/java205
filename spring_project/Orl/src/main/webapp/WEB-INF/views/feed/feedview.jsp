@@ -5,34 +5,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FeedView</title>
+<title>FEED VIEW</title>
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/feed/feedview.css'/>">
 </head>
 <body>
 
 	<section class="container">
-		<button class="close">
+		<button class="v_close">
 			<img src="<c:url value="/images/feed/feedw/close.png"/>">
 		</button>
 
-		<section class="leftbox">
-			<img src="<c:url value="/images/feed/feedw/uploadfile/${Feed.boardPhoto}"/>"
+		<section class="v_leftbox">
+			<img
+				src="<c:url value="/images/feed/feedw/uploadfile/${boardPhoto}"/>"
 				alt="feed-img">
 			<button>
 				<img src="<c:url value="/images/feed/feedw/icon-05.png"/>">
 			</button>
 		</section>
 
-		<section class="rightbox">
-			<div class="profile">
-				<div class="photo">
+		<section class="v_rightbox">
+			<div class="v_profile">
+				<div class="v_photo">
 					<button>
 						<img src="<c:url value="/images/feed/feedw/profile.jpg"/>"
 							alt="profile-img">
 					</button>
 				</div>
-				<a href="#" class="nickname">${member.memberNickname}</a>
+				<a href="#" class="v_nickname">${member.memberNickname}</a>
 				<button>팔로우</button>
 
 				<div class="contents">
@@ -54,7 +55,7 @@
 						</div>
 						<div class="comment">
 							<p>
-								<a href="#" class="nickname">NICKNAME</a>파일이름:${filename}
+								<a href="#" class="v_nicknam">NICKNAME</a>파일이름:${boardPhoto.getName()}
 							</p>
 						</div>
 					</div>
@@ -67,7 +68,7 @@
 						</div>
 						<div class="comment">
 							<p>
-								<a href="#" class="nickname">NICKNAME</a>태그 : ${tag}
+								<a href="#" class="v_nicknam">NICKNAME</a>태그 : ${tag}
 							</p>
 						</div>
 					</div>
@@ -80,8 +81,8 @@
 						</div>
 						<div class="comment">
 							<p>
-								<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다 댓글입니다
-								댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다
+								<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+								댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다
 							</p>
 						</div>
 					</div>
@@ -94,7 +95,7 @@
 						</div>
 						<div class="comment">
 							<p>
-								<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다
+								<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다
 							</p>
 						</div>
 					</div>
@@ -107,8 +108,8 @@
 						</div>
 						<div class="comment">
 							<p>
-								<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다 댓글입니다
-								댓글입니다 댓글입니다
+								<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+								댓글입니다 댓글입니다 댓글입니다
 							</p>
 						</div>
 					</div>
@@ -150,6 +151,27 @@
 		</section>
 
 	</section>
+
+
+
+	<script>
+		/* modal_feedview */
+		$(function() {
+			/* modal open */
+			$(".modalbtn_feedview").click(function() {
+				$(".modal_feedview").fadeIn();
+				/* body - not scroll */
+				$("html, body").addClass("not_scroll");
+			});
+
+			/* modal close */
+			$(".v_close").click(function() {
+				$(".modal_feedview").fadeOut();
+				/* body - scroll */
+				$("html, body").removeClass("not_scroll");
+			});
+		});
+	</script>
 
 
 

@@ -1,7 +1,6 @@
 package com.bitcamp.orl.feed.service;
 
 import java.io.*;
-import java.sql.*;
 
 import javax.servlet.http.*;
 
@@ -17,10 +16,11 @@ import com.bitcamp.orl.member.domain.*;
 @Service
 public class CreateFeedService { 
 	
-	Dao dao;
+	FeedDao dao;
 	
 	@Autowired
 	private SqlSessionTemplate template;	
+	
 	//파일 저장 경로
 	final String UPLOAD_URI = "/images/feed/feedw/uploadfile";
 	
@@ -47,18 +47,19 @@ public class CreateFeedService {
 			Member member = (Member)(request.getSession().getAttribute("member"));	//현재 세션의 member 객체 가져옴
 			
 			if(member!=null) {
-				feed.setMemberIdx(member.getMemberIdx()); ///
+				feed.setMemberIdx(member.getMemberIdx());
 			}
 
 			// 2. dao 저장
-			dao = template.getMapper(Dao.class);
+			dao = template.getMapper(FeedDao.class);
 			result = dao.createFeed(feed);
 
-			System.out.println("새롭게 등록된 idx => " + feed.getBoardIdx());
+			System.out.println("new boardIdx => " + feed.getBoardIdx());
 			System.out.println(feed);
 			// idx 값은 자식 테이블의 insert 시 외래키로 사용
 			
-			dao.createFeed(feed);
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();

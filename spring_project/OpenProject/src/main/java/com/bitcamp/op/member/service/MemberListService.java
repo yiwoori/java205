@@ -17,7 +17,7 @@ public class MemberListService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
-	
+		
 	public List<Member> getMemberList(){
 		return template.getMapper(Dao.class).selectAll();
 	}

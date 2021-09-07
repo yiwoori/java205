@@ -5,41 +5,40 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CreateFeed2</title>
-<link rel="stylesheet" href="<c:url value='/css/feed/createfeed.css'/>">
+<title>CREATE FEED</title>
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/feed/createfeed.css'/>">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
 
-	<!-- 닫기버튼 -->
-	<form action="feedview" method="post" enctype="multipart/form-data">
+	<form method="post" enctype="multipart/form-data">
 
 		<section class="container">
-			<button class="close">
+			<button type="button" class="c_close">
 				<img src="<c:url value="/images/feed/feedw/close.png"/>">
 			</button>
 
-			<section class="leftbox" id="image_container">
-				<img src="#" id="preview-img" alt="preview">
+			<section class="c_leftbox" id="image_container">
+				<img id="preview-img">
 			</section>
 
-			<section class="rightbox">
-				<div class="profile">
-					<div class="photo">
+			<section class="c_rightbox">
+				<div class="c_profile">
+					<div class="c_photo">
 						<button>
 							<img src="<c:url value="/images/feed/feedw/profile.jpg"/>"
 								alt="profile-img">
 						</button>
 					</div>
-					<a href="#" class="nickname">${member.memberNickname}</a>
+					<a href="#" class="c_nickname">${member.memberNickname}</a>
 
 
 					<div class="filebox">
-						<label for="fileupload">사진선택</label>
-						<input type="file" id="fileupload" name="boardPhoto"
-						onchange="readURL(this);">
+						<label for="fileupload">사진선택</label> <input type="file"
+							id="fileupload" name="boardPhoto" onchange="readURL(this);">
 					</div>
 
 
@@ -70,18 +69,45 @@
 	</form>
 
 
-	<script type="text/javascript">
+
+	<script>
+		/* modal_createfeed */
+		$(function() {
+			/* modal open */
+			$(".modalbtn_createfeed").click(function() {
+				$(".modal_createfeed").fadeIn();
+				/* body - not scroll */
+				$("html, body").addClass("not_scroll");
+			});
+
+			/* modal close */
+			$(".c_close").click(function() {
+				$(".modal_createfeed").fadeOut();
+				/* body - scroll */
+				$("html, body").removeClass("not_scroll");
+			});
+		});
+
 		/* Image Preview */
 		function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#preview-img').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#preview-img').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
 		}
+
+		/*  */
+		//1. 게시 클릭 -> 클릭 이벤트
+		//2. ajax 시작
+		/* 	$.ajax({
+				
+			}) */
 	</script>
+
+
 
 </body>
 

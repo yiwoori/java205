@@ -39,25 +39,25 @@ button:hover, input:hover, a:hover {
 }
 
 /* 닉네임 */
-.nickname {
+.v_nicknam {
 	font-weight: bold;
 }
 
 /* 전체 > 사진영역 */
-.leftbox {
+.v_leftbox {
 	width: 55%;
 	position: relative;
 }
 
 /* 피드 이미지 */
-.leftbox>img {
+.v_leftbox>img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
 /* 태그 아이콘 */
-.leftbox>button>img {
+.v_leftbox>button>img {
 	position: absolute;
 	bottom: 2%;
 	right: 2%;
@@ -65,7 +65,7 @@ button:hover, input:hover, a:hover {
 }
 
 /* 전체 > 컨텐츠 영역 */
-.rightbox {
+.v_rightbox {
 	padding-left: 7px;
 	width: 45%;
 	display: flex;
@@ -73,19 +73,19 @@ button:hover, input:hover, a:hover {
 }
 
 /* 프로필 div */
-.profile {
+.v_profile {
 	position: relative;
 	height: auto;
 }
 
 /* 프로필 사진 동그랗게 */
-.photo { /* 위치 조정 필요 */
+.v_photo { /* 위치 조정 필요 */
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
 }
 /* 프로필 이미지 */
-.profile img {
+.v_profile img {
 	margin: 30%;
 	width: 100%;
 	height: 100%;
@@ -96,13 +96,13 @@ button:hover, input:hover, a:hover {
 }
 
 /* 프로필 닉네임 */
-.profile>a {
+.v_profile>a {
 	position: absolute;
 	left: 110px;
 	top: 40px;
 }
 /* 팔로우 버튼 */
-.profile>button {
+.v_profile>button {
 	position: absolute;
 	left: 210px;
 	top: 39px;

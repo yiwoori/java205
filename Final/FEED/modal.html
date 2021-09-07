@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vscode_modal test</title>
-    <link rel="stylesheet" href="modal.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>vscode_modal test</title>
+	<link rel="stylesheet" href="modal.css">
+	<style>
+		.display_none {
+			display: none;
+		}
+	</style>
 </head>
+
 <body>
 
-    <!-- 모달 버튼 -->
+	<!-- 모달 버튼 -->
 	<div class="modalbox">
-	
+
 		<div class="div_createfeed">
 			<div>
-                <button class="modalbtn_createfeed">
-                    <img src="images/plus.png">
-                </button>
-            </div>
+				<button class="modalbtn_createfeed">
+					<img src="images/plus.png">
+				</button>
+			</div>
 		</div>
 
 		<div class="space"></div>
@@ -33,7 +40,7 @@
 				<button class="modalbtn_feedview"></button>
 			</div>
 		</div>
-        <div class="feedview_space"></div>
+		<div class="feedview_space"></div>
 		<div class="div_feedview">
 			<div>
 				<button class="modalbtn_feedview"></button>
@@ -45,7 +52,7 @@
 				<button class="modalbtn_feedview"></button>
 			</div>
 		</div>
-        <div class="feedview_space"></div>
+		<div class="feedview_space"></div>
 		<div class="div_feedview">
 			<div>
 				<button class="modalbtn_feedview"></button>
@@ -57,18 +64,161 @@
 				<button class="modalbtn_feedview"></button>
 			</div>
 		</div>
-        <div class="feedview_space"></div>
+		<div class="feedview_space"></div>
 	</div>
 
 
 	<!-- 모달창 -->
-	<div class="modal_feedview">
+	<div class="modal_feedview display_none">
 		<div class="modal_content">
 			<section class="container">
-				<!-- <%@ include file="/WEB-INF/views/feed/feedview.jsp"%> -->
+				<section class="container">
+					<button class="close">
+						<img src="<c:url value=" /images/feed/feedw/close.png" />">
+					</button>
+
+					<section class="leftbox">
+						<img src="<c:url value=" /images/feed/feedw/uploadfile/${Feed.boardPhoto}" />"
+						alt="feed-img">
+						<button>
+							<img src="<c:url value=" /images/feed/feedw/icon-05.png" />">
+						</button>
+					</section>
+
+					<section class="rightbox">
+						<div class="profile">
+							<div class="photo">
+								<button>
+									<img src="<c:url value=" /images/feed/feedw/profile.jpg" />"
+									alt="profile-img">
+								</button>
+							</div>
+							<a href="#" class="nickname">NICKNAME</a>
+							<button>팔로우</button>
+
+							<div class="contents">
+								<p>${content}</p>
+								<div>
+									<a class="hashtag">${hashtag}</a>
+								</div>
+							</div>
+						</div>
+
+						<section class="commentbox">
+							<div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>파일이름:${newFileName}
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>태그 : ${tag}
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+											댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="nickname">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+											댓글입니다 댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section class="commentingbox">
+							<div class="buttonline">
+								<div>
+									<button class="like">
+										<img src="<c:url value=" /images/feed/feedw/like-black.png" />"
+										class="nolike" alt="like-img">
+										<!-- <img src="/images/like.png" class="like-red" alt="nolike-img"> -->
+									</button>
+									<button class="write">
+										<img src="<c:url value=" /images/feed/feedw/comment.png" />"
+										alt="comment-img">
+									</button>
+									<button class="share">
+										<img src="<c:url value=" /images/feed/feedw/share.png" />"
+										alt="share-img">
+									</button>
+								</div>
+								<div class="likeline">
+									<p>좋아요 1,000개</p>
+								</div>
+							</div>
+
+							<div class="commentingline">
+								<div class="textbox">
+									<input type="text" placeholder="댓글달기">
+								</div>
+								<div class="submitbox">
+									<input type="submit" value="게시">
+								</div>
+							</div>
+						</section>
+
+					</section>
+
+				</section>
 			</section>
 		</div>
 	</div>
+
+
+
+
+
 	<div class="modal_createfeed">
 		<div class="modal_content">
 			<section class="container">
@@ -96,8 +246,7 @@
 						<div class="search">
 							<input type="text" placeholder="search">
 							<button type="submit">
-								<img src="images/search.png"
-									alt="search">
+								<img src="images/search.png" alt="search">
 							</button>
 						</div>
 					</div>
@@ -105,8 +254,7 @@
 						<div class="feed1">
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -114,16 +262,14 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
 							</div>
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -131,16 +277,14 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
 							</div>
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -148,8 +292,7 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
@@ -158,8 +301,7 @@
 						<div class="feed1">
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -167,16 +309,14 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
 							</div>
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -184,16 +324,14 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
 							</div>
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -201,8 +339,7 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
@@ -211,8 +348,7 @@
 						<div class="feed1">
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -220,16 +356,14 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
 							</div>
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -237,16 +371,14 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
 							</div>
 							<div class="feed">
 								<div class="feedsize">
-									<img src="images/feed.png"
-										class="feedimg" alt="feedimg">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
@@ -254,8 +386,7 @@
 									</div>
 									<div>
 										<button>
-											<img src="images/nolike.png"
-												class="nolikeimg">
+											<img src="images/nolike.png" class="nolikeimg">
 										</button>
 									</div>
 								</div>
@@ -282,5 +413,12 @@
 		</div>
 	</div>
 
+
+	<script>
+		$('.modalbtn_feedview').click(function () {
+			$('.modal_feedview').removeClass('display_none');
+		})
+	</script>
 </body>
+
 </html>

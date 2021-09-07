@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="feedmain.css">
+	<link rel="stylesheet" href="createfeed.css">
+	<link rel="stylesheet" href="feedview.css">
+</head>
+<script>
+	/* modal_feedview */
+	$(function() {
+		/* modal open */
+		$(".modalbtn_feedview").click(function() {
+			$(".modal_feedview").fadeIn();
+			/* body - not scroll */
+			$("html, body").addClass("not_scroll");
+		});
+
+		/* modal close */
+		$(".v_close").click(function() {
+			$(".modal_feedview").fadeOut();
+			/* body - scroll */
+			$("html, body").removeClass("not_scroll");
+		});
+	});
+</script>
+<body>
+
+	
+
+
+
+
+	<div class="modal_feedview">
+		<div class="modal_content">
+			<section class="container">
+				<section class="container">
+					<button class="v_close">
+						<img src="<c:url value=" /images/feed/feedw/close.png" />">
+					</button>
+
+					<section class="v_leftbox">
+						<img src="<c:url value=" /images/feed/feedw/uploadfile/${boardPhoto}" />"
+						alt="feed-img">
+						<button>
+							<img src="<c:url value=" /images/feed/feedw/icon-05.png" />">
+						</button>
+					</section>
+
+					<section class="v_rightbox">
+						<div class="v_profile">
+							<div class="v_photo">
+								<button>
+									<img src="<c:url value=" /images/feed/feedw/profile.jpg" />"
+									alt="profile-img">
+								</button>
+							</div>
+							<a href="#" class="v_nickname">${member.memberNickname}</a>
+							<button>팔로우</button>
+
+							<div class="contents">
+								<p>${content}</p>
+								<div>
+									<a class="hashtag">${hashtag}</a>
+								</div>
+							</div>
+						</div>
+
+						<section class="commentbox">
+							<div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="v_nicknam">NICKNAME</a>파일이름:${boardPhoto.getName()}
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="v_nicknam">NICKNAME</a>태그 : ${tag}
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+											댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+								<div class="comments">
+									<div class="cmt-profile">
+										<button>
+											<img src="<c:url value=" /images/feed/feedw/cmt-profile.jpg" />"
+											alt="cmt-profile-img">
+										</button>
+									</div>
+									<div class="comment">
+										<p>
+											<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+											댓글입니다 댓글입니다 댓글입니다
+										</p>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section class="commentingbox">
+							<div class="buttonline">
+								<div>
+									<button class="like">
+										<img src="<c:url value=" /images/feed/feedw/like-black.png" />"
+										class="nolike" alt="like-img">
+										<!-- <img src="/images/like.png" class="like-red" alt="nolike-img"> -->
+									</button>
+									<button class="write">
+										<img src="<c:url value=" /images/feed/feedw/comment.png" />"
+										alt="comment-img">
+									</button>
+									<button class="share">
+										<img src="<c:url value=" /images/feed/feedw/share.png" />"
+										alt="share-img">
+									</button>
+								</div>
+								<div class="likeline">
+									<p>좋아요 1,000개</p>
+								</div>
+							</div>
+
+							<div class="commentingline">
+								<div class="textbox">
+									<input type="text" placeholder="댓글달기">
+								</div>
+								<div class="submitbox">
+									<input type="submit" value="게시">
+								</div>
+							</div>
+						</section>
+
+					</section>
+
+				</section>
+			</section>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+	<div>
+		<div class="feedmain">
+			<div class="top"></div>
+			<div class="main">
+				<div class="leftbox"></div>
+				<div class="mainbox">
+
+					<!-- 산 아이콘 -->
+					<div class="mountain">
+						<img src="images/mountain.png">
+					</div>
+
+					<!-- 네비 영역 시작 -->
+					<div class="feednav">
+						<div class="keyword">
+							<!-- 기본 정렬 (최신순) -->
+							<a href="#">최신</a>
+							<!-- 선택 정렬 (인기순) -->
+							<a href="#">인기</a>
+						</div>
+
+						<!-- 피드 작성 버튼 -->
+						<div class="div_createfeed">
+							<div>
+								<button class="modalbtn_createfeed">
+									<img src="images/more.png">
+								</button>
+							</div>
+						</div>
+
+						<!-- 피드 검색 -->
+						<div class="search">
+							<input type="text" placeholder="search">
+							<button type="submit">
+								<img src="images/search.png" alt="search">
+							</button>
+						</div>
+
+					</div>
+					<!-- 네비 영역 끝 -->
+
+					<!-- 피드 영역 시작 -->
+					<div class="feedbox">
+						<div class="feed">
+							<div class="feedsize">
+								<button class="modalbtn_feedview">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
+								</button>
+							</div>
+							<div class="feedinfo">
+								<div class="nickname">
+									<a href="#" class="nickname2">NICKNAME</a>
+								</div>
+								<div class="likediv">
+									<button>
+										<img src="images/nolike.png" class="nolikeimg">
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="feed">
+							<div class="feedsize">
+								<button class="modalbtn_feedview">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
+								</button>
+							</div>
+							<div class="feedinfo">
+								<div class="nickname">
+									<a href="#" class="nickname2">NICKNAME</a>
+								</div>
+								<div class="likediv">
+									<button>
+										<img src="images/nolike.png" class="nolikeimg">
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="feed">
+							<div class="feedsize">
+								<button class="modalbtn_feedview">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
+								</button>
+							</div>
+							<div class="feedinfo">
+								<div class="nickname">
+									<a href="#" class="nickname2">NICKNAME</a>
+								</div>
+								<div class="likediv">
+									<button>
+										<img src="images/nolike.png" class="nolikeimg">
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="feed">
+							<div class="feedsize">
+								<button class="modalbtn_feedview">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
+								</button>
+							</div>
+							<div class="feedinfo">
+								<div class="nickname">
+									<a href="#" class="nickname2">NICKNAME</a>
+								</div>
+								<div class="likediv">
+									<button>
+										<img src="images/nolike.png" class="nolikeimg">
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="feed">
+							<div class="feedsize">
+								<button class="modalbtn_feedview">
+									<img src="images/feed.png" class="feedimg" alt="feedimg">
+								</button>
+							</div>
+							<div class="feedinfo">
+								<div class="nickname">
+									<a href="#" class="nickname2">NICKNAME</a>
+								</div>
+								<div class="likediv">
+									<button>
+										<img src="images/nolike.png" class="nolikeimg">
+									</button>
+								</div>
+							</div>
+						</div>
+
+
+
+
+					</div>
+					<!-- 피드 영역 끝 -->
+
+
+				</div>
+				<div class="rightbox"></div>
+			</div>
+			<div class="bottom"></div>
+		</div>
+	</div>
+
+</body>
+
+</html>
