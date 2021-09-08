@@ -16,7 +16,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 전체 피드 리스트 (최신순) -->
 	<select id="selectNewFeed"
 			resultType="com.bitcamp.orl.feed.domain.NewFeedList">
-		select boardIdx, boardPhoto, memberIdx from photoBoard order by boardIdx DESC
+		<!-- select M.memberIdx, M.memberNickname, F.boardIdx, F.boardPhoto
+		from photoBoard as B join member as M
+		on M.memberIdx = F.Mem
+		order by boardIdx DESC; -->
+			select boardIdx, boardPhoto, memberIdx from photoBoard order by boardIdx DESC;
 	</select>
 
 	<!-- 전체 피드 리스트 (인기순) -->
@@ -24,6 +28,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.bitcamp.orl.feed.domain.HotFeedList">
 	select * from photoBoard order by like 조인해야된다~~~~ </select> -->
 
+	<!-- 피드 상세보기 -->
+<!-- 	<select id="selectFeedView"
+			resultType="com.bitcamp.orl.feed.domain.FeedView">
+	select * 
+	</select> -->
 
 	<!--  -->
 	<!--  -->

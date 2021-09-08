@@ -1,10 +1,6 @@
 package com.bitcamp.orl.feed.domain;
 
-import java.sql.*;
-
 import org.springframework.web.multipart.*;
-
-import com.fasterxml.jackson.annotation.*;
 
 public class FeedCreateRequest {
 	

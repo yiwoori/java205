@@ -26,11 +26,7 @@ public class FeedMainController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCreateFeedForm(Model model) {
 		
-//		//피드 기본 정렬
-//		List<NewFeedList> newFeedList = null;
-//		newFeedList = listservice.getNewFeed();
-//		model.addAttribute("newFeedList", newFeedList);
-		
+		//피드 기본 정렬
 		List<NewFeedList> newFeedList = listservice.selectNewFeed();
 		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
 		
@@ -42,8 +38,9 @@ public class FeedMainController {
 			throws IllegalStateException, IOException {
 		
 		//피드 기본 정렬
-//		List<NewFeedList> newFeedList = listservice.getNewFeed();
-//		model.addAttribute("newFeedList", newFeedList);
+		List<NewFeedList> newFeedList = listservice.selectNewFeed();
+		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
+		//비동기통신으로 수정해야함
 		
 		//Form input data
 		model.addAttribute("boardPhoto", feedrequest.getBoardPhoto());

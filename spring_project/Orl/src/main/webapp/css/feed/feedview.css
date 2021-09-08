@@ -19,12 +19,23 @@ button:hover, input:hover, a:hover {
 	cursor: pointer;
 }
 
+.background {
+	height: 1100px;
+	background-color:#f8f8f8;
+}
+
 /* 전체 영역 */
 .container {
+	background-color:white;
 	display: flex;
 	position: relative;
 	width: 1000px;
 	height: 650px;
+	top: 550px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
 }
 
 /* close button */

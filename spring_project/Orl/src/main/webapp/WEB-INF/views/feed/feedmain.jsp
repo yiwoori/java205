@@ -16,14 +16,14 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/frame/default/header.jsp"%>
 
-	<!-- modal_feedview -->
+	<!-- modal_feedview --><%-- 
 	<div class="modal_feedview">
 		<div class="modal_content">
 			<section class="container">
 				<%@ include file="/WEB-INF/views/feed/feedview.jsp"%>
 			</section>
 		</div>
-	</div>
+	</div> --%>
 	
 	<!-- modal_createfeed -->
 	<div class="modal_createfeed">
@@ -40,21 +40,8 @@
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/frame/default/footer.jsp"%>
-
-
-
-	<script>
 	
-		$(document).ready(function(){
-			$.ajax('data.html', {
-				ssuccess: function(data) {
-					$('body').append(data);
-				}
-			});
-		});
-		
-		
-	</script>
+	
 
 </body>
 </html>

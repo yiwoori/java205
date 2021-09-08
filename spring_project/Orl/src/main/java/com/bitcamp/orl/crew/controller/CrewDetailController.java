@@ -12,13 +12,12 @@ import com.bitcamp.orl.crew.domain.CrewCommentCriteria;
 import com.bitcamp.orl.crew.domain.CrewInfo;
 import com.bitcamp.orl.crew.service.CrewDetailService;
 
-
 @Controller
 @RequestMapping("/crew/detail")
 public class CrewDetailController {
 	
 	@Autowired
-	CrewDetailService service;
+	private CrewDetailService service;
 	
 	@RequestMapping("/{crewIdx}&{currentPageNum}")
 	public String getCrewDetail(
@@ -27,13 +26,13 @@ public class CrewDetailController {
 			HttpServletRequest request,
 			Model model
 			) {
-		//세션에 있는 내 정보 -> memberIDx
 		CrewInfo crewinfo = service.getCrewInfo(request.getSession(), crewIdx);
 		CrewCommentCriteria cri = new CrewCommentCriteria(crewIdx, currentPageNum);
+		
 		model.addAttribute("crew", crewinfo);
 		model.addAttribute("cri", cri);
+		
 		return "crew/detail";
 	}
 	
-
 }

@@ -110,7 +110,6 @@ a:visited {
 	animation-iteration-count: 3;
 }
 
-
 /* label 색과 위치 */
 .int-area input:focus+label, .int-area input:valid+label, .int-area select:focus+label,
 	.int-area select:valid+label {

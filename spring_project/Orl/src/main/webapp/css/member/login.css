@@ -86,6 +86,83 @@ body::before {
 	animation-iteration-count: 3;
 }
 
+/* 아이디랑 비번 안치고 로그인 누르면 글자 흔들림 */
+@
+keyframes warning { 0% {
+	transform: translateX(-8px);
+}
+
+25
+
+
+%
+{
+transform
+
+
+:
+
+
+translateX
+(
+
+
+8px
+
+
+)
+;
+
+
+}
+50
+
+
+%
+{
+transform
+
+
+:
+
+
+translateX
+(
+
+
+-8px
+
+
+)
+;
+
+
+}
+75
+
+
+%
+{
+transform
+
+
+:
+
+
+translateX
+(
+
+
+8px
+
+
+)
+;
+
+
+}
+}
+
 /* label 색과 위치 */
 .int-area input:focus+label, .int-area input:valid+label {
 	top: -2px;

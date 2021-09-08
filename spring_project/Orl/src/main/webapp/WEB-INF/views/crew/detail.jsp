@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crew Details</title>
+<title>Insert title here</title>
 <link rel="stylesheet" href="<c:url value='/css/crew/crew-detail.css'/>">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -22,7 +22,7 @@
 <script>
 	$(document).ready(function(){
 		
-		commentList(0);
+		commentList();
 		
 		$('#submit').click(function(){
 			
@@ -47,7 +47,7 @@
 		});
 	});
 	
-	function commentList(parameter){
+	function commentList(){
 		$.ajax({
 			url: 'http://localhost:8080/orl/crew/getCommentInfo',
 			type: 'GET',
@@ -91,6 +91,11 @@
 <%@ include file="/WEB-INF/frame/default/header.jsp"%>
 </head>
 <body>
+<c:if test="${updateResult eq 1}">
+<script>
+	alert('수정되었습니다.')
+</script>
+</c:if>
 	<div class="section">
 		<section>
 			<div class="box">
@@ -102,7 +107,7 @@
 						<div class="crew_name_section">
 							<h3 class="card-title">${crew.crewName}</h3>
 							<c:if test="${member.memberIdx eq crew.memberIdx}">
-							<a href='<c:url value="/crew/edit"/>'
+							<a href='<c:url value="/crew/edit/${crew.crewIdx}"/>'
 								class="btn btn-sm color_blue text_bold">크루 관리</a>
 							</c:if>
 						</div>

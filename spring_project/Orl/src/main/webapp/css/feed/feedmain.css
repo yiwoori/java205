@@ -4,6 +4,9 @@
 	padding: 0;
 	margin: 0;
 }
+body {
+	background-color:#f8f8f8;
+}
 
 a {
 	text-decoration: none;
@@ -15,7 +18,20 @@ button {
     background-color: #00ff0000;
 }
 
+.top {
+	display: flex;
+	justify-content: space-between;
+}
 
+.h1box {
+	width: 1000px;
+}
+
+.h1box>h1 {
+	font-size: 3.5rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-top: 250px;
+}
 
 /* body not scroll */
 .not_scroll{
@@ -92,6 +108,7 @@ button {
 
 .modal_feedview, .modal_createfeed { /* 모달-백그라운드 */
 	position: absolute;
+	display: flex;
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.8);
@@ -106,16 +123,16 @@ button {
 	height: 650px;
 	background: #fff;
 	position: relative;
-	top: 300px;
-	left: 590px; /* 모달창 위치 */
-	margin-top: -100px;
-	margin-left: -200px;
+	top: 55%;
+	left: 50%; /* 모달창 위치 */
+	transform: translate(-50%, -50%);
 	z-index: 1;
 }
 
 .feedmain {
 	display: flex;
 	flex-direction: column;
+	height: auto;
 }
 
 .top { /* 상단 여백 */
@@ -126,6 +143,7 @@ button {
 	height: 1650px;
 	display: flex;
 	justify-content: space-between;
+	overflow: auto;
 }
 
 .mainbox {
@@ -237,6 +255,6 @@ button {
 	width: 23px;
 }
 
-.bottm { /* 하단 여백 */
-	height: 250px;
+.bottom { /* 하단 여백 */
+	height: 290px;
 }

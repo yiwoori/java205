@@ -1,16 +1,17 @@
 package com.bitcamp.orl.member.service;
 
-import java.io.*;
+import java.io.UnsupportedEncodingException;
 
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import org.mybatis.spring.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.bitcamp.orl.member.dao.*;
-import com.bitcamp.orl.member.domain.*;
-import com.bitcamp.orl.member.util.*;
+import com.bitcamp.orl.member.dao.Dao;
+import com.bitcamp.orl.member.domain.Member;
+import com.bitcamp.orl.member.util.CookieBox;
 
 @Service
 public class LoginService {
@@ -31,6 +32,8 @@ public class LoginService {
 			) {
 		
 		cookieChk(response, reid, memberId);
+		
+		
 		dao = template.getMapper(Dao.class);
 		
 		if (memberId != null && memberPw != null && memberId.trim().length() > 2 && memberPw.trim().length() > 2) {
@@ -42,7 +45,8 @@ public class LoginService {
 		}
 		return loginChk;
 	}
-
+	
+	
 	public void cookieChk(HttpServletResponse response, String reid, String id) {
 
 		if (reid != null && reid.equals("on")) {
@@ -65,7 +69,7 @@ public class LoginService {
 	public boolean chkURI(String uri) {
 		boolean chk = true;
 
-		if (!uri.startsWith("/orl")) {
+		if (!uri.startsWith("/orl/member/login")) {
 			chk = false;
 		}
 		return chk;
