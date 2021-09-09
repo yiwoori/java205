@@ -13,17 +13,19 @@
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/frame/default/header.jsp"%>
+
 	<div class="background">
-		<section class="container">
-			<button class="v_close">
-				<img src="<c:url value="/images/feed/feedw/close.png"/>">
+		<section class="container_view">
+			<button class="v_option">
+				<img src="<c:url value="/images/feed/feedw/option.png"/>">
 			</button>
 
 			<section class="v_leftbox">
 				<img
-					src="<c:url value="/images/feed/feedw/uploadfile/${selectNewFeed.boardPhoto}"/>"
+					src="<c:url value="/images/feed/feedw/uploadfile/${selectFeedView.boardPhoto}"/>"
 					alt="feed-img">
 				<button>
+					<!-- 프로필 사진 받아오기 -->
 					<img src="<c:url value="/images/feed/feedw/icon-05.png"/>">
 				</button>
 			</section>
@@ -36,86 +38,34 @@
 								alt="profile-img">
 						</button>
 					</div>
-					<a href="#" class="v_nickname">닉네임</a>
+					<a href="#" class="v_nickname">${selectFeedView.memberNickname}</a>
 					<!-- <button>팔로우</button> -->
 
 					<div class="contents">
-						<p>${content}</p>
+						<p>${selectFeedView.boardDiscription}</p>
 						<div>
-							<a class="hashtag">${hashtag}</a>
+							<a class="hashtag">${selectFeedView.hashtag}</a>
 						</div>
 					</div>
 				</div>
 
 				<section class="commentbox">
 					<div>
-						<div class="comments">
-							<div class="cmt-profile">
-								<button>
-									<img src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
-										alt="cmt-profile-img">
-								</button>
+						<c:forEach var="selectFeedComment" items="${selectFeedComment}">
+							<div class="comments">
+								<div class="cmt-profile">
+									<button>
+										<img src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
+											alt="cmt-profile-img">
+									</button>
+								</div>
+								<div class="comment">
+									<a href="#" class="v_nicknam">${selectFeedComment.memberNickname}</a>
+									<p>${selectFeedComment.comment}</p>
+								</div>
 							</div>
-							<div class="comment">
-								<p>
-									<a href="#" class="v_nicknam">NICKNAME</a>
-								</p>
-							</div>
-						</div>
-						<div class="comments">
-							<div class="cmt-profile">
-								<button>
-									<img src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
-										alt="cmt-profile-img">
-								</button>
-							</div>
-							<div class="comment">
-								<p>
-									<a href="#" class="v_nicknam">NICKNAME</a>
-								</p>
-							</div>
-						</div>
-						<div class="comments">
-							<div class="cmt-profile">
-								<button>
-									<img src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
-										alt="cmt-profile-img">
-								</button>
-							</div>
-							<div class="comment">
-								<p>
-									<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
-									댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다
-								</p>
-							</div>
-						</div>
-						<div class="comments">
-							<div class="cmt-profile">
-								<button>
-									<img src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
-										alt="cmt-profile-img">
-								</button>
-							</div>
-							<div class="comment">
-								<p>
-									<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다
-								</p>
-							</div>
-						</div>
-						<div class="comments">
-							<div class="cmt-profile">
-								<button>
-									<img src="<c:url value="/images/feed/feedw/cmt-profile.jpg"/>"
-										alt="cmt-profile-img">
-								</button>
-							</div>
-							<div class="comment">
-								<p>
-									<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
-									댓글입니다 댓글입니다 댓글입니다
-								</p>
-							</div>
-						</div>
+						</c:forEach>
+
 					</div>
 				</section>
 
@@ -125,7 +75,6 @@
 							<button class="like">
 								<img src="<c:url value="/images/feed/feedw/like-black.png"/>"
 									class="nolike" alt="like-img">
-								<!-- <img src="/images/like.png" class="like-red" alt="nolike-img"> -->
 							</button>
 							<button class="write">
 								<img src="<c:url value="/images/feed/feedw/comment.png"/>"
@@ -141,14 +90,20 @@
 						</div>
 					</div>
 
-					<div class="commentingline">
-						<div class="textbox">
-							<input type="text" placeholder="댓글달기">
+					<form method="post" enctype="multipart/form-data">
+						<div class="commentingline">
+						
+							<div class="textbox">
+								<input type="text" placeholder="댓글달기" name="comment">
+							</div>
+							
+							<div class="submitbox">
+								<input type="submit" value="게시">
+							</div>
+							
 						</div>
-						<div class="submitbox">
-							<input type="submit" value="게시">
-						</div>
-					</div>
+					</form>
+					
 				</section>
 
 			</section>
@@ -156,7 +111,8 @@
 		</section>
 	</div>
 
-	<!-- 	<script>
+
+	<!--  	 	<script>
 		/* modal_feedview */
 		$(function() {
 			/* modal open */

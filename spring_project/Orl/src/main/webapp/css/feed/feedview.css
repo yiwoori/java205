@@ -25,7 +25,7 @@ button:hover, input:hover, a:hover {
 }
 
 /* 전체 영역 */
-.container {
+.container_view {
 	background-color:white;
 	display: flex;
 	position: relative;
@@ -39,13 +39,13 @@ button:hover, input:hover, a:hover {
 }
 
 /* close button */
-.container>button {
+.container_view>button {
     position: absolute;
-    top: 7px;
-    right: 0;
+    top: 40px;
+    right: 25px;
     z-index: 1;
 }
-.container>button>img {
+.container_view>button>img {
     width: 20px;
 }
 
@@ -109,7 +109,7 @@ button:hover, input:hover, a:hover {
 /* 프로필 닉네임 */
 .v_profile>a {
 	position: absolute;
-	left: 110px;
+	left: 105px;
 	top: 40px;
 }
 /* 팔로우 버튼 */
@@ -153,6 +153,7 @@ button:hover, input:hover, a:hover {
 	display: flex;
 	flex-direction: column;
 	overflow: scroll;
+	height: 400px;
 	border-top: 1px solid #C9C0AE;
 }
 /* 댓글 한 문단 */
@@ -184,14 +185,15 @@ button:hover, input:hover, a:hover {
 }
 /* 댓글 내용 */
 .comment {
-	padding-left: 50px;
-	padding-top: 33px;
+	padding-left: 45px;
+	padding-top: 30px;
 	padding-right: 20px;
 	line-height: 1.4;
 	font-size: 15px;
 	overflow: hidden;
 	height: auto;
 }
+
 /* 댓글 닉네임 */
 .nickname {
 	padding-right: 10px;
@@ -202,7 +204,7 @@ button:hover, input:hover, a:hover {
 	display: flex;
 	flex-direction: column;
 	bottom: 0;
-	height: 180px;
+	height: 160px;
 	border-top: 1px solid #C9C0AE;
 }
 /* 댓글 nav */

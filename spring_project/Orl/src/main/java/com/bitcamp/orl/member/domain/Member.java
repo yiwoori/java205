@@ -112,4 +112,8 @@ public class Member {
 				+ memberNickname + ", memberRegdate=" + memberRegdate + ", memberBirth=" + memberBirth + "]";
 	}
 	
+	public MemberVo memberToMemberVo(){
+	      return new MemberVo(memberIdx, memberNickname);
+	   }
+	
 }

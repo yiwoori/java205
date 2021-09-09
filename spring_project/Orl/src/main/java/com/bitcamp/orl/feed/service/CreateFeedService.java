@@ -24,7 +24,7 @@ public class CreateFeedService {
 	// 파일 저장 경로
 	final String UPLOAD_URI = "/images/feed/feedw/uploadfile";
 
-	// 피드 게시
+	// 피드 작성
 	public int insert(FeedCreateRequest createRequest, HttpServletRequest request) {
 
 		int result = 0;
@@ -43,10 +43,11 @@ public class CreateFeedService {
 				System.out.println("파일 저장");
 			}
 
-			Member member = (Member) (request.getSession().getAttribute("member")); // 현재 세션의 member 객체 가져옴
+			MemberVo memberVo = (MemberVo) (request.getSession().getAttribute("memberVo")); // 현재 세션의 member 객체 가져옴
 
-			if (member != null) {
-				feed.setMemberIdx(member.getMemberIdx());
+			if (memberVo != null) {
+				feed.setMemberIdx(memberVo.getMemberIdx());	//memberIdx 넣기
+				feed.setMemberNickname(memberVo.getMemberNickname());	//memberNickname 넣기
 			}
 
 			// 2. dao 저장
@@ -54,6 +55,7 @@ public class CreateFeedService {
 			result = dao.createFeed(feed);
 
 			System.out.println("new boardIdx => " + feed.getBoardIdx());
+			System.out.println("nickname => " + feed.getMemberNickname());
 			System.out.println(feed);
 			// idx 값은 자식 테이블의 insert 시 외래키로 사용
 

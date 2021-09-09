@@ -14,11 +14,19 @@
 	<div>
 		<div class="feedmain">
 			<div class="top">
-			<div></div>
-			<div class="h1box">
-				<h1>FEED</h1>	<!-- 최신순일땐 NEW FEED / 인기순일땐 POPULAR FEED -->
-			</div>
-			<div></div>
+				<div></div>
+				<div class="h1box">
+					<div>
+						<h1>FEED</h1>
+					</div>
+					<!-- 최신순일땐 NEW FEED / 인기순일땐 POPULAR FEED -->
+					<!-- div class="div_createfeed">
+						<div>
+							<button class="modalbtn_createfeed">피드 올리기</button>
+						</div>
+					</div> -->
+				</div>
+				<div></div>
 			</div>
 			<div class="main">
 				<div class="leftbox"></div>
@@ -38,20 +46,23 @@
 							<a href="#">인기</a>
 						</div>
 
-						<!-- 피드 작성 버튼 -->
-						<%-- <div class="div_createfeed">
-							<div>
-								<button class="modalbtn_createfeed">
-									<img src="<c:url value="/images/feed/feeds/more.png"/>">
-								</button>
+						<!-- 피드 작성 버튼 (로그인 상태에서만 보이게)-->
+						<c:if test="${sessionScope.memberVo ne null}">
+							<div class="div_createfeed">
+								<div>
+									<button class="modalbtn_createfeed">피드 올리기</button>
+								</div>
 							</div>
-						</div> --%>
-						<div class="div_createfeed">
-							<div>
-								<button class="modalbtn_createfeed">피드 올리기
-								</button>
-							</div>
-						</div>
+						</c:if>
+						
+						
+						
+						
+						
+						
+						
+						
+						
 
 						<!-- 피드 검색 -->
 						<div class="search">
@@ -69,10 +80,11 @@
 					<div class="feedbox">
 
 						<c:forEach var="selectNewFeed" items="${selectNewFeed}">
-						
+
 							<div class="feed">
 								<div class="feedsize">
-									<button class="modalbtn_feedview" type="button" onclick="location.href='feedview/${selectNewFeed.memberIdx}&${selectNewFeed.boardIdx}'">
+									<button class="modalbtn_feedview" type="button"
+										onclick="location.href='feedview/${selectNewFeed.memberIdx}&${selectNewFeed.boardIdx}'">
 										<img
 											src="<c:url value="/images/feed/feedw/uploadfile/${selectNewFeed.boardPhoto}"/>"
 											class="feedimg" alt="feedimg">
@@ -80,7 +92,7 @@
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
-										<a href="#" class="nickname2">${selectNewFeed.memberIdx}</a>
+										<a href="#" class="nickname2">${selectNewFeed.memberNickname}</a>
 									</div>
 									<div>
 										<button>
@@ -90,7 +102,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 						</c:forEach>
 
 					</div>

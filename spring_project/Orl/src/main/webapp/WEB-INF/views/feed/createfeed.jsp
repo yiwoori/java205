@@ -16,7 +16,7 @@
 
 	<form method="post" enctype="multipart/form-data">
 
-		<section class="container">
+		<section class="container_create">
 			<button type="button" class="c_close">
 				<img src="<c:url value="/images/feed/feedw/close.png"/>">
 			</button>
@@ -33,12 +33,12 @@
 								alt="profile-img">
 						</button>
 					</div>
-					<a href="#" class="c_nickname">${member.memberNickname}</a>
+					<a href="#" class="c_nickname">${sessionScope.memberVo.memberNickname}</a>
 
 
 					<div class="filebox">
 						<label for="fileupload">사진선택</label> <input type="file"
-							id="fileupload" name="boardPhoto" onchange="readURL(this);">
+							id="fileupload" name="boardPhoto" id="boardPhoto" onchange="readURL(this);">
 					</div>
 
 
@@ -46,21 +46,21 @@
 
 				<div class="contentsbox">
 					<p>게시글</p>
-					<input type="text" placeholder="문구 입력" name="boardDiscription">
+					<input type="text" placeholder="문구 입력" name="boardDiscription" id="boardDiscription">
 				</div>
 
 				<div class="hashtabbox">
 					<p>해시태그</p>
-					<input type="text" placeholder="#..." name="hashtag">
+					<input type="text" placeholder="#..." name="hashtag" id="hashtag">
 				</div>
 
 				<div class="tagbox">
 					<p>태그</p>
-					<input type="text" placeholder="@..." name="tag">
+					<input type="text" placeholder="@..." name="tag" id="tag">
 				</div>
 
 				<div class="submit">
-					<input type="submit" value="게시">
+					<input type="submit" class="feed_submit" value="게시">
 				</div>
 
 			</section>
@@ -99,6 +99,30 @@
 			}
 		}
 
+		/* Feed List Ajax */
+		$('.feed_submit').click(function() {
+			
+			var params = {
+				boardPhoto : $('.boardPhoto').val(),
+				boardDiscription : $('.boardDiscription').val(),
+				hashtag : $('.hashtag').val(),
+				tag : $('tag').val()
+			}
+			
+			$.ajax({
+				type : "POST",
+				url : 'http://localhost:8080/orl/feed/feedmain',
+				data : params,
+				success : function(res) {
+					alert("게시완료")
+				},
+				error : function(){
+					alert("게시실패")
+				}
+			});
+			
+		});
+		
 	</script>
 
 

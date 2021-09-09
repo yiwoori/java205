@@ -1,40 +1,34 @@
 package com.bitcamp.orl.feed.domain;
 
-import java.sql.*;
-
-import com.fasterxml.jackson.annotation.*;
-
-public class Feed {
-
+public class FeedView {
+	
+	//피드 상세보기
+	
 	private int boardIdx;
 	private String boardPhoto;
 	private String boardDiscription;
-	@JsonFormat(pattern = "yyyy.MM.dd. HH:mm")
-	private Timestamp boardDate;
 	private String hashtag;
 	private String tag;
 	private int memberIdx;
 	private String memberNickname;
-
-	public Feed() {
+	private String memberProfile;
+	
+	public FeedView(){
+		
 	}
-	
-	
 
-	public Feed(int boardIdx, String boardPhoto, String boardDiscription, Timestamp boardDate, String hashtag,
-			String tag, int memberIdx, String memberNickname) {
+	public FeedView(int boardIdx, String boardPhoto, String boardDiscription, String hashtag, String tag, int memberIdx,
+			String memberNickname, String memberProfile) {
 		super();
 		this.boardIdx = boardIdx;
 		this.boardPhoto = boardPhoto;
 		this.boardDiscription = boardDiscription;
-		this.boardDate = boardDate;
 		this.hashtag = hashtag;
 		this.tag = tag;
 		this.memberIdx = memberIdx;
 		this.memberNickname = memberNickname;
+		this.memberProfile = memberProfile;
 	}
-
-
 
 	public int getBoardIdx() {
 		return boardIdx;
@@ -58,14 +52,6 @@ public class Feed {
 
 	public void setBoardDiscription(String boardDiscription) {
 		this.boardDiscription = boardDiscription;
-	}
-
-	public Timestamp getBoardDate() {
-		return boardDate;
-	}
-
-	public void setBoardDate(Timestamp boardDate) {
-		this.boardDate = boardDate;
 	}
 
 	public String getHashtag() {
@@ -100,16 +86,20 @@ public class Feed {
 		this.memberNickname = memberNickname;
 	}
 
+	public String getMemberProfile() {
+		return memberProfile;
+	}
 
+	public void setMemberProfile(String memberProfile) {
+		this.memberProfile = memberProfile;
+	}
 
 	@Override
 	public String toString() {
-		return "Feed [boardIdx=" + boardIdx + ", boardPhoto=" + boardPhoto + ", boardDiscription=" + boardDiscription
-				+ ", boardDate=" + boardDate + ", hashtag=" + hashtag + ", tag=" + tag + ", memberIdx=" + memberIdx
-				+ ", memberNickname=" + memberNickname + "]";
+		return "FeedView [boardIdx=" + boardIdx + ", boardPhoto=" + boardPhoto + ", boardDiscription="
+				+ boardDiscription + ", hashtag=" + hashtag + ", tag=" + tag + ", memberIdx=" + memberIdx
+				+ ", memberNickname=" + memberNickname + ", memberProfile=" + memberProfile + "]";
 	}
-	
-	
 
 
 }

@@ -23,8 +23,10 @@ public class FeedMainController {
 	@Autowired
 	private FeedListService listservice;
 
+	
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public String getCreateFeedForm(Model model) {
+	public String getFeedMain(Model model) {
 		
 		//피드 기본 정렬
 		List<NewFeedList> newFeedList = listservice.selectNewFeed();
@@ -33,24 +35,30 @@ public class FeedMainController {
 		return "feed/feedmain";
 	}
 
+	
+	
 	@RequestMapping(method = RequestMethod.POST)
-	public String upload(FeedCreateRequest feedrequest, Model model, HttpServletRequest request)
+	public String getFeedMainPost(
+			FeedCreateRequest feedrequest, 
+			HttpServletRequest request,
+			Model model)
 			throws IllegalStateException, IOException {
 		
 		//피드 기본 정렬
 		List<NewFeedList> newFeedList = listservice.selectNewFeed();
 		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
-		//비동기통신으로 수정해야함
+		//비동기통신 추가
 		
-		//Form input data
+		//피드 작성
 		model.addAttribute("boardPhoto", feedrequest.getBoardPhoto());
 		model.addAttribute("boardDiscription", feedrequest.getBoardDiscription());
 		model.addAttribute("hashtag", feedrequest.getHashtag());
 		model.addAttribute("tag", feedrequest.getTag());
-		//data insert
 		createService.insert(feedrequest, request);
 
 		return "feed/feedmain";
 	}
 
+	
+	
 }
