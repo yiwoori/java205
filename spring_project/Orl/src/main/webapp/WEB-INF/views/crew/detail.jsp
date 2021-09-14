@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>크루 상세</title>
 <link rel="stylesheet" href="<c:url value='/css/crew/crew-detail.css'/>">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -20,16 +20,33 @@
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
+	// 페이징 road하지말고 ajax로 비동기통신3
+	// 토글 밖에 클릭하면 꺼지게 (body)에 걸어서
+	// 클래스에 번호일일히 붙이지 않는 방법 -> on 으로 위에 태그로 잡아서 처리
+	// 검색/페이징
+	// 부트 (el -> timeleaf)
+	
 	$(document).ready(function(){
+		
+		if('${crew.crewTag}' == null){
+			return;
+		} else {
+			var str = [];
+			const crewTagArr = '${crew.crewTag}';
+			str = crewTagArr.split(",");
+			var html = "";
+			for(var idx = 0 ; idx < str.length ; idx++){
+				html += '<li class="tag-item">#'+str[idx]+" </li>";
+			}
+			$("#crewHashTag").html(html);
+		}
 		
 		commentList();
 		
 		$('#submit').click(function(){
-			
 			var formData = new FormData();
 			formData.append("crewIdx", $('#crewIdx').val());
 			formData.append("crewComment", $('#crewComment').val());
-			
 			$.ajax({
 				url: 'http://localhost:8080/orl/crew/commentInsert',
 				type: 'post',
@@ -41,11 +58,74 @@
 					if(data==0){
 						alert('로그인 여부를 확인해주세요.');
 					}
-					commentList(0);
+					commentList();
 				}
 			})
 		});
-	});
+		
+		//크루 가입
+		$('#joinToCrew').on('click', 'button', function(){
+			
+			if('${sessionScope.member.memberIdx}'==''){
+				window.location.href="<c:url value='/member/login'/>";
+			} else {
+				$.ajax({
+					url: 'http://localhost:8080/orl/crew/joinToCrewMemberList',
+					type: 'get',
+					data: {
+						memberIdx : '${sessionScope.member.memberIdx}',
+						crewIdx : '${crew.crewIdx}'
+					},
+					success : function(data){
+						if(data==0){
+							alert('가입에 실패했습니다.');
+						} else if(data==1){
+							alert('크루에 가입하셨습니다.');
+							window.location.href="<c:url value='/crew/detail?crewIdx=${crew.crewIdx}&currentPageNum=1'/>";
+						}
+					}
+				});	
+			}
+		});
+		
+		//크루 탈퇴
+		$('#outFromCrew').on('click', 'button', function(){
+			$.ajax({
+				url: 'http://localhost:8080/orl/crew/deleteCrewMemberFromList',
+				type: 'get',
+				data: {
+					memberIdx : '${sessionScope.member.memberIdx}',
+					crewIdx : '${crew.crewIdx}'	
+				},
+				success : function(data){
+					if(data==0){
+						alert('탈퇴에 실패했습니다.');
+					} else if(data==1){
+						alert('해당 크루를 탈퇴했습니다.');
+						window.location.href="<c:url value='/crew/detail?crewIdx=${crew.crewIdx}&currentPageNum=1'/>"
+					}
+				}
+			});	
+		});
+		
+		
+	}); //document ready 끝
+	
+	function commentToggle(parameter){
+		const toggleMenu = document.querySelector('.commentMenu'+parameter+'');
+		toggleMenu.classList.toggle('active');
+		var html = '<li><a href="#">수정</a></li>';
+		html += '<li><a href="javascript:deleteComment('+parameter+')">삭제</a>';
+		$('#commentMenu'+parameter+'').html(html);
+	}
+	
+	function deleteComment(parameter){
+		location.href = '<c:url value="/crew/commentDelete/'+parameter+'&'+${crew.crewIdx}+'"/>';
+	}
+	
+	function paging(){
+		
+	}
 	
 	function commentList(){
 		$.ajax({
@@ -57,13 +137,29 @@
 			},
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8;",
 			success: function(data){ // data가 json -> js객체로 변환해서 옴
+				
+				if(data.infoList.length == 0) {
+					var html = '<tr><td>아직 작성된 댓글이 없습니다.</td></tr>';
+					$('#commentList').html(html);
+				}
+				
 				var html = '';
 				var html2 = '';
+				
 				$.each(data.infoList, function(index, item){
 					html += '<tr><td><img id="profile" src="<c:url value="/images/default.jpg"/>"></td>';
 					html +=	'<td><p id="nickname">'+item.memberNickName+'</p>';
 					html += '<p class="content">'+item.crewComment+'</p>';
-					html += '<p class="date">'+item.crewCommentDate+'</p>';
+					html += '<p class="date">'+item.crewCommentDate+'</p></td>';
+					html += '<td>';
+					if('${sessionScope.member.memberIdx}' == item.memberIdx){
+						html += '<div class="commentMenuBox">';
+						html += '<div class="icon" onclick="commentToggle('+item.crewCommentIdx+');">';
+						html += '<a href="#"><img id="commentMng" src="<c:url value="/images/crew/icon.png"/>"></a>';
+						html +=	'<div class="commentMenu commentMenu'+item.crewCommentIdx+'"><ul id="commentMenu'+item.crewCommentIdx+'"></ul></div>';
+						html += '</div>';
+						html += '</div>';
+					}
 					html += '</td></tr>';
 					$('#commentList').html(html);
 				});
@@ -78,11 +174,14 @@
 					next = data.totalPageNum
 				}
 				
-				html2 += '<li class="page-item"><a class="page-link" href="<c:url value="/crew/detail/${crew.crewIdx}&'+prev+'"/>">&lt</a></li>';
+				html2 += '<li class="page-item">';
+				html2 += '<a class="page-link" href=" <c:url value="/crew/detail/${crew.crewIdx}&'+prev+'"/> ">&lt</a></li>';
 				for(var i=1 ; i <= data.totalPageNum; i++){
-					html2 += '<li class="page-item"><a href="<c:url value="/crew/detail/${crew.crewIdx}&'+i+'"/>" class="page-link">'+i+'</a></li>';
+					html2 += '<li class="page-item">';
+					html2 += '<a href="<c:url value="/crew/detail/${crew.crewIdx}&'+i+'"/>" class="page-link">'+i+'</a></li>';
 				}
-				html2 += '<li class="page-item"><a class="page-link" href="<c:url value="/crew/detail/${crew.crewIdx}&'+next+'"/>">&gt</a></li>';
+				html2 += '<li class="page-item">';
+				html2 += '<a class="page-link" href="<c:url value="/crew/detail/${crew.crewIdx}&'+next+'"/>">&gt</a></li>';
 				$('#paging').html(html2);
 			}
 		});                                                                                                                     
@@ -100,7 +199,7 @@
 		<section>
 			<div class="box">
 				<div class="card">
-					<img src="<c:url value='/images/crew/${crew.crewPhoto}'/>" class="card-img-top" alt="...">
+					<img src="<c:url value='/images/crew/${crew.crewPhoto}'/>" class="card-img-top" alt="..." id="cardImg">
 						
 					<div class="card-body">
 					
@@ -113,7 +212,7 @@
 						</div>
 						
 						<p class="card-text">${crew.crewDiscription}</p>
-						<p class="crew_hashtag">${crew.crewTag}</p>
+						<ul class="crew_hashtag" id="crewHashTag"></ul>
 						
 						<div class="crew_information">
 							<span class="crew_captain">
@@ -129,13 +228,16 @@
 								<p>${crew.crewCommentNum}</p>
 							</span>
 						</div>
-						
 						<c:if test="${crew.isReg ne true}">
-							<div class="join_section">
-	              <a href="<c:url value='/crew/memberReg/${crew.crewIdx}'/>" class="btn btn-sm btn-light">가입하기</a>
+							<div class="join_section" id="joinToCrew">
+	              <button class="btn btn-light">가입하기</button>
 	            </div>
             </c:if>
-						
+            <c:if test="${crew.isReg eq true and sessionScope.member.memberIdx ne crew.memberIdx}">
+            	<div class="join_section" id="outFromCrew">
+            		<button class="btn btn-light">탈퇴하기</button>
+            	</div>
+            </c:if>
 					</div>
 				</div>
 				

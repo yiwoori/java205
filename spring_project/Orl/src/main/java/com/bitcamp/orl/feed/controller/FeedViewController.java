@@ -37,16 +37,11 @@ public class FeedViewController {
          Model model
          ) {
 
-      // 피드 상세보기
+      // 피드 상세
       FeedView feedview = viewService.getFeedView(boardIdx);
       model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));
-      System.out.println(feedview);
-      
-      // 피드 댓글 보기			 //비동기통신 추가**************		
-      List<FeedComment> feedComments = commentService.getFeedComment(boardIdx);
-      model.addAttribute("selectFeedComment", commentService.getFeedComment(boardIdx));
-     
-      
+      System.out.println("feedview controller => "+feedview);
+
       // session에 있는 나의 memberIdx 필요
        MemberVo memberVo = (MemberVo) request.getSession().getAttribute("memberVo");
        int myIdx = memberVo.getMemberIdx();
@@ -56,6 +51,7 @@ public class FeedViewController {
        model.addAttribute("likeStatus",likeStatus);
       
       return "/feed/feedview";
+      
    }
 
 	
@@ -63,18 +59,46 @@ public class FeedViewController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String getFeedView2(
 			@PathVariable("boardIdx") int boardIdx,
+			@PathVariable("memberIdx") int memberIdx,
+			FeedCommentRequest commentRequest,
 			HttpServletRequest request,
 			Model model
 			) {
 		
-		String comment = request.getParameter("comment");
-		
-		commentingService.insertComment(request, boardIdx, comment);
-		System.out.println(comment);
+	      // 피드 상세보기
+	      FeedView feedview = viewService.getFeedView(boardIdx);
+	      model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));
+	      System.out.println("feedview controller => "+feedview);
+	      
+	      commentingService.insertComment(commentRequest, request);
+
+			//댓글 작성
+			model.addAttribute("boardCommentIdx", commentRequest.getBoardCommentIdx());
+			model.addAttribute("comment", commentRequest.getComment());
+			model.addAttribute("boardIdx", commentRequest.getBoardIdx());
+			model.addAttribute("memberIdx", commentRequest.getMemberIdx());
 		
 		return "/feed/feedview";
 	}
 
+	
+	//피드 수정
+	@RequestMapping(value = "/feed/feededit/{boardIdx}", method = RequestMethod.POST)
+	public String editFeed(
+			@PathVariable("boardIdx") int boardIdx,
+			FeedEdit feedEdit,
+			HttpServletRequest request,
+			Model model
+			) {
+		
+		int result = viewService.editFeed(boardIdx, feedEdit, request);
+		
+		model.addAttribute("boardDiscription", feedEdit.getBoardDiscription());
+		model.addAttribute("hashtag", feedEdit.getHashtag());
+		model.addAttribute("tag", feedEdit.getTag());
+		
+		return "/feed/feedview";
+	}
 	
 	
 }

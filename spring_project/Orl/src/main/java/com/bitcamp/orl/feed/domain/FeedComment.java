@@ -3,7 +3,7 @@ package com.bitcamp.orl.feed.domain;
 public class FeedComment {
 	
 	//피드 상세보기 (댓글)
-	private int boardCommnetIdx;
+	private int boardCommentIdx;
 	private String comment;
 	private int boardIdx;
 	private int memberIdx;
@@ -14,9 +14,15 @@ public class FeedComment {
 		
 	}
 
-	public FeedComment(int boardCommnetIdx, String comment, int boardIdx, int memberIdx, String memberNickname,
+	public FeedComment(String comment, int boardIdx, int memberIdx) {
+		this.comment = comment;
+		this.boardIdx = boardIdx;
+		this.memberIdx = memberIdx;
+	}
+
+	public FeedComment(int boardCommentIdx, String comment, int boardIdx, int memberIdx, String memberNickname,
 			String memberProfile) {
-		this.boardCommnetIdx = boardCommnetIdx;
+		this.boardCommentIdx = boardCommentIdx;
 		this.comment = comment;
 		this.boardIdx = boardIdx;
 		this.memberIdx = memberIdx;
@@ -24,12 +30,12 @@ public class FeedComment {
 		this.memberProfile = memberProfile;
 	}
 
-	public int getBoardCommnetIdx() {
-		return boardCommnetIdx;
+	public int getBoardCommentIdx() {
+		return boardCommentIdx;
 	}
 
-	public void setBoardCommnetIdx(int boardCommnetIdx) {
-		this.boardCommnetIdx = boardCommnetIdx;
+	public void setBoardCommentIdx(int boardCommentIdx) {
+		this.boardCommentIdx = boardCommentIdx;
 	}
 
 	public String getComment() {
@@ -74,7 +80,7 @@ public class FeedComment {
 
 	@Override
 	public String toString() {
-		return "FeedComment [boardCommnetIdx=" + boardCommnetIdx + ", comment=" + comment + ", boardIdx=" + boardIdx
+		return "FeedComment [boardCommentIdx=" + boardCommentIdx + ", comment=" + comment + ", boardIdx=" + boardIdx
 				+ ", memberIdx=" + memberIdx + ", memberNickname=" + memberNickname + ", memberProfile=" + memberProfile
 				+ "]";
 	}

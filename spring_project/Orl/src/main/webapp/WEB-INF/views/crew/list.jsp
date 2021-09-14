@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>크루</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -40,7 +40,9 @@ $(document).ready(function(){
 	$.ajax({
 		url:'<c:url value="/crew/crewName"/>',
 		type:'GET',
-		data:{searchType:'${searchType}'},
+		data:{ 
+			searchType:'${searchType}'
+		},
 		dataType : 'json',
 		success:function(data){
 			cList = data;
@@ -81,7 +83,6 @@ $(document).ready(function(){
 	crewList(cList);
 	});
 });
-
 function crewList(cList){
 		var ccList=[];
 		ccList=cList;
@@ -95,13 +96,12 @@ function crewList(cList){
 					html+='<div class="card shadow">';
 					html+='<div class="inner">';
 					html+='<div>';
-					html+='<a href="<c:url value="/crew/detail/'+item.crewIdx+'&1"/>">';
+					html+='<a href="<c:url value="/crew/detail?crewIdx='+item.crewIdx+'&currentPageNum=1"/>">';
 					html+='<img src="<c:url value="/images/crew/'+item.crewPhoto+'"/>"  class="card-img-top" alt="card image cap">';
           html+='<div class="card-body text-left">';
           html+='<h4 class="card-title">크루 이름: '+item.crewName+' </h4>';
           html+='<p class="card-text">크루장: '+item.memberNickName+'</p>';
           html+='<p class="card-text">크루소개 : '+item.crewDiscription+'</p>';
-          html+='<a href="#" class="btn btn-success">GO</a>';
           html+='</div>';
           html+='</a>';
 					html+='</div>';
@@ -126,7 +126,7 @@ function crewList(cList){
 
 					<div class="article-crew">
 						<div>
-							<a href='<c:url value="/crew/detail/${crew.crewIdx}&1"/>'> <img
+							<a href='<c:url value="/crew/detail?crewIdx=${crew.crewIdx}&currentPageNum=1"/>'> <img
 								src="<c:url value='/images/crew/${crew.crewPhoto}'/>"></a>
 						</div>
 						<p>${crew.crewName}</p>
@@ -140,12 +140,12 @@ function crewList(cList){
 		<div class="container">
 			<div class="search-box">
 				<div class="dropdown">
-					<h1>POPULAR CREW</h1>
+					<h1>CREW</h1>
 					<button class="curved" id="nameList">이름순으로 보기</button>
 					<button class="curved" id="newestList">최신순으로 보기</button>
 					<button class="curved" id="oldList">오랜된 순으로 보기</button>
 				</div>
-				<form action="" name="frm">
+				<form name="frm">
 					<div class="search-drop">
 						<div class="searchType">
 							<select name="searchType">
@@ -156,10 +156,9 @@ function crewList(cList){
 						</div>
 						<div class="boxSearch">
 							<span class="icon"><i class="fa fa-search"
-								aria-hidden="true" onclick="search_onclick_submit"></i></span> <input
-								id="search" class="search"
-								onkeypress="if( event.keyCode == 13 ){search_onclick_submit;}"
-								type="text" name="keyword" placeholder="Type to search">
+								aria-hidden="true" onclick="search_onclick_submit"></i></span>
+								<input id="search" class="search" onkeypress="if( event.keyCode == 13 ){search_onclick_submit;}"
+									type="text" name="keyword" placeholder="Type to search">
 						</div>
 					</div>
 				</form>

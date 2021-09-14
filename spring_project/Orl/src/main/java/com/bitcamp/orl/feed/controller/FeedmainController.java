@@ -26,11 +26,14 @@ public class FeedMainController {
 	
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String getFeedMain(Model model) {
+	public String getFeedMain(
+//			@PathVariable("memberIdx") int memberIdx,
+//			@PathVariable("boardIdx") int boardIdx,
+			Model model) {
 		
 		//피드 기본 정렬
-		List<NewFeedList> newFeedList = listservice.selectNewFeed();
-		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
+//		List<NewFeedList> newFeedList = listservice.selectNewFeed();
+//		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
 		
 		return "feed/feedmain";
 	}
@@ -45,15 +48,15 @@ public class FeedMainController {
 			throws IllegalStateException, IOException {
 		
 		//피드 기본 정렬
-		List<NewFeedList> newFeedList = listservice.selectNewFeed();
-		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
-		//비동기통신 추가
+//		List<NewFeedList> newFeedList = listservice.selectNewFeed();
+//		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
 		
 		//피드 작성
 		model.addAttribute("boardPhoto", feedrequest.getBoardPhoto());
 		model.addAttribute("boardDiscription", feedrequest.getBoardDiscription());
 		model.addAttribute("hashtag", feedrequest.getHashtag());
 		model.addAttribute("tag", feedrequest.getTag());
+		
 		createService.insert(feedrequest, request);
 
 		return "feed/feedmain";

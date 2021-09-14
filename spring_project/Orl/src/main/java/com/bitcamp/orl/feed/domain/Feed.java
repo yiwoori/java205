@@ -19,8 +19,6 @@ public class Feed {
 	public Feed() {
 	}
 	
-	
-
 	public Feed(int boardIdx, String boardPhoto, String boardDiscription, Timestamp boardDate, String hashtag,
 			String tag, int memberIdx, String memberNickname) {
 		super();

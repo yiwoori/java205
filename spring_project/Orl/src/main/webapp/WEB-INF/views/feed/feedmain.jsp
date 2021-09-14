@@ -15,15 +15,6 @@
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/frame/default/header.jsp"%>
-
-	<!-- modal_feedview -->
-<%-- 	<div class="modal_feedview">
-		<div class="modal_content">
-			<section class="container">
-				<%@ include file="/WEB-INF/views/feed/feedview.jsp"%>
-			</section>
-		</div>
-	</div> --%>
 	
 	<!-- modal_createfeed -->
 	<div class="modal_createfeed">

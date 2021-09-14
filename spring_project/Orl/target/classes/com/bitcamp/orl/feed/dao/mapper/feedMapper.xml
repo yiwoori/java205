@@ -9,19 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="createFeed"
 			parameterType="com.bitcamp.orl.feed.domain.Feed"
 			useGeneratedKeys="true" keyProperty="boardIdx">
-		INSERT INTO photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx, memberNickname)
-		VALUES (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx}, #{memberNickname});
+		INSERT INTO photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx)
+		VALUES (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx});
 	</insert>
-	
-	<!-- 피드 삭제 -->
-	<delete id="deleteFeed">
-		DELETE FROM final.photoBoard WHERE boardIdx = #{boardIdx};
-	</delete>
-	
-	<!-- 피드 수정 -->
-	<update id="editFeed">
-		UPDATE final.photoBoard SET boardDiscription=#{boardDiscription}, hashtag=#{hashtag}, tag=#{tag} WHERE boardIdx = #{boardIdx};
-	</update>
 	
 	<!-- 피드 상세보기 -->
 	<select id="selectFeedView"
@@ -31,21 +21,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE B.boardIdx = #{boardIdx};
 	</select>
 	
-	<!-- 피드 상세보기-댓글작성 -->
+	<!-- 피드 수정 -->
+	<update id="editFeed">
+		UPDATE final.photoBoard SET boardDiscription=#{boardDiscription}, hashtag=#{hashtag}, tag=#{tag}
+		WHERE boardIdx = #{boardIdx};
+	</update>
+	
+	<!-- 피드 삭제 -->
+	<delete id="deleteFeed">
+		DELETE FROM final.photoBoard WHERE memberIdx =#{memberIdx} and boardIdx = #{boardIdx};
+	</delete>
+	
+	<!-- 피드 댓글 작성 -->
 	<insert id="insertFeedComment"
 			parameterType="com.bitcamp.orl.feed.domain.FeedComment"
-			useGeneratedKeys="true" keyProperty="boardCommnetIdx">
+			useGeneratedKeys="true" keyProperty="boardCommentIdx">
 		INSERT INTO final.photoBoardComment (comment, boardIdx, memberIdx) VALUES (#{comment}, #{boardIdx}, #{memberIdx});
 	</insert>
 	
+	<!-- 피드 댓글 수정 -->
+	<update id="editComment">
+		UPDATE final.photoBoardComment SET comment=#{comment} WHERE boardCommentIdx = #{boardCommentIdx};
+	</update>
 	
-	<!-- 피드 상세보기-댓글리스트(최신순) -->
+	<!-- 피드 댓글 삭제 -->
+	<delete id="deleteComment">
+		DELETE FROM final.photoBoardComment WHERE boardCommentIdx = #{boardCommentIdx};
+	</delete>
+	
+	<!-- 피드 상세보기-댓글리스트 -->
 	<select id="selectFeedComment"
 			resultType="com.bitcamp.orl.feed.domain.FeedComment">
-		SELECT C.boardCommnetIdx, C.comment, C.memberIdx, M.memberNickname, M.memberProfile
+		SELECT C.boardCommentIdx, C.comment, C.memberIdx, M.memberNickname, M.memberProfile
 		FROM final.photoBoardComment AS C NATURAL JOIN final.member AS M
 		WHERE boardIdx = #{boardIdx}
-		ORDER BY C.boardCommnetIdx DESC;
+		ORDER BY C.boardCommentIdx DESC;
 	</select>
 
 	<!-- 전체 피드 리스트 (최신순) -->
@@ -55,14 +65,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM final.photoBoard AS B NATURAL JOIN final.member AS M
 			ORDER BY B.boardIdx DESC;
 	</select>
-	
-	<!-- 전체 피드 리스트 (인기순) -->
-<!-- 	<select id="selectHotFeed"
-			resultType="com.bitcamp.orl.feed.domain.HotFeedList">
-			select count(likeIdx), B.boardIdx, B.boardPhoto, M.memberIdx, M.memberNickname, M.memberProfile
-			from final.like as L natural join final.photoBoard as B natural join final.member as M
-			where B.boardIdx = #{boardIdx};
-	</select> -->
 
 	<!--  -->
 	<!--  -->

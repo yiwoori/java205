@@ -16,53 +16,49 @@ button, input {
 button:hover, input:hover, a:hover {
 	cursor: pointer;
 }
-.background {
-	height: 1100px;
-	background-color:#f8f8f8;
-}
-
-/* page back */
-.pageBack {
-	position: absolute;
-	top: 230px;
-	left: 350px;
-}
-.pageBack img {
-	width: 70px;
-}
 
 /* container */
-.container_view {
-	background-color:white;
-	display: flex;
-	position: relative;
-	width: 1000px;
-	height: 650px;
-	top: 550px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-	border-radius: 5px;
+.container_edit {
+	margin-top: 200px;
+	margin-left: 600px; /* 모달창 위치 */
+    display: flex;
+    width: 1000px;
+    height: 650px;
+}
+
+/* close button */
+.e_close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+}
+.e_close>img {
+    width: 20px;
+}
+
+.e_name {
+    font-weight: bold;
 }
 
 /* creator nickname */
-.v_nicknam {
+.e_nicknam {
 	font-weight: bold;
 }
 
 /* feed photo */
-.v_leftbox {
+.e_leftbox {
 	width: 55%;
 	position: relative;
 }
-.v_leftbox>img {
+.e_leftbox>img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
 /* tag icon */
-.v_leftbox>button>img {
+.e_leftbox>button>img {
 	position: absolute;
 	bottom: 2%;
 	right: 2%;
@@ -70,7 +66,8 @@ button:hover, input:hover, a:hover {
 }
 
 /* feed contents */
-.v_rightbox {
+.e_rightbox {
+	background-color: white;
 	padding-left: 7px;
 	width: 45%;
 	display: flex;
@@ -78,16 +75,16 @@ button:hover, input:hover, a:hover {
 }
 
 /* profilephoto div */
-.v_profile {
+.e_profile {
 	position: relative;
 	height: auto;
 }
-.v_photo { /* 위치 조정 필요 */
+.e_photo { /* 위치 조정 필요 */
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
 }
-.v_profile img {
+.e_profile img {
 	margin: 30%;
 	width: 100%;
 	height: 100%;
@@ -98,7 +95,7 @@ button:hover, input:hover, a:hover {
 }
 
 /* creator nickname */
-.v_profile>a {
+.e_profile>a {
 	position: absolute;
 	left: 105px;
 	top: 40px;
@@ -112,18 +109,8 @@ button:hover, input:hover, a:hover {
 	font-weight: bold;
 	font-size: 15px;
 } */
-.edit_div {
-    position:absolute;
-    right:100px;
-    background-color: #fdef7b;
-    border-radius: 5px;
-}
-.delete_div{
-	position:absolute;
-	right:30px;
-	background-color: #fdef7b;
-	border-radius: 5px;
-}
+
+/* 수정 / 삭제 */
 .feedview_btn {
 	display: block;
 	width: 60px;
@@ -132,12 +119,8 @@ button:hover, input:hover, a:hover {
 	font-size: 13px;
 	color: #545454;
 	cursor: pointer;
-	/* 0901수정 -> 기존에 div 영역에서 하던 설정을 여기에서 하는걸로! */
 	border: 1px solid grey;
 	border-radius: 5px;
-/* 	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1); */
-	/* 0901 버튼 색 테스트  회색*/
-	/* background-color:#f8f8f8; */
 }
 
 /* contents div */
@@ -207,7 +190,7 @@ button:hover, input:hover, a:hover {
 	overflow: hidden;
 	height: auto;
 }
-.v_nickname {
+.e_nickname {
 	padding-right: 10px;
 	font-weight: 600;
 }
@@ -216,63 +199,6 @@ button:hover, input:hover, a:hover {
 }
 .comment_delete {
 	
-}
-
-/* commenting div */
-.commentingbox {
-	display: flex;
-	flex-direction: column;
-	bottom: 0;
-	height: 160px;
-	border-top: 1px solid #C9C0AE;
-}
-/* commenting nav */
-.buttonline {
-	display: flex;
-	position: relative;
-	justify-content: space-between;
-	border-bottom: 1px solid #C9C0AE;
-	padding-bottom: 5px;
-}
-.buttonline button {
-	position: absolute;
-	top: 10px;
-}
-.buttonline img {
-	position: absolute;
-	width: 25px;
-}
-.like {
-	left: 20px;
-}
-.share {
-	left: 65px;
-}
-
-/* like count */
-.likeline {
-	padding-top: 16px;
-	padding-right: 20px;
-}
-.likeline>p {
-	padding-bottom: 5px;
-}
-
-/* comment input */
-.commentingline {
-	display: flex;
-	justify-content: space-between;
-	height: 100%;
-}
-.textbox {
-	width: 85%;
-}
-.textbox>input {
-	margin-left: 5%;
-	outline: none;
-	width: 95%;
-	height: 100%;
-	font-size: 17px;
 }
 
 /* comment submit */

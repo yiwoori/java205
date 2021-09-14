@@ -57,24 +57,31 @@ public interface FeedDao {
 	int createFeed(Feed feed);
 
 	// 피드 삭제
-	int deleteFeed(@Param("boardIdx") int boardIdx);
+	int deleteFeed(@Param("memberIdx") int memberIdx, @Param("boardIdx") int boardIdx);
 
 	// 피드 수정
+	int editFeed(
+			@Param("boardDiscription") String boardDiscription,
+			@Param("hashtag") String hashtag,
+			@Param("tag") String tag,
+			@Param("boardIdx") int boardIdx);
 	
-	// 피드 검색
-
+	// 피드 댓글 작성
+	int insertFeedComment(FeedComment feedcomment);
+	
+	// 댓글 삭제
+	int deleteComment(@Param("boardCommentIdx") int boardCommentIdx);
+	
+	// 댓글 수정
+	int editComment(@Param("comment") String comment, @Param("boardCommentIdx") int boardCommentIdx);
+	
+	// 피드 댓글 리스트
+	List<FeedComment> selectFeedComment(@Param("boardIdx") int boardIdx);
+	
 	// 피드 상세보기
 	FeedView selectFeedView(int boardIdx);
 	
-	// 피드 상세보기 (댓글 작성)
-	int insertFeedComment(String comment, int boardIdx, int memberIdx);
-	
-	// 피드 상세보기 (댓글 리스트)
-	List<FeedComment> selectFeedComment(int boardIdx);
-
 	// 전체 피드 리스트 (최신순)
 	List<NewFeedList> selectNewFeed();
-
-	// 전체 피드 리스트 (인기순)
 
 }

@@ -25,7 +25,7 @@ public class FeedCommentService {
 		dao = template.getMapper(FeedDao.class);
 		feedComments = dao.selectFeedComment(boardIdx);
 		
-		System.out.println("feed comment load");
+		System.out.println("feed comment service load");
 		
 		return feedComments;
 		
