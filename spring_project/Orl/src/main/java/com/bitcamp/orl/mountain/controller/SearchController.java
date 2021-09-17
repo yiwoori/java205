@@ -16,28 +16,30 @@ import com.bitcamp.orl.mountain.service.MountainLocInfoViewService;
 public class SearchController {
 
 
-    @Autowired
-    private MountainLocInfoViewService locService;
-
-    // 검색결과 보여주는 컨트롤러
-    @RequestMapping("/mountain/search")
-    public String search(HttpServletRequest request, Model model) {
-
-        String search = null;
-        search = request.getParameter("mysearch");
-
-        List<MountainLocInfo> mountainListByName = null;
-        List<MountainLocInfo> mountainListByLoc = null;
-
-        mountainListByName = locService.getMountainSearchName(search);
-
-        mountainListByLoc = locService.getMountainLocInfo(search);
-
-        model.addAttribute("mountainListByName", mountainListByName);
-        model.addAttribute("mountainListByLoc", mountainListByLoc);
-        return "mountain/search";
-
-
-    }
-
+	@Autowired
+	private MountainLocInfoViewService locService;
+	
+	
+	// 검색시 검색결과보여주는 컨트롤러
+	@RequestMapping("/mountain/search")
+	public String search(HttpServletRequest request,Model model
+		) {
+		
+		String search =null;
+		search=request.getParameter("mysearch"); 
+		
+	
+			List<MountainLocInfo> mountainListByName = null;
+			List<MountainLocInfo> mountainListByLoc = null;
+			
+			mountainListByName = locService.getMountainSearchName(search);
+			mountainListByLoc= locService.getMountainLocInfo(search);
+			
+			model.addAttribute("mountainListByName",mountainListByName);
+			model.addAttribute("mountainListByLoc",mountainListByLoc);
+			return "mountain/search";
+			
+		
+	}
+	
 }

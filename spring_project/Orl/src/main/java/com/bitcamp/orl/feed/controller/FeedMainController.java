@@ -12,44 +12,50 @@ import org.springframework.web.bind.annotation.*;
 
 import com.bitcamp.orl.feed.domain.*;
 import com.bitcamp.orl.feed.service.*;
+import com.bitcamp.orl.member.domain.*;
 
 @Controller
 @RequestMapping("/feed/feedmain")
 public class FeedMainController {
+	
+	//피드 메인 페이지
 
 	@Autowired
 	private CreateFeedService createService;
-
+	
 	@Autowired
-	private FeedListService listservice;
-
+	private FeedListService listService;
 	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFeedMain(
-//			@PathVariable("memberIdx") int memberIdx,
-//			@PathVariable("boardIdx") int boardIdx,
-			Model model) {
+			Model model,
+			HttpServletRequest request) {
 		
-		//피드 기본 정렬
-//		List<NewFeedList> newFeedList = listservice.selectNewFeed();
-//		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
+		// 피드 인기순 정렬 ajax 안하고
+	    List<NewFeedList> feedOrderByLike = listService.selectFeedOrderByLike();
+	    
+	    //추가 (09.16.우리)
+	    Member member = listService.getMember(request);
+	    System.out.println("member : "+ member);
+	    
+	    //모델에 저장
+	    model.addAttribute("member", member);	//추가 (09.16.우리)
+	    model.addAttribute("feedOrderByLike",feedOrderByLike);
 		
 		return "feed/feedmain";
-	}
-
-	
+	}	
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String getFeedMainPost(
+	public String postFeedMain(
 			FeedCreateRequest feedrequest, 
 			HttpServletRequest request,
 			Model model)
 			throws IllegalStateException, IOException {
 		
-		//피드 기본 정렬
-//		List<NewFeedList> newFeedList = listservice.selectNewFeed();
-//		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
+		// 피드 인기순 정렬 ajax 안하고
+	    List<NewFeedList> feedOrderByLike = listService.selectFeedOrderByLike();
+	    model.addAttribute("feedOrderByLike",feedOrderByLike);
 		
 		//피드 작성
 		model.addAttribute("boardPhoto", feedrequest.getBoardPhoto());
@@ -58,8 +64,8 @@ public class FeedMainController {
 		model.addAttribute("tag", feedrequest.getTag());
 		
 		createService.insert(feedrequest, request);
-
-		return "feed/feedmain";
+	    
+		return "redirect:/feed/feedmain";
 	}
 
 	

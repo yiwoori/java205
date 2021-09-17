@@ -67,18 +67,18 @@ public class FeedManageService {
 		
 		return result;
 	}
-	
-	//댓글 수정
-	public int editComment(String comment, int boardCommentIdx) {
-		
-		int result = 0;
-		
+
+    // 산별 피드보기 (용민 작성)
+    public List<NewFeedList> getNewFeedByMountain(String mName) {
+		System.out.println("FeedManageService - New Feed List");
+		List<NewFeedList> newList = null;
+
 		dao = template.getMapper(FeedDao.class);
-		result = dao.editComment(comment, boardCommentIdx);
-		
-		return result;
+		newList = dao.selectNewFeedByMountain(mName);
+
+		System.out.println("manage service load");
+
+		return newList;
+
 	}
-
-	
-
 }

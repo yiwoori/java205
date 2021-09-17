@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bitcamp.orl.crew.dao.Dao;
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.domain.CrewInsertRequest;
-import com.bitcamp.orl.member.domain.Member;
+import com.bitcamp.orl.member.domain.MemberDto;
 
 @Service
 public class CrewInsertService {
@@ -25,6 +25,7 @@ public class CrewInsertService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
+	//크루 생성
 	public Crew insert(
 			CrewInsertRequest crewRequest,
 			HttpServletRequest request
@@ -33,6 +34,11 @@ public class CrewInsertService {
 		File newFile = null;
 		Crew crew = crewRequest.toCrew();
 		
+		//크루 이름이 3글자 이상이 안되면 null 리턴
+		if(crewRequest.getCrewName().trim().length()<3) {
+			return null;
+		}
+		
 		try {
 			
 			if (crewRequest.getCrewPhoto() != null && !crewRequest.getCrewPhoto().isEmpty()) {
@@ -40,16 +46,16 @@ public class CrewInsertService {
 				crew.setCrewPhoto(newFile.getName());
 			}
 			
-		    Member member = (Member)(request.getSession().getAttribute("member"));
+			MemberDto dto = (MemberDto)(request.getSession().getAttribute("memberVo"));
 		    
-		    if (member != null) {			
-		    	crew.setMemberIdx(member.getMemberIdx());
-		    	crew.setMemberNickName(member.getMemberNickname());
+		    if (dto != null) {			
+		    	crew.setMemberIdx(dto.getMemberIdx());
+		    	crew.setMemberNickName(dto.getMemberNickname());
 		    }
 		    
 			dao = template.getMapper(Dao.class);
 			dao.insertCrew(crew);
-			dao.insertCrewReg(member.getMemberIdx(), crew.getCrewIdx());
+			dao.insertCrewReg(dto.getMemberIdx(), crew.getCrewIdx());
 		
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -62,6 +68,7 @@ public class CrewInsertService {
 		return crew;
 	}
 	
+	//파일 저장 method
 	public File saveFile(
 			HttpServletRequest request, 
 			MultipartFile file) {
