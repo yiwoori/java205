@@ -64,16 +64,20 @@
 						<textarea placeholder="게시글을 입력해주세요" name="boardDiscription" id="boardDiscription" autocomplete="off"></textarea>	<!-- 수정 (09.17.우리) -->
 					</div>
 					
-					<!-- 해시태그 입력 -->
-					<div class="hashtagbox">
-						<p>해시태그</p>
-						<input type="text" placeholder="#해시태그 입력" name="hashtag" id="hashtag" autocomplete="off">
-					</div>
-					
 					<!-- 태그 입력 -->
 					<div class="tagbox">
 						<p>태그</p>
 						<input type="text" placeholder="@닉네임 입력" name="tag" id="tag" autocomplete="off">
+					</div>
+					
+					<!-- 해시태그 입력 -->
+					<div class="hashtagbox">
+						<p>해시태그</p>
+						<input type="text" placeholder="Enter" name="hashtag" id="hashtag" autocomplete="off">
+						
+						<div class="hashtagShow">
+							<ul id="tag-list"></ul>
+						</div>
 					</div>
 					
 					<!-- 피드 작성 버튼 -->
@@ -96,6 +100,63 @@
 
 
 	<script>
+	
+		$(document).ready(function() {
+			
+			var tag = {};
+			var counter = 0;
+			
+			/* 입력 값을 태그로 생성 */
+			function addTag(value) {
+				tag[counter] = value;
+				counter++; /* del-btn의 고유 id */
+			}
+			
+			
+			/* 서버에 제공 */
+			$('#feedform').on('submit', function (e) {
+				$(this).submit();
+			});
+			
+			$('#hashtag').on('keypress', function (e) {
+				
+				var self = $(this);
+				
+				/* 엔터키나 스페이스바 눌렀을 때 실행 */
+				if(e.key == "Enter" || e.keyCode == 32) {
+					var tagValue = self.val();	//값 가져오기
+					
+					console.log('tagValue : '+tagValue);
+					
+					if(tagValue !== "") {
+						//같은 태그 있는지 검사하고 있으면 해당 값이 array로 리턴된다
+						var result = Object.values(tag).filter(function (word) {
+		                    return word == tagValue;
+		                })
+
+		                // 해시태그가 중복되었는지 확인
+		                if (result.length == 0) {
+		                    $("#tag-list").append("<li class='tag-item'>" + tagValue + "<span class='del-btn' idx='" + counter + "'>x" +
+		                        "</span><input type='hidden' name='crewTag' id='rdTag' value=" + tagValue + "></li>");
+		                    addTag(tagValue);
+		                    self.val("");
+		                } else {
+		                    alert("태그값이 중복됩니다.");
+		                }
+		            }
+		            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+				}
+			});
+			
+		    // 삭제 버튼 
+		    // 인덱스 검사 후 삭제
+		    $(document).on("click", ".del-btn", function (e) {
+		        var index = $(this).attr("idx");
+		        tag[index] = "";
+		        $(this).parent().remove();
+		    });
+			
+		});
 	
 		/* 모달창 on off */
 		$(function() {
@@ -129,6 +190,8 @@
 			/* Preview reset */
 			$('.c_close').click(function(){
 				$('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>');
+				/* $.removeClass('.tag-item'); */
+				/* 수정 필요 */
 			});
 			
 		};

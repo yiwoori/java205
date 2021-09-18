@@ -28,14 +28,12 @@ public class FeedEditController {
 
 		// 피드 상세
 		FeedView feedview = viewService.getFeedView(boardIdx);
-		model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));
-		System.out.println("feedview controller => " + feedview);
 
-		// session에 있는 나의 memberIdx 필요
 		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
-		// 1. 첫 요청에 하트의 결과를 보여줘야한다. 내가 이 게시물을 좋아요 하는지 안 하는지!
 		int likeStatus = viewService.getLikeStatus(myIdx, boardIdx);
+		
 		// 모델에 저장
+		model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));
 		model.addAttribute("likeStatus", likeStatus);
 
 		return "/feed/feedEdit";
@@ -63,19 +61,16 @@ public class FeedEditController {
 		model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));
 		System.out.println("feedview controller => " + feedview);
 		
-		// session에 있는 나의 memberIdx 필요
+		//	좋아요
 		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
-		// 1. 첫 요청에 하트의 결과를 보여줘야한다. 내가 이 게시물을 좋아요 하는지 안 하는지!
 		int likeStatus = viewService.getLikeStatus(myIdx, boardIdx);
+		int totalLikeCount = viewService.getTotalLikeCount(boardIdx);
+		
 		// 모델에 저장
 		model.addAttribute("likeStatus", likeStatus);
-
-		// 2. 첫 요청에 좋아요 갯수를 보여준다.
-		int totalLikeCount = viewService.getTotalLikeCount(boardIdx);
-		// 모델에 저장
 		model.addAttribute("totalLikeCount", totalLikeCount);
 		
-		return "/feed/feedview";
+		return "redirect:/feed/feedview/"+memberIdx+"&"+boardIdx;
 
 	}
 

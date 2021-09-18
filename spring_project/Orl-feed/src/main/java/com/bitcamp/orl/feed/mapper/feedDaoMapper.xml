@@ -39,6 +39,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		C.boardCommentIdx DESC;
 	</select>
 	
+	<!-- 추가 (09.18.우리) -->
+	<!-- 피드 선택 -->
+	<select id="selectFeed"
+			resultType="com.bitcamp.orl.feed.domain.Feed">
+		SELECT * FROM final.photoBoard
+		WHERE boardIdx = #{boardIdx}
+	</select>
 	
 	
 	

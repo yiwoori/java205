@@ -149,7 +149,6 @@ textarea:focus {
 	width: 320px;
 	height: 200px;
 	line-height: 150%;
-	font-size: 15px;
 }
 /* 게시글 placeholder */
 textarea::placeholder {

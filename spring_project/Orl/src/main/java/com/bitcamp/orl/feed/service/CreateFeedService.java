@@ -73,6 +73,8 @@ public class CreateFeedService {
 		// 저장경로 : 시스템 경로
 		String saveDir = request.getSession().getServletContext().getRealPath(UPLOAD_URI);
 		File newDir = new File(saveDir);
+		
+		System.out.println("저장경로 -> "+saveDir);
 
 		// 폴더 없으면 생성
 		if (!newDir.exists()) {

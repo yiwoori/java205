@@ -20,6 +20,10 @@ public interface FeedDao {
 	// 전체 피드 리스트 (최신순)
 	List<NewFeedList> selectNewFeed();
 	
+	// 추가 (09.18.우리)
+	// 특정 피드 선택
+	Feed selectFeed(@Param("boardIdx") int boardIdx);
+	
 	
 	
 	// 산별 피드보기(용민)

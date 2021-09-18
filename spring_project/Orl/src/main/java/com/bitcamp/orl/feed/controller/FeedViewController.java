@@ -58,26 +58,6 @@ public class FeedViewController {
 
 		return "redirect:/feed/feedview/"+memberIdx+"&"+boardIdx;
 	}
-
-	// 피드 수정
-	@RequestMapping(value = "/feed/feedview/editfeed/{memberIdx}&{boardIdx}", method = RequestMethod.POST)
-	public String postEditFeed(
-			@PathVariable("boardIdx") int boardIdx,
-			FeedEdit feedEdit,
-			HttpServletRequest request,
-			Model model) {
-
-		viewService.editFeed(boardIdx, feedEdit, request);
-
-		model.addAttribute("boardDiscription", feedEdit.getBoardDiscription());
-		model.addAttribute("hashtag", feedEdit.getHashtag());
-		model.addAttribute("tag", feedEdit.getTag());
-		model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));	// 추가 (09.16.우리)
-
-		return "/feed/feedview";
-		
-	}
-
 	
 	
 }
