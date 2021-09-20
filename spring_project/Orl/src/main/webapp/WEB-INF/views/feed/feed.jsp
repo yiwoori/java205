@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>FEED</title>
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-<link rel="stylesheet" href="<c:url value='/css/feed/feedmain.css'/>">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 .display_none {
 	display: none;
+}
+.btn_yellow {
+	background-color: #fdef7b;
 }
 </style>
 </head>
@@ -53,9 +56,9 @@
 						<!-- 피드 정렬 버튼 -->
 						<div class="keyword">
 							<!-- 기본 정렬 (최신순) -->
-							<a id="currentFeedClick">최신</a>
+							<a id="currentFeedClick" class="btn_yellow">최신순</a>
 							<!-- 선택 정렬 (인기순) -->
-							<a id="likeFeedClick">인기</a>
+							<a id="likeFeedClick">인기순</a>
 						</div>
 
 						<!-- 피드 올리기 버튼 -->
@@ -145,7 +148,6 @@
 
 
 	<script>
-	
 
 	/* 부트 서버 */
 	const bootUrl = 'http://localhost:8083';
@@ -171,6 +173,24 @@
 	});
 	/* document ready 끝 */
 	
+	
+	
+	// 인기순 정렬	/* 09.20.우리 */
+	$('#likeFeedClick').click(function() {
+		$('#likeFeedGallery').removeClass('display_none');
+		$('#fBox').addClass('display_none');
+		$('#likeFeedClick').addClass('btn_yellow');
+		$('#currentFeedClick').removeClass('btn_yellow');
+	});
+
+	// 다시 기본 정렬(최신순)	/* 09.20.우리 */
+	$('#currentFeedClick').click(function() {
+		$('#fBox').removeClass('display_none');
+		$('#likeFeedGallery').addClass('display_none');
+		$('#currentFeedClick').addClass('btn_yellow');
+		$('#likeFeedClick').removeClass('btn_yellow');
+	});
+	
 		
 		
 	/* 피드 정렬(최신) 시작 */
@@ -190,9 +210,9 @@
 				html += '		<div class="nickname">';
 				html += '			<a onclick="feedNicknameCheck(' + item.memberIdx + ')" class="nickname2">' + item.memberNickname + '</a>';
 				html += '		</div>';
-/* 				html += '		<div>';
-				html += '			<button><img src="<c:url value="/images/feed/feedw/nolike.png"/>" class="nolikeimg"></button>';
-				html += '		</div>'; */
+ 				html += '		<div>';
+				html += '			<p>' + item.boardDate + '</p>';
+				html += '		</div>';
 				html += '	</div>';
 				html += '</div>';
 
@@ -205,7 +225,7 @@
 		
 
 
-	/* 피드올리기 - 로그인 체크 */
+	/* 피드올리기 -> 로그인 체크 */
 	function loginCheck(memberIdx) {
 			
 		var idx = memberIdx;
@@ -219,7 +239,7 @@
 		
 		
 
-	/* 피드 상세보기 - 로그인 체크 */
+	/* 피드 상세보기 -> 로그인 체크 */
 	function feedLoginCheck(memberIdx, boardIdx) {
 
 		var myIdx = '${sessionScope.memberVo.memberIdx}';
@@ -237,7 +257,7 @@
 		
 		
 
-	/* 게시자 닉네임 - 로그인 체크 */
+	/* 게시자 닉네임 클릭 -> 로그인 체크 */
 	function feedNicknameCheck(memberIdx) {
 
 		/* login check */
@@ -252,22 +272,6 @@
 		}
 
 	}
-
-		
-		
-	// 인기를 클릭하면 좋아요 많은 수 정렬로 보여주기
-	$('#likeFeedClick').click(function() {
-		$('#likeFeedGallery').removeClass('display_none');
-		$('#fBox').addClass('display_none');
-
-	});
-
-	// 다시 기본정렬 클릭
-	$('#currentFeedClick').click(function() {
-		$('#fBox').removeClass('display_none');
-		$('#likeFeedGallery').addClass('display_none');
-
-	});
 		
 	</script>
 

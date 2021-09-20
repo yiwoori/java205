@@ -47,6 +47,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE boardIdx = #{boardIdx}
 	</select>
 	
+	<!-- 추가 (09.18.우리) -->
+	<!-- 닉네임 중복 체크 -->
+	<select id="selectByNickname"
+			resultType="int">
+		SELECT count(*) FROM final.member
+		WHERE memberNickname = #{Nickname}
+	</select>
+	
 	
 	
 	<!-- 용민 -->

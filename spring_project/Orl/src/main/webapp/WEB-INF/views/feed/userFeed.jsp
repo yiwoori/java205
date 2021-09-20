@@ -26,7 +26,7 @@
    <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
    <link rel="stylesheet" href="<c:url value='/css/feed/userFeed.css'/>">
    <link rel="stylesheet" href="<c:url value='/css/feed/follow.css'/>">
-   <link rel="stylesheet" href="<c:url value='/css/feed/feedmain.css'/>">
+   <link rel="stylesheet" href="<c:url value='/css/feed/feedMain.css'/>">
    
    <style>
       .display_none{

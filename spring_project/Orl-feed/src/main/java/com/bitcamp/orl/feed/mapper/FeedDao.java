@@ -24,6 +24,10 @@ public interface FeedDao {
 	// 특정 피드 선택
 	Feed selectFeed(@Param("boardIdx") int boardIdx);
 	
+	// 추가 (09.18.우리)
+	// 닉네임 중복 체크
+	int selectByNickname(@Param("memberNickname") String memberNickname);
+	
 	
 	
 	// 산별 피드보기(용민)

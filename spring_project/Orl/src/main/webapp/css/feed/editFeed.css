@@ -5,18 +5,15 @@
 	padding: 0%;
 	margin: 0%;
 }
-
 a {
 	text-decoration: none;
 	color: #000;
 }
-
 button, input {
 	border: 0;
 	background-color: #00ff0000;
 }
-
-button:hover {
+button:hover, input:hover, a:hover {
 	cursor: pointer;
 }
 textarea {
@@ -26,51 +23,69 @@ textarea {
 textarea:focus {
 	outline: none;
 }
+/* 스크롤 배경 */
+::-webkit-scrollbar {
+	background-color: white;
+}
+/* 스크롤 막대 */
+::-webkit-scrollbar-thumb {
+	height: 30px;
+	border-radius: 10px;
+	background-color: #fdef7b;
+}
+.background {
+	height: 1100px;
+	background-color: #f8f8f8;
+}
 /* 기본 설정 끝 */
 
-/* 모달창 */
-.container_create {
-	display: flex;
-	width: 1000px;
-	height: 650px;
-}
-/* 모달창 실행시 스크롤 방지 */
-.not_scroll {
-	position: fixed;
-	overflow: hidden;
-	width: 100%;
-	height: 100%
-}
-.not_scroll .cont {
-	position: relative;
-	top: 0;
+/* 뒤로가기 */
+.pageBack {
+	position: absolute;
+	top: 230px;
+	left: 350px;
 }
 
-/* 모달창 종료 버튼 */
-.c_close {
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	z-index: 1;
+.pageBack img {
+	width: 70px;
 }
-.c_close>img {
-	width: 20px;
+
+/* 피드 수정 전체 영역 */
+.container_edit {
+	background-color: white;
+	display: flex;
+	position: relative;
+	width: 1000px;
+	height: 650px;
+	top: 550px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
 }
 
 /* 왼쪽 사진 영역 */
-.c_leftbox {
+.e_leftbox {
 	width: 55%;
-	background-color: ghostwhite;
+	position: relative;
 }
-/* 프리뷰 채우기 */
-.c_leftbox>img {
+/* 피드 사진 */
+.e_leftbox>img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
+/* 태그 버튼 */
+.e_leftbox>button>img {
+	position: absolute;
+	bottom: 2%;
+	right: 2%;
+	width: 30px;
+}
 
-/* 오른쪽 컨텐츠 영역 */
-.c_rightbox {
+/* 오른쪽 수정 영역 */
+.e_rightbox {
+	padding-left: 7px;
 	width: 45%;
 	display: flex;
 	flex-direction: column;
@@ -78,21 +93,19 @@ textarea:focus {
 }
 
 /* 게시자 프로필 영역 */
-.c_profile {
+.e_profile {
 	position: relative;
 	height: 100px;
 	border-bottom: 1px solid gainsboro;
 }
-
-/* 프로필 사진 채우기 */
-.c_photo {
+/* 프로필 사진 */
+.e_photo {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
 }
 
-/* 프로필 사진 */
-.c_profile img {
+.e_profile img {
 	margin: 30%;
 	width: 60px;	/* 수정 (09.17.우리) */
 	height: 60px;	/* 수정 (09.17.우리) */
@@ -103,60 +116,39 @@ textarea:focus {
 }
 
 /* 게시자 닉네임 */
-.c_profile>a {
+.e_nickname {
+	padding-right: 10px;
+	font-weight: 600;
+}
+
+.e_profile>a {
 	position: absolute;
 	left: 110px;
-	top: 40px;
+	top: 45px;
 }
 
-/* 사진 선택 영역 */
-.filebox label {
-	position: absolute;
-	left: 300px;
-	top: 35px;
-	padding: 7px 30px;
-	font-size: 13px;
-	background-color: #FDEF7B;
-	cursor: pointer;
-	border: 1px solid grey;
-	border-bottom-color: grey;
-	border-radius: 5px;
-}
-
-/* 파일 업로드 */
-.filebox>input {
-	position: absolute;
-	width: 10px;
-	height: 10px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
-
-/* 게시글 입력 영역 */
+/* 게시글 수정 영역 */
 .contentsbox {
 	height: 250px;
 	position: relative;
-/* 	background-color: bisque; */
 }
 .contentsbox>p {
 	position: absolute;
-	left: 33px;
-	top: 50px;
+	left: 27px;
+	top: 45px;
 }
 /* 게시글 내용 */
 .contentsbox>textarea {
 	position: absolute;
-	left: 100px;
-	top: 30px;
+	left: 90px;
+	top: 25px;
 	border: 1px solid gray;
 	border-radius: 6px;
 	padding-left: 20px;
 	padding-top: 20px;
 	width: 320px;
 	height: 200px;
+	line-height: 150%;
 }
 /* 게시글 placeholder */
 textarea::placeholder {
@@ -164,57 +156,53 @@ textarea::placeholder {
 	top: 20px;
 }
 
-/* 태그 입력 영역 */
+/* 태그 수정 영역 */
 .tagbox {
 	height: 70px;
 	position: relative;
-/* 	background-color:beige; */
 }
 .tagbox>p {
 	position: absolute;
-	left: 45px;
+	left: 32px;
 	top: 20px;
 }
-
-/* 태그 입력 내용 */
+/* 태그 수정 내용 */
 .tagbox>input {
 	position: absolute;
-	left: 100px;
-	top: 13px;
+	left: 90px;
+	bottom: 23px;
 	border: 1px solid gray;
 	border-radius: 6px;
 	padding-left: 20px;
+	padding-top: 2px;
 	width: 320px;
 	height: 33px;
-	color: gray;
+	font-size: 15px;
 }
 
-/* 해시태그 입력 영역 */
+/* 해시태그 수정 영역 */
 .hashtagbox {
 	height: 120px;
 	position: relative;
 	border-bottom: 1px solid gainsboro;
-/* 	background-color: azure; */
 }
 .hashtagbox>p {
 	position: absolute;
+	left: 18px;
 	top: 10px;
-	left: 30px;
 }
-/* 해시태그 입력 내용 */
+/* 해시태그 수정 내용 */
 .hashtagbox>input {
 	position: absolute;
-	left: 100px;
+	left: 90px;
 	top: 3px;
 	border: 1px solid gray;
 	border-radius: 6px;
-	padding-left: 20px;
+	padding-left: 15px;
 	width: 320px;
 	height: 33px;
-	color: #e4a96d;
+	font-size: 14px;
 }
-
-
 /* 추가 시작 */
 .hashtagShow {
 	padding-top: 55px;
@@ -258,12 +246,12 @@ ul li.tag-item {
 
 
 
-/* 피드 게시 */
+/* 게시 버튼 영역 */
 .submit {
 	height: 90px;
 	position: relative;
+    
 }
-
 /* 게시 버튼 */
 .submit>input {
 	position: absolute;

@@ -20,6 +20,21 @@ public class FeedManageService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
+	//추가 (09.18.우리)
+	//닉네임 중복 체크
+	public String nicknameCheck(String memberNickname) {
+		
+		String result = "N";
+		
+		dao = template.getMapper(FeedDao.class);
+		
+		if(dao.selectByNickname(memberNickname)>0) {
+			result="Y";	//존재하는 닉네임
+		}
+		
+		return result;
+	}
+	
 	//수정 (09.18.우리)
 	//피드 삭제
 	public int deleteFeed(int memberIdx, int boardIdx) {

@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-<link rel="stylesheet" href="<c:url value='/css/feed/feedview.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/feed/feedView.css'/>">
 </head>
 <body>
 
@@ -84,11 +84,10 @@
 					<!-- 게시 내용 -->
 					<div class="contents">
 						<!-- 게시글 -->
-						<%-- <p>${selectFeedView.boardDiscription}</p> --%>
 						<textarea readonly>${selectFeedView.boardDiscription}</textarea>
 						<!-- 해시태그 -->
-						<div>
-							<a class="hashtag">${selectFeedView.hashtag}</a>
+						<div class="hashTag">
+							<!-- 해시태그 리스트 -->
 						</div>
 					</div>
 
@@ -198,12 +197,28 @@
 
 	/* 부트 서버 */
 	const bootUrl = 'http://localhost:8083';
+	/* 해시태그 */
+	const feedTag = '${selectFeedView.hashtag}';
 	
 	
 	
 	/* document ready START */
     $(document).ready(function(){
-
+		
+		/* 해시태그 리스트 */
+		if(feedTag == null) {
+			return;
+		} else {
+			var str = [];
+			const feedTagArr = feedTag;
+			str = feedTagArr.split(",");
+			var html = "";
+			for(var idx=1; idx<str.length; idx++) {
+				html += '<a class="tag-item">#' + str[idx] + '</a>';
+			}
+			$('.hashTag').html(html);
+		}
+		
     	
     	
         /* 뒤로 가기 (피드메인 or 유저 피드) */

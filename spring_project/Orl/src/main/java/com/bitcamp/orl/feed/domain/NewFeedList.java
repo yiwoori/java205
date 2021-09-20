@@ -1,6 +1,7 @@
 package com.bitcamp.orl.feed.domain;
 
 import java.sql.*;
+import com.fasterxml.jackson.annotation.*;
 
 public class NewFeedList {
 

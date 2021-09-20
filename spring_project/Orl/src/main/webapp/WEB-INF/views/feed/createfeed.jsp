@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>CREATE FEED</title>
 	<link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-	<link rel="stylesheet" href="<c:url value='/css/feed/createfeed.css'/>">
+	<link rel="stylesheet" href="<c:url value='/css/feed/createFeed.css'/>">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
@@ -61,7 +61,8 @@
 					<!-- 게시글 입력 -->
 					<div class="contentsbox">
 						<p>게시글</p>
-						<textarea placeholder="게시글을 입력해주세요" name="boardDiscription" id="boardDiscription" autocomplete="off"></textarea>	<!-- 수정 (09.17.우리) -->
+						<textarea placeholder="게시글을 입력해주세요" name="boardDiscription" id="boardDiscription" autocomplete="off"></textarea>
+						<!-- 수정 (09.17.우리) -->
 					</div>
 					
 					<!-- 태그 입력 -->
@@ -100,63 +101,88 @@
 
 
 	<script>
-	
-		$(document).ready(function() {
+		
+	/* document ready START */
+	$(document).ready(function() {
 			
-			var tag = {};
-			var counter = 0;
+	/******************* 해시태그 시작 *******************/
+		
+		var tag = {};
+		var counter = 0;
 			
-			/* 입력 값을 태그로 생성 */
-			function addTag(value) {
-				tag[counter] = value;
-				counter++; /* del-btn의 고유 id */
-			}
+		/* 입력 값을 태그로 생성 */
+		function addTag(value) {
+			tag[counter] = value;
+			counter++; /* del-btn의 고유 id */
+		}
 			
-			
-			/* 서버에 제공 */
-			$('#feedform').on('submit', function (e) {
-				$(this).submit();
-			});
-			
-			$('#hashtag').on('keypress', function (e) {
+		/* 서버에 제공 */
+		$('#feedform').on('submit', function (e) {
+			$(this).submit();
+		});
+		
+		/* 해시태그 입력 */
+		$('#hashtag').on('keypress', function (e) {
 				
-				var self = $(this);
+			var self = $(this);
 				
-				/* 엔터키나 스페이스바 눌렀을 때 실행 */
-				if(e.key == "Enter" || e.keyCode == 32) {
-					var tagValue = self.val();	//값 가져오기
+			/* 엔터키나 스페이스바 눌렀을 때 실행 */
+			if(e.key == "Enter" || e.keyCode == 32) {
+				var tagValue = self.val();	//값 가져오기
+							
+				if(tagValue !== "") {
 					
-					console.log('tagValue : '+tagValue);
-					
-					if(tagValue !== "") {
-						//같은 태그 있는지 검사하고 있으면 해당 값이 array로 리턴된다
-						var result = Object.values(tag).filter(function (word) {
-		                    return word == tagValue;
-		                })
+					//같은 태그 있는지 검사하고 있으면 해당 값이 array로 리턴된다
+					var result = Object.values(tag).filter(function (word) {
+		            	return word == tagValue;
+		            })
 
-		                // 해시태그가 중복되었는지 확인
-		                if (result.length == 0) {
-		                    $("#tag-list").append("<li class='tag-item'>" + tagValue + "<span class='del-btn' idx='" + counter + "'>x" +
-		                        "</span><input type='hidden' name='crewTag' id='rdTag' value=" + tagValue + "></li>");
-		                    addTag(tagValue);
-		                    self.val("");
-		                } else {
-		                    alert("태그값이 중복됩니다.");
+		            // 해시태그가 중복되었는지 확인
+		            if (result.length == 0) {
+		            	$("#tag-list").append(
+		            			"<li class='tag-item'>#" + tagValue + "<span class='del-btn' idx='" + counter + "'>x" +
+		                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + tagValue + "></li>");
+		            	
+		            	addTag(tagValue);
+		                self.val("");
+		                
+					} else {
+						alert("태그값이 중복됩니다");
 		                }
 		            }
 		            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
 				}
+				
 			});
 			
-		    // 삭제 버튼 
-		    // 인덱스 검사 후 삭제
-		    $(document).on("click", ".del-btn", function (e) {
-		        var index = $(this).attr("idx");
-		        tag[index] = "";
-		        $(this).parent().remove();
-		    });
-			
+		// 삭제 버튼 : 인덱스 검사 후 삭제
+		$(document).on("click", ".del-btn", function (e) {
+			var index = $(this).attr("idx");
+			tag[index] = "";
+			$(this).parent().remove();
 		});
+			
+	/******************* 해시태그 끝 *******************/
+		
+		
+		
+	/******************* 태그 시작 *******************/
+	
+	/* 닉네임 입력
+		-> 중복 여부 체크
+		-> 닉네임 존재하면 Y 반환
+		-> 사용 가능하게 처리
+		-> ,로 
+	*/
+		
+	/******************* 태그 끝 *******************/
+			
+	
+	
+	});
+	/* document ready END */
+	
+	
 	
 		/* 모달창 on off */
 		$(function() {
@@ -171,6 +197,11 @@
 			$(".c_close").click(function() {
 				$(".modal_createfeed").fadeOut();
 				$("html, body").removeClass("not_scroll");
+				/* 프리뷰 리셋 */
+				$('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>');
+				/* 해시태그 리셋 */
+				$('.tag-item').remove();
+				/************************* 태그 값 삭제 *************************/
 			});
 			
 		});
@@ -188,11 +219,11 @@
 			}
 			
 			/* Preview reset */
-			$('.c_close').click(function(){
-				$('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>');
+			/* $('.c_close').click(function(){ */
+				/* $('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>'); */
 				/* $.removeClass('.tag-item'); */
 				/* 수정 필요 */
-			});
+			/* }); */
 			
 		};
 		
