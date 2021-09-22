@@ -9,6 +9,7 @@ public class NewFeedList {
 
 	private int boardIdx;
 	private String boardPhoto;
+	@JsonFormat(pattern = "yyyy.MM.dd")
 	private Timestamp boardDate;
 	private int memberIdx;
 	private String memberNickname;

@@ -28,6 +28,9 @@ public interface FeedDao {
 	// 닉네임 중복 체크
 	int selectByNickname(@Param("memberNickname") String memberNickname);
 	
+	// 추가 (09.22.우리)
+	// 닉네임으로 memberIdx 찾기
+	int selectMemberIdx(@Param("memberNickname") String memberNickname);
 	
 	
 	// 산별 피드보기(용민)

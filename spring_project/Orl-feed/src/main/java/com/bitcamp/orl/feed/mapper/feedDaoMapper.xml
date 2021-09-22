@@ -7,23 +7,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 피드 삭제 (ajax) -->
 	<delete id="deleteFeed">
-		DELETE FROM final.photoBoard WHERE memberIdx
-		=#{memberIdx} and boardIdx = #{boardIdx};
+		DELETE FROM final.photoBoard
+		WHERE memberIdx = #{memberIdx} and boardIdx = #{boardIdx};
 	</delete>
 	
 	<!-- 피드 댓글 삭제 (ajax) -->
 	<delete id="deleteComment">
-		DELETE FROM final.photoBoardComment WHERE
-		boardCommentIdx = #{boardCommentIdx};
+		DELETE FROM final.photoBoardComment
+		WHERE boardCommentIdx = #{boardCommentIdx};
 	</delete>
 	
 	<!-- 전체 피드 리스트 (최신순) (ajax) -->
 	<select id="selectNewFeed"
 		resultType="com.bitcamp.orl.feed.domain.NewFeedList">
-		SELECT B.boardIdx, B.boardPhoto, B.boardDate, M.memberIdx,
-		M.memberNickname
-		FROM final.photoBoard AS B NATURAL JOIN final.member
-		AS M
+		SELECT B.boardIdx, B.boardPhoto, B.boardDate, B.hashtag,
+		M.memberIdx, M.memberNickname
+		FROM final.photoBoard AS B NATURAL JOIN final.member AS M
 		ORDER BY B.boardIdx DESC;
 	</select>
 	
@@ -49,10 +48,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 추가 (09.18.우리) -->
 	<!-- 닉네임 중복 체크 -->
-	<select id="selectByNickname"
-			resultType="int">
+	<select id="selectByNickname" resultType="int">
 		SELECT count(*) FROM final.member
-		WHERE memberNickname = #{Nickname}
+		WHERE memberNickname = #{memberNickname}
+	</select>
+	
+	<!-- 추가 (09.22.우리 ) -->
+	<!-- memberNickname으로 memberIdx 찾기 -->
+	<select id="selectMemberIdx" resultType="int">
+		SELECT memberIdx FROM final.member
+		WHERE memberNickname = #{memberNickname}
 	</select>
 	
 	

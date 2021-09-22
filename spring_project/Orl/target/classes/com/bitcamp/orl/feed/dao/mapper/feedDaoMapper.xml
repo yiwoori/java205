@@ -37,7 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-	<!-- 우리 -->
+
+<!-- 우리 -->
 
 	<!-- 피드 작성 -->
 	<insert id="createFeed"
@@ -77,45 +78,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{comment}, #{boardIdx}, #{memberIdx});
 	</insert>
 	
-	<!-- 피드 삭제 (ajax) -->
-	<!-- <delete id="deleteFeed">
-		DELETE FROM final.photoBoard WHERE memberIdx
-		=#{memberIdx} and boardIdx = #{boardIdx};
-	</delete> -->
-
-	<!-- 피드 댓글 삭제 (ajax) -->
-	<!-- <delete id="deleteComment">
-		DELETE FROM final.photoBoardComment WHERE
-		boardCommentIdx = #{boardCommentIdx};
-	</delete> -->
-
-	<!-- 피드 상세 -댓글리스트 (ajax) -->
-	<!-- <select id="selectFeedComment"
-		resultType="com.bitcamp.orl.feed.domain.FeedComment">
-		SELECT C.boardCommentIdx, C.comment, C.memberIdx,
-		M.memberNickname, M.memberProfile
-		FROM final.photoBoardComment AS C
-		NATURAL JOIN final.member AS M
-		WHERE boardIdx = #{boardIdx}
-		ORDER BY
-		C.boardCommentIdx DESC;
-	</select> -->
-
-	<!-- 전체 피드 리스트 (최신순) (ajax) -->
-<!-- 	<select id="selectNewFeed"
-		resultType="com.bitcamp.orl.feed.domain.NewFeedList">
-		SELECT B.boardIdx, B.boardPhoto, B.boardDate, M.memberIdx,
-		M.memberNickname
-		FROM final.photoBoard AS B NATURAL JOIN final.member
-		AS M
-		ORDER BY B.boardIdx DESC;
-	</select> -->
+	
 
 
 
-
-
-	<!-- 세라 -->
+<!-- 세라 -->
 
 	<!-- 1. 팔로워수 가져오기 -->
 	<select id="selectFollowerCount" resultType="int">

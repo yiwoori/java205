@@ -152,9 +152,6 @@ button {
 .keyword>a {
 	color: gray;
 }
-.keyword>a:hover {
-	/* 박스처리 추가 */
-}
 
 /* 피드 검색 영역 */
 .search {
@@ -230,6 +227,12 @@ button {
 	justify-content: space-between;
 	padding-top: 10px;
 	width: 320px;
+}
+.feedinfo p {
+	color: #afa7a7;
+	font-size: 14px;
+	padding-top: 4px;
+	padding-right: 8px;
 }
 
 /* 게시자 닉네임 */

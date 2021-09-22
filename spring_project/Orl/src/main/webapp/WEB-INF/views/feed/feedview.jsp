@@ -12,6 +12,14 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/feed/feedView.css'/>">
+<style>
+.show {
+	display: block;
+}
+.hide {
+	display: none;
+}
+</style>
 </head>
 <body>
 
@@ -43,13 +51,16 @@
 
 				<!-- 태그 버튼 -->
 				<button>
-					<img src="<c:url value="/images/feed/feedw/icon-05.png"/>">
+					<img id="tag" src="<c:url value="/images/feed/feedw/icon-05.png"/>">
+					<div class="tagList hide">
+						<!-- 태그 리스트 -->
+					</div>
 				</button>
 
 			</section>
 			<!-- 왼쪽 사진 영역 끝 -->
-
-
+			
+			
 
 			<!-- 오른쪽 컨텐츠 영역 -->
 			<section class="v_rightbox">
@@ -99,7 +110,7 @@
 				<!-- 댓글 영역 시작 -->
 				<section class="commentbox">
 					<div id="cmt">
-						<!-- comment list ajax -->
+						<!-- 댓글 리스트(ajax) -->
 					</div>
 				</section>
 				<!-- 댓글 영역 끝 -->
@@ -194,58 +205,73 @@
 
 	<script>
 	
-
 	/* 부트 서버 */
 	const bootUrl = 'http://localhost:8083';
+	/* 태그 */
+	const tag = '${selectFeedView.tag}';
 	/* 해시태그 */
-	const feedTag = '${selectFeedView.hashtag}';
-	
+	const hashTag = '${selectFeedView.hashtag}';
+    /* boardMemberIdx */
+	let boardMemberIdx = '${boardMemberIdx}';
+
 	
 	
 	/* document ready START */
     $(document).ready(function(){
-		
-		/* 해시태그 리스트 */
-		if(feedTag == null) {
+    	
+		/* 태그 리스트 */
+ 		if(tag == null) {
 			return;
 		} else {
+			
 			var str = [];
-			const feedTagArr = feedTag;
-			str = feedTagArr.split(",");
 			var html = "";
+			const tagArr = tag;
+			
+			str = tagArr.split(",");
+			
 			for(var idx=1; idx<str.length; idx++) {
-				html += '<a class="tag-item">#' + str[idx] + '</a>';
+				
+				$.ajax({
+					url: bootUrl+'/feed/feedview/memberIdxCheck',
+					type: 'get',
+					async: false,
+					data: {
+						memberNickname : str[idx]
+					},
+					success: function(data) {
+						html += '<a class="tag-item" href="<c:url value="/feed/userfeed/'+ data +'"/>">@'
+								+ str[idx] + '</a>';
+					}
+				});
+				
 			}
-			$('.hashTag').html(html);
-		}
+			$('.tagList').html(html);
+		};
 		
     	
     	
-        /* 뒤로 가기 (피드메인 or 유저 피드) */
-        $('#pageBack').click(function(){
-        	location.href = '<c:url value="/feed/feedmain"/>';
-        });
+		/* 해시태그 리스트 */
+		if(hashTag == null) {
+			return;
+		} else {
+			
+			var str = [];
+			var html = "";
+			const hashTagArr = hashTag;
+			
+			str = hashTagArr.split(",");
+			
+			for(var idx=1; idx<str.length; idx++) {
+				html += '<a class="hashtag-item">#' + str[idx] + '</a> ';
+			}
+			
+			$('.hashTag').html(html);
+		};
 
-        
-        
-        /* ajax 피드 삭제 */
-        $('.v_delete').click(function(){
-            $.ajax({
-                url : bootUrl+'/feed/feedview/deletefeed/${selectFeedView.memberIdx}&${selectFeedView.boardIdx}',
-                type:'POST',
-                success : function(data) {
-                    if(data==1) {
-                        alert('피드가 삭제되었습니다');
-                        location.href = '<c:url value="/feed/feedmain"/>';
-                    }
-                }
-            });
-        });
-        /* ajax 피드 삭제 끝 */
+		
 
-
-
-        /* ajax 댓글 목록 시작 */
+        /* 댓글 리스트 (ajax) */
         $.ajax({
             url: bootUrl+'/feed/feedview/selectcomment',
             type: 'get',
@@ -259,44 +285,89 @@
                 
             }
         });
-        /* ajax 댓글 목록 끝 */
-        
-        
-        
+  
     });
     /* document ready END */
     
     
     
-    /* boardMemberIdx */
-	let boardMemberIdx = '${boardMemberIdx}';
+	/* 뒤로 가기 (피드메인 or 유저 피드) */
+	$('#pageBack').click(function(){
+		location.href = '<c:url value="/feed/feedmain"/>';
+	});
     
-	
-	
-	/* 이전 함수 삭제 + 새로 작성 (09.17.우리) */
-	/* 댓글 빈값 체크 */
-    $('#comment_submit').click(function(){
-    	
-    	var comment = $('#comment').val();
-    	
-    	if(!comment){
-    		alert('댓글 내용을 입력해주세요');
-    		return false;
-    	} alert('게시되었습니다');
-    	
-    });
     
+    
+	/* 태그 리스트 (토글) */
+	$('#tag').click(function(){
+			
+		var list = $('#tagList');
+			
+		$('.tagList').fadeToggle(
+			function() {
+				list.addClass('show');
+			}
+		);
+	});
 	
 	
-    /* 댓글 게시자 프로필 사진으로 계정 이동 */
- 	function showUserFeed(memberIdx) {
-    	
-		location.href='<c:url value="/feed/userfeed/'+memberIdx+'"/>';	/* 수정 (09.17.우리) */
+	
+	/* 피드 수정 페이지 이동 */
+	function feedEdit(memberIdx, boardIdx){
+        	
+		var myIdx = '${sessionScope.memberVo.memberIdx}';
+		var memberIdx = memberIdx;
+		var boardIdx = boardIdx;
+    								
+		if(!myIdx) {
+			alert('로그인 후 이용 가능합니다');
+			location.href='<c:url value="/member/login"/>';
+		} else {
+			location.href='<c:url value="/feed/feededit/'+memberIdx+'&'+boardIdx+'"/>';
+		}
+        	
 	}
     
     
     
-    /* 댓글 목록 시작 */
+    /* 피드 삭제 (ajax) */
+    $('.v_delete').click(function(){
+        $.ajax({
+            url : bootUrl+'/feed/feedview/deletefeed/${selectFeedView.memberIdx}&${selectFeedView.boardIdx}',
+            type:'POST',
+            success : function(data) {
+                if(data==1) {
+                    alert('피드가 삭제되었습니다');
+                    location.href = '<c:url value="/feed/feedmain"/>';
+                }
+            }
+        });
+    });
+    
+    
+    
+	/* 댓글 삭제 (ajax) */
+	function commentDelete(boardCommentIdx, boardIdx){
+        	
+		var board = boardIdx;
+		var idx = boardCommentIdx;
+
+		$.ajax({
+			url: bootUrl+'/feed/feedview/deletecomment/'+idx+'&'+board,
+			type: 'GET',
+			success: function(data){
+                
+				var memberIdx = '${sessionScope.memberVo.memberIdx}';
+				alert('댓글이 삭제되었습니다');
+                showList(data,memberIdx);
+                    
+			}
+		});
+	};
+    
+    
+    
+    /* 댓글 리스트 */
     function showList(list, memberIdx){
         
 		var html = '';
@@ -316,7 +387,7 @@
 			html += '      </div>';
 			html += '		<div class="cmt-space"></div>';
 				
-			//세션의 멤버값이랑 코멘트의 멤버값이 같거나 세션의 멤버값이랑 보드의 멤버값이 같을 경우 실행
+			//피드 삭제 (내 댓글이거나 내 피드일때 삭제 가능)
 			if (idx == item.memberIdx || idx == boardMemberIdx){
 				html += '   <a class="comment_delete" onclick="commentDelete('+item.boardCommentIdx+',${boardIdx})">';
 				html += '   	<img src="<c:url value="/images/feed/feedw/delete_icon.png"/>" class="delete_icon" alt="feedview_deleteIcon">';
@@ -325,55 +396,28 @@
 			html += '</div>';
 		})
 		$('#cmt').html(html);
-        
 	}
-    /* 댓글 목록 끝 */
-
-        
     
-	/* ajax 댓글 삭제 */
-	function commentDelete(boardCommentIdx, boardIdx){
-        	
-		var board = boardIdx;
-		var idx = boardCommentIdx;
-		
-		console.log(board);
-
-		$.ajax({
-			url: bootUrl+'/feed/feedview/deletecomment/'+idx+'&'+board,
-			type: 'GET',
-			success: function(data){
-                
-				var memberIdx = '${sessionScope.memberVo.memberIdx}';
-                    
-					alert('댓글이 삭제되었습니다');
-                    showList(data,memberIdx);
-                    
-			}
-			
-		});
-
-	};
-	/* ajax 댓글 삭제 끝 */
-
-	
-	
-	/* 피드 수정 페이지 이동 */
-	function feedEdit(memberIdx, boardIdx){
-        	
-		var myIdx = '${sessionScope.memberVo.memberIdx}';
-		var memberIdx = memberIdx;
-		var boardIdx = boardIdx;
-    								
-		if(!myIdx) {
-			alert('로그인 후 이용 가능합니다');
-			location.href='<c:url value="/member/login"/>';
-		} else {
-			location.href='<c:url value="/feed/feededit/'+memberIdx+'&'+boardIdx+'"/>';
-		}
-        	
+    
+    
+    /* 댓글 게시자 프로필 사진으로 계정 이동 */
+ 	function showUserFeed(memberIdx) {
+		location.href='<c:url value="/feed/userfeed/'+memberIdx+'"/>';	/* 수정 (09.17.우리) */
 	}
-	/* 피드 수정 페이지 이동 끝 */
+
+ 
+	
+	/* 댓글 빈값 체크 */
+    $('#comment_submit').click(function(){
+    	
+    	var comment = $('#comment').val();
+    	
+    	if(!comment){
+    		alert('댓글 내용을 입력해주세요');
+    		return false;
+    	} alert('게시되었습니다');
+    	
+    });
         
         
         

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,12 +110,10 @@
 		                            	<a href="<c:url value="/feed/userfeed/${feedOrderByLike.memberIdx}"/>" class="nickname2">${feedOrderByLike.memberNickname}</a>
 		                           	</div>						<!-- 09.17.세라 -->
 		                           
-		                           	<!-- 게시자 좋아요 버튼 -->
-		                           	<%-- <div>
-		                              	<button>
-		                                 	<img src="<c:url value="/images/feed/feedw/nolike.png"/>" class="nolikeimg">
-		                              	</button>
-		                           	</div> --%>
+		                           	<!-- 피드 작성일 -->
+		                           	<div>
+		                              	<p>${feedOrderByLike.boardDate}</p>
+		                           	</div>
 		                           
 		                        </div>
 		                        <!-- 피드 정보 끝 -->
@@ -147,12 +144,7 @@
 
 
 
-	<script>
-
-	/* 부트 서버 */
-	const bootUrl = 'http://localhost:8083';
-	
-	
+	<script>	
 	
 	/* document ready 시작 */
 	$(document).ready(function() {
@@ -162,10 +154,10 @@
 			url : bootUrl+'/feed/feedmain/selectNewFeed',
 			type : 'get',
 			success : function(data) {
-	
-				console.log(data);
+				
 				var memberIdx = '${sessionScope.memberVo.memberIdx}';
 				showNewFeed(data);
+				
 			}
 		});
 		/* ajax 피드 리스트 */

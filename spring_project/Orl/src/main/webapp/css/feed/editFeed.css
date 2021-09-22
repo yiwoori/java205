@@ -129,7 +129,7 @@ textarea:focus {
 
 /* 게시글 수정 영역 */
 .contentsbox {
-	height: 250px;
+	height: 200px;
 	position: relative;
 }
 .contentsbox>p {
@@ -147,8 +147,8 @@ textarea:focus {
 	padding-left: 20px;
 	padding-top: 20px;
 	width: 320px;
-	height: 200px;
-	line-height: 150%;
+	height: 150px;
+	line-height: 130%;
 }
 /* 게시글 placeholder */
 textarea::placeholder {
@@ -158,7 +158,7 @@ textarea::placeholder {
 
 /* 태그 수정 영역 */
 .tagbox {
-	height: 70px;
+	height: 120px;
 	position: relative;
 }
 .tagbox>p {
@@ -170,14 +170,17 @@ textarea::placeholder {
 .tagbox>input {
 	position: absolute;
 	left: 90px;
-	bottom: 23px;
+	top: 13px;
 	border: 1px solid gray;
 	border-radius: 6px;
 	padding-left: 20px;
-	padding-top: 2px;
 	width: 320px;
 	height: 33px;
-	font-size: 15px;
+	font-size: 14px;
+}
+.tagShow {
+	padding-top: 55px;
+	padding-left: 80px;	
 }
 
 /* 해시태그 수정 영역 */
@@ -188,8 +191,8 @@ textarea::placeholder {
 }
 .hashtagbox>p {
 	position: absolute;
-	left: 18px;
 	top: 10px;
+	left: 18px;
 }
 /* 해시태그 수정 내용 */
 .hashtagbox>input {
@@ -203,10 +206,10 @@ textarea::placeholder {
 	height: 33px;
 	font-size: 14px;
 }
-/* 추가 시작 */
+/* 입력된 해시태그 */
 .hashtagShow {
 	padding-top: 55px;
-	padding-left: 90px;
+	padding-left: 80px;
 	padding-right: 10px;
 }
 #tag-list {
@@ -228,6 +231,7 @@ textarea::placeholder {
 .tr_hashTag_area p {
   margin-top: 70px;
 }
+/* 태그 지우기 */
 .del-btn {
   font-size: 12px;
   font-weight: bold;
@@ -242,9 +246,6 @@ ul li.tag-item {
   padding: 4px 7px;
   font-size: 13px;
 }
-/* 추가 끝 */
-
-
 
 /* 게시 버튼 영역 */
 .submit {

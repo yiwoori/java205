@@ -3,8 +3,6 @@ package com.bitcamp.orl.feed.service;
 import java.io.*;
 import java.util.*;
 
-import javax.servlet.http.*;
-
 import org.mybatis.spring.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -20,6 +18,21 @@ public class FeedManageService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
+	//추가 (09.22.우리)
+	//nickname으로 memberIdx 찾기
+	public int selectIdx(String memberNickname) {
+		
+		int result = 0;
+		
+		dao = template.getMapper(FeedDao.class);
+		result = dao.selectMemberIdx(memberNickname);
+		//memberIdx 반환
+		
+		System.out.println("service in!!!!");
+		
+		return result;
+	}
+	
 	//추가 (09.18.우리)
 	//닉네임 중복 체크
 	public String nicknameCheck(String memberNickname) {
@@ -31,6 +44,7 @@ public class FeedManageService {
 		if(dao.selectByNickname(memberNickname)>0) {
 			result="Y";	//존재하는 닉네임
 		}
+		System.out.println("service : " + memberNickname + ", " + result);
 		
 		return result;
 	}

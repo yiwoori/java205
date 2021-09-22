@@ -68,7 +68,12 @@
 					<!-- 태그 입력 -->
 					<div class="tagbox">
 						<p>태그</p>
-						<input type="text" placeholder="@닉네임 입력" name="tag" id="tag" autocomplete="off">
+						<input type="text" placeholder="Enter" name="tag" id="tag" autocomplete="off">
+						<div class="tagShow">
+							<ul id="tag-list">
+								<!-- 태그 리스트 -->
+							</ul>
+						</div>
 					</div>
 					
 					<!-- 해시태그 입력 -->
@@ -77,7 +82,9 @@
 						<input type="text" placeholder="Enter" name="hashtag" id="hashtag" autocomplete="off">
 						
 						<div class="hashtagShow">
-							<ul id="tag-list"></ul>
+							<ul id="hashtag-list">
+							<!-- 해시태그 리스트 -->
+							</ul>
 						</div>
 					</div>
 					
@@ -101,148 +108,202 @@
 
 
 	<script>
+	
+	/* 부트 서버 */
+	const bootUrl = 'http://localhost:8083';
 		
-	/* document ready START */
 	$(document).ready(function() {
-			
-	/******************* 해시태그 시작 *******************/
 		
-		var tag = {};
-		var counter = 0;
-			
-		/* 입력 값을 태그로 생성 */
-		function addTag(value) {
-			tag[counter] = value;
-			counter++; /* del-btn의 고유 id */
-		}
-			
-		/* 서버에 제공 */
+		/* 폼 내용 서버에 제공 */
 		$('#feedform').on('submit', function (e) {
 			$(this).submit();
 		});
 		
-		/* 해시태그 입력 */
-		$('#hashtag').on('keypress', function (e) {
-				
-			var self = $(this);
-				
-			/* 엔터키나 스페이스바 눌렀을 때 실행 */
-			if(e.key == "Enter" || e.keyCode == 32) {
-				var tagValue = self.val();	//값 가져오기
-							
-				if(tagValue !== "") {
-					
-					//같은 태그 있는지 검사하고 있으면 해당 값이 array로 리턴된다
-					var result = Object.values(tag).filter(function (word) {
-		            	return word == tagValue;
-		            })
-
-		            // 해시태그가 중복되었는지 확인
-		            if (result.length == 0) {
-		            	$("#tag-list").append(
-		            			"<li class='tag-item'>#" + tagValue + "<span class='del-btn' idx='" + counter + "'>x" +
-		                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + tagValue + "></li>");
-		            	
-		            	addTag(tagValue);
-		                self.val("");
-		                
-					} else {
-						alert("태그값이 중복됩니다");
-		                }
-		            }
-		            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
-				}
-				
-			});
-			
-		// 삭제 버튼 : 인덱스 검사 후 삭제
-		$(document).on("click", ".del-btn", function (e) {
-			var index = $(this).attr("idx");
-			tag[index] = "";
-			$(this).parent().remove();
-		});
-			
-	/******************* 해시태그 끝 *******************/
 		
 		
+		/* 태그 시작 */
 		
-	/******************* 태그 시작 *******************/
-	
-	/* 닉네임 입력
-		-> 중복 여부 체크
-		-> 닉네임 존재하면 Y 반환
-		-> 사용 가능하게 처리
-		-> ,로 
-	*/
-		
-	/******************* 태그 끝 *******************/
+			var tag = {};
+			var tagCounter = 0;
 			
-	
-	
-	});
-	/* document ready END */
-	
-	
-	
-		/* 모달창 on off */
-		$(function() {
-			
-			/* on */
-			$(".modalbtn_createfeed").click(function() {
-				$(".modal_createfeed").fadeIn();
-				$("html, body").addClass("not_scroll");
-			});
-
-			/* off */
-			$(".c_close").click(function() {
-				$(".modal_createfeed").fadeOut();
-				$("html, body").removeClass("not_scroll");
-				/* 프리뷰 리셋 */
-				$('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>');
-				/* 해시태그 리셋 */
-				$('.tag-item').remove();
-				/************************* 태그 값 삭제 *************************/
-			});
-			
-		});
-
-		/* 선택 사진 프리뷰 처리 */
-		function readURL(input) {
-			
-			/* Preview load */
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					$('#preview-img').attr('src', e.target.result);
-				}
-				reader.readAsDataURL(input.files[0]);
+			/* 입력 값을 태그로 생성 */
+			function addTag(value) {
+				tag[tagCounter] = value;
+				tagCounter++;
 			}
 			
-			/* Preview reset */
-			/* $('.c_close').click(function(){ */
-				/* $('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>'); */
-				/* $.removeClass('.tag-item'); */
-				/* 수정 필요 */
-			/* }); */
+			/* 태그 입력 */
+			$('#tag').on('keypress', function(e) {
+				
+				var self = $(this);
+				
+				/* 엔터키나 스페이스바 눌렀을 때 실행 */
+				if(e.key == "Enter" || e.keyCode == 32) {
+					var tagValue = self.val();
+					
+					/* 닉네임 체크 ajax */
+					$.ajax({
+						url : bootUrl+'/feed/createfeed/nicknameCheck',
+						type: 'get',
+						data: {	 //보내는 데이터 : 입력받은 닉네임 보내기
+							memberNickname : tagValue
+						},
+						success: function(data) { //받는 데이터 : Y or N
+							
+							//존재하는 닉네임
+							if(data == 'Y') {
+								
+								if(tagValue !== "") {
+									
+									var result = Object.values(tag).filter(function (word) {
+										return word == tagValue;
+									})
+									
+									//태그 중복 확인
+									if(result.length == 0) {
+										$('#tag-list').append("<li class='tag-item'>@" + tagValue + "<span class='del-btn' idx='" + tagCounter + "'>x" +
+						                		"</span><input type='hidden' name='tag' id='rdTag' value=" + tagValue + "></li>");
+										addTag(tagValue);
+										self.val("");
+									} else {
+										alert('이미 등록된 닉네임입니다');
+									}
+								}
+								
+							} else {
+								alert('존재하지 않는 닉네임입니다');
+								return false;
+							}
+						}
+					}); /* 닉네임 체크 ajax 끝 */
+					
+					e.preventDefault();
+				}
+			}); /* 태그 입력 끝 */
 			
-		};
+			$(document).on("click", ".del-btn", function (e) {
+				var index = $(this).attr("idx");
+				tag[index] = "";
+				$(this).parent().remove();
+			});
+			
+		/* 태그 끝 */
+			
 		
-		/* 파일 선택 여부 체크 */
-		$('.feed_submit').click(function(memberIdx, memberIdx){
-			
-			var file = $('#fileupload').val();
-			
-			if(!file){
-				alert('사진을 선택해주세요');
-				return false;
-			} alert('게시 되었습니다');
-			
-		});
 		
-		/* 게시글 입력창 줄바꿈 */
-		$('#boardDiscription').click(function(){
-			var html = $('#boardDiscription').val().replace(/(?:\r\n|\r|\n)/g, '<br />');
+		/* 해시태그 시작 */
+		
+			var hashTag = {};
+			var hashtagCounter = 0;
+				
+			/* 입력 값을 태그로 생성 */
+			function addHashtag(value) {
+				hashTag[hashtagCounter] = value;
+				hashtagCounter++; /* del-btn의 고유 id */
+			}
+			
+			/* 해시태그 입력 */
+			$('#hashtag').on('keypress', function (e) {
+					
+				var self = $(this);
+					
+				/* 엔터키나 스페이스바 눌렀을 때 실행 */
+				if(e.key == "Enter" || e.keyCode == 32) {
+					var hashtagValue = self.val();	//값 가져오기
+								
+					if(hashtagValue !== "") {
+						
+						//같은 태그 있는지 검사하고 있으면 해당 값이 array로 리턴된다
+						var result = Object.values(hashTag).filter(function (word) {
+			            	return word == hashtagValue;
+			            })
+	
+			            // 해시태그 중복 확인
+			            if (result.length == 0) {
+			            	$("#hashtag-list").append(
+			            			"<li class='tag-item'>#" + hashtagValue + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
+			                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + hashtagValue + "></li>");
+			            	
+			            	addHashtag(hashtagValue);
+			                self.val("");
+			                
+						} else {
+							alert("이미 등록된 해시태그입니다");
+			                }
+			            }
+			            e.preventDefault(); // SpaceBar시 빈공간x
+					}
+					
+				});
+	
+			$(document).on("click", ".del-btn", function (e) {
+				var index = $(this).attr("idx");
+				hashTag[index] = "";
+				$(this).parent().remove();
+			});
+				
+		/* 해시태그 끝 */
+		
+
+		
+	}); /* document ready END */
+	
+	
+	
+	/* 모달창 on off */
+	$(function() {
+			
+		/* on */
+		$(".modalbtn_createfeed").click(function() {
+			$(".modal_createfeed").fadeIn();
+			$("html, body").addClass("not_scroll");
 		});
+
+		/* off */
+		$(".c_close").click(function() {
+			$(".modal_createfeed").fadeOut();
+			$("html, body").removeClass("not_scroll");
+			/* 프리뷰 리셋 */
+			$('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>');
+			/* 태그 리셋 */
+			/* tagValue.remove(); */
+			/* 해시태그 리셋 */
+			/* $('#hashtag-list').empty(); */
+			/************************* 태그 값 삭제 *************************/
+		});
+			
+	});
+
+	/* 선택 사진 프리뷰 처리 */
+	function readURL(input) {
+			
+		/* Preview load */
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#preview-img').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+			
+	};
+		
+	/* 파일 선택 여부 체크 */
+	$('.feed_submit').click(function(memberIdx, memberIdx){
+			
+		var file = $('#fileupload').val();
+			
+		if(!file){
+			alert('사진을 선택해주세요');
+			return false;
+		} alert('게시 되었습니다');
+			
+	});
+		
+	/* 게시글 입력창 줄바꿈 */
+	$('#boardDiscription').click(function(){
+		var html = $('#boardDiscription').val().replace(/(?:\r\n|\r|\n)/g, '<br />');
+	});
 		
 	</script>
 

@@ -78,8 +78,30 @@ public class FeedRestController {
 	public String nicknameCheck(
 			@RequestParam("memberNickname") String memberNickname
 			) {
-		return manageService.nicknameCheck(memberNickname);
-		//존재하는 닉네임 -> Y / 없으면 -> N
+		
+		String result = null;
+		result = manageService.nicknameCheck(memberNickname);
+		//닉네임 있으면 Y / 없으면 N 반환
+		
+		return result;
+		
+	}
+	
+	//추가 (09.22.우리)
+	//memberNickname으로 memberIdx 찾기
+	@GetMapping("/feed/feedview/memberIdxCheck")
+	@CrossOrigin
+	public int memberIdxCheck(
+			@RequestParam("memberNickname") String memberNickname
+			) {
+		
+		int result = 0;
+		result = manageService.selectIdx(memberNickname);
+		
+		System.out.println("restcontroller in!!!!");
+		
+		return result;
+		
 	}
 	
 	
