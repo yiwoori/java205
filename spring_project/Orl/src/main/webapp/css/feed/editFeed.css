@@ -164,13 +164,13 @@ textarea::placeholder {
 .tagbox>p {
 	position: absolute;
 	left: 32px;
-	top: 20px;
+	top: 15px;
 }
 /* 태그 수정 내용 */
 .tagbox>input {
 	position: absolute;
 	left: 90px;
-	top: 13px;
+	top: 5px;
 	border: 1px solid gray;
 	border-radius: 6px;
 	padding-left: 20px;
@@ -178,9 +178,12 @@ textarea::placeholder {
 	height: 33px;
 	font-size: 14px;
 }
-.tagShow {
-	padding-top: 55px;
-	padding-left: 80px;	
+.noTag, .noHashtag {
+	position: absolute;
+	color: gray;
+	font-size: 13px;
+	padding-left: 95px;
+	padding-top: 20px;
 }
 
 /* 해시태그 수정 영역 */
@@ -207,17 +210,23 @@ textarea::placeholder {
 	font-size: 14px;
 }
 /* 입력된 해시태그 */
-.hashtagShow {
-	padding-top: 55px;
-	padding-left: 80px;
-	padding-right: 10px;
+.hashtagShow, .tagShow {
+    position: absolute;
+    top: 45px;
+    left: 80px;
+    width: 350px;
+	height: 60px;
+	overflow: scroll;
+}
+.hashtagShow::-webkit-scrollbar, .tagShow::-webkit-scrollbar{
+	display: none;
 }
 #tag-list {
   border: none
   display: flex;
 }
 
-.tag-item {
+.tag-item, .hashtag-item {
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
@@ -238,7 +247,7 @@ textarea::placeholder {
   cursor: pointer;
   margin-left: 8px;
 }
-ul li.tag-item {
+ul li.tag-item, ul li.hashtag-item {
   background-color: rgb(253, 239, 123);
   color: #000;
   border-radius: 5px;

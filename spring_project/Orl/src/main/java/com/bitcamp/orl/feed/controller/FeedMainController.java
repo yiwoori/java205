@@ -17,8 +17,6 @@ import com.bitcamp.orl.member.domain.*;
 @Controller
 @RequestMapping("/feed/feedmain")
 public class FeedMainController {
-	
-	//피드 메인 페이지
 
 	@Autowired
 	private CreateFeedService createService;
@@ -26,22 +24,18 @@ public class FeedMainController {
 	@Autowired
 	private FeedListService listService;
 	
-	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFeedMain(
 			Model model,
 			HttpServletRequest request) {
 		
-		// 피드 인기순 정렬 ajax 안하고
+		// 피드 인기순 정렬
 	    List<NewFeedList> feedOrderByLike = listService.selectFeedOrderByLike();
+	    model.addAttribute("feedOrderByLike",feedOrderByLike);
 	    
 	    //추가 (09.16.우리)
 	    Member member = listService.getMember(request);
-	    System.out.println("member : "+ member);
-	    
-	    //모델에 저장
 	    model.addAttribute("member", member);	//추가 (09.16.우리)
-	    model.addAttribute("feedOrderByLike",feedOrderByLike);
 		
 		return "feed/feedmain";
 	}	
@@ -58,7 +52,5 @@ public class FeedMainController {
 	    
 		return "redirect:/feed/feedmain";
 	}
-
-	
 	
 }

@@ -10,6 +10,11 @@
 	<link rel="stylesheet" href="<c:url value='/css/feed/createFeed.css'/>">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<style>
+.hide {
+	display: none;
+}
+</style>
 </head>
 
 <body>
@@ -70,6 +75,7 @@
 						<p>태그</p>
 						<input type="text" placeholder="Enter" name="tag" id="tag" autocomplete="off">
 						<div class="tagShow">
+							<p class="noTag">태그된 닉네임이 없습니다</p>
 							<ul id="tag-list">
 								<!-- 태그 리스트 -->
 							</ul>
@@ -82,6 +88,7 @@
 						<input type="text" placeholder="Enter" name="hashtag" id="hashtag" autocomplete="off">
 						
 						<div class="hashtagShow">
+							<p class="noHashtag">입력된 해시태그가 없습니다</p>
 							<ul id="hashtag-list">
 							<!-- 해시태그 리스트 -->
 							</ul>
@@ -119,7 +126,7 @@
 			$(this).submit();
 		});
 		
-		
+
 		
 		/* 태그 시작 */
 		
@@ -139,6 +146,7 @@
 				
 				/* 엔터키나 스페이스바 눌렀을 때 실행 */
 				if(e.key == "Enter" || e.keyCode == 32) {
+					
 					var tagValue = self.val();
 					
 					/* 닉네임 체크 ajax */
@@ -154,6 +162,9 @@
 							if(data == 'Y') {
 								
 								if(tagValue !== "") {
+									
+									/* noTag 삭제 */
+									$('.noTag').addClass('hide');
 									
 									var result = Object.values(tag).filter(function (word) {
 										return word == tagValue;
@@ -182,11 +193,13 @@
 			}); /* 태그 입력 끝 */
 			
 			$(document).on("click", ".del-btn", function (e) {
+				
 				var index = $(this).attr("idx");
 				tag[index] = "";
 				$(this).parent().remove();
+				
 			});
-			
+
 		/* 태그 끝 */
 			
 		
@@ -212,6 +225,8 @@
 					var hashtagValue = self.val();	//값 가져오기
 								
 					if(hashtagValue !== "") {
+						
+						$('.noHashtag').addClass('hide');
 						
 						//같은 태그 있는지 검사하고 있으면 해당 값이 array로 리턴된다
 						var result = Object.values(hashTag).filter(function (word) {
@@ -241,11 +256,9 @@
 				hashTag[index] = "";
 				$(this).parent().remove();
 			});
-				
+	
 		/* 해시태그 끝 */
-		
-
-		
+	
 	}); /* document ready END */
 	
 	
@@ -266,10 +279,9 @@
 			/* 프리뷰 리셋 */
 			$('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>');
 			/* 태그 리셋 */
-			/* tagValue.remove(); */
+			$('#tag-list').empty();
 			/* 해시태그 리셋 */
-			/* $('#hashtag-list').empty(); */
-			/************************* 태그 값 삭제 *************************/
+			$("#hashtag-list").empty();
 		});
 			
 	});

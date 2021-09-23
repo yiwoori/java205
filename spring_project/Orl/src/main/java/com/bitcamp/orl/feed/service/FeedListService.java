@@ -15,8 +15,6 @@ import com.bitcamp.orl.member.domain.*;
 @Service
 public class FeedListService {
 
-	// feedmain 에서 인기순 정렬 피드 보여주기
-
 	private FeedDao dao;
 
 	@Autowired
@@ -33,9 +31,7 @@ public class FeedListService {
 		if (dto != null) {
 			member = dao.selectOneMember(dto.getMemberIdx());
 		}
-
 		return member;
-
 	}
 
 	// 피드 리스트(인기순) 세라 추가

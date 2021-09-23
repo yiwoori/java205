@@ -74,6 +74,29 @@ textarea:focus {
 	height: 100%;
 	object-fit: cover;
 }
+/* 해시태그 */
+.hashTag {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 550px;
+	height: 65px;
+	overflow: scroll;
+}
+.hashTag::-webkit-scrollbar {
+	display: none;
+}
+.hashTag a {
+  background-color: rgb(253, 239, 123);
+  color: #000;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 8px;
+  padding-top: 5px;
+  font-size: 13px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
 /* 태그 아이콘 */
 #tag {
 	position: absolute;
@@ -168,7 +191,6 @@ textarea:focus {
 .contents {
 	padding-top: 10px;
 	margin-left: 100px;
-/* 	padding-bottom: 10px; */
 	overflow: hidden;
 	height: auto;
 	padding-bottom: 20px;
@@ -182,21 +204,6 @@ textarea:focus {
     width: 100%;
     overflow: auto;
     -ms-overflow-style : none; /* 스크롤 체크 */
-}
-/* 해시태그 */
-.hashTag {
-	width: 95%;
-}
-.contents a {
-  background-color: rgb(253, 239, 123);
-  color: #000;
-  border-radius: 5px;
-  display: inline-block;
-  padding: 5px 8px;
-  padding-top: 5px;
-  font-size: 13px;
-  margin-right: 5px;
-  margin-top: 5px;
 }
 
 /* 댓글 영역 */

@@ -11,6 +11,11 @@
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/feed/editFeed.css'/>">
+<style>
+.hide {
+	display: none;
+}
+</style>
 </head>
 <body>
 
@@ -36,11 +41,6 @@
 	
 	            <!-- 피드 사진 -->
 	            <img src="<c:url value="/images/feed/feedw/uploadfile/${selectFeedView.boardPhoto}"/>" alt="feed-img">
-	
-	            <!-- 태그 버튼 -->
-<%-- 	            <button>
-	                <img src="<c:url value="/images/feed/feedw/icon-05.png"/>">
-	            </button> --%>
 	
 	        </section>
 	        <!-- 왼쪽 사진 영역 끝 -->
@@ -80,6 +80,7 @@
 						<p>태그</p>
 						<input type="text" placeholder="Enter" name="tag" id="tag" autocomplete="off">
 						<div class="tagShow">
+							<!-- <p class="noTag hide">태그된 닉네임이 없습니다</p> -->
 							<ul id="tag-list">
 								<!-- 태그 리스트 -->
 							</ul>
@@ -92,6 +93,7 @@
 						<input type="text" placeholder="Enter" name="hashtag" id="hashtag" autocomplete="off">
 						
 						<div class="hashtagShow">
+							<!-- <p class="noHashtag">입력된 해시태그가 없습니다</p> -->
 							<ul id="hashtag-list">
 								<!-- 해시태그 리스트 -->
 							</ul>
@@ -151,6 +153,9 @@
 			return;
 		} else {
 			
+			/* noTag 삭제 */
+			/* $('.noTag').addClass('hide'); */
+			
 			var str = [];
 			var html = "";
 			const tagArr = tag;
@@ -160,7 +165,7 @@
 			for(var idx=1; idx<str.length; idx++) {
 				
 				html += "<li class='tag-item'>@" + str[idx] + "<span class='del-btn' idx='" + tagCounter + "'>x" +
-				"</span><input type='hidden' name='hashtag' id='rdTag' value=" + str[idx] + "></li>";
+				"</span><input type='hidden' name='tag' id='rdTag' value=" + str[idx] + "></li>";
 			}
 			$('#tag-list').html(html);
 		}
@@ -196,6 +201,9 @@
 						if(data == 'Y') {
 							
 							if(tagValue !== "") {
+								
+								/* noTag 삭제 */
+								$('.noTag').addClass('hide');
 								
 								var result = Object.values(addTag).filter(function (word) {
 									return word == tagValue;
@@ -249,7 +257,7 @@
 			
 			for(var idx=1; idx<str.length; idx++) {
 				
-				html += "<li class='tag-item'>#" + str[idx] + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
+				html += "<li class='hashtag-item'>#" + str[idx] + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
 				"</span><input type='hidden' name='hashtag' id='rdTag' value=" + str[idx] + "></li>";
 			
 			}
@@ -273,21 +281,23 @@
 				
 			/* 엔터키나 스페이스바 눌렀을 때 실행 */
 			if(e.key == "Enter" || e.keyCode == 32) {
-				var tagValue = self.val();	//값 가져오기
+				var hashtagValue = self.val();	//값 가져오기
 							
-				if(tagValue !== "") {
+				if(hashtagValue !== "") {
+					
+					$('.noHashtag').addClass('hide');
 					
 					var result = Object.values(addHashTag).filter(function (word) {
-		            	return word == tagValue;
+		            	return word == hashtagValue;
 		            })
 
 		            // 해시태그 중복 확인
 		            if (result.length == 0) {
 		            	$("#hashtag-list").append(
-		            			"<li class='tag-item'>#" + tagValue + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
-		                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + tagValue + "></li>");
+		            			"<li class='hashtag-item'>#" + hashtagValue + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
+		                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + hashtagValue + "></li>");
 		            	
-		            	inHashTag(tagValue);
+		            	inHashTag(hashtagValue);
 		                self.val("");
 		                
 					} else {

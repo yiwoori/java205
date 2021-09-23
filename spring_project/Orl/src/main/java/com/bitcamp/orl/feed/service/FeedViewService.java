@@ -27,6 +27,7 @@ public class FeedViewService {
 		feedview = dao.selectFeedView(boardIdx);
 
 		return feedview;
+		
 	}
 
 	// 피드 수정

@@ -15,31 +15,28 @@ import com.bitcamp.orl.member.domain.*;
 @RequestMapping("/feed/feededit/{memberIdx}&{boardIdx}")
 public class FeedEditController {
 	
-	//피드 수정 페이지
-
 	@Autowired
 	private FeedViewService viewService;
-
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFeedEdit(
 			@PathVariable("memberIdx") int memberIdx,
 			@PathVariable("boardIdx") int boardIdx,
 			HttpServletRequest request, Model model) {
 
-		// 피드 상세
+		// 수정할 피드 정보
 		FeedView feedview = viewService.getFeedView(boardIdx);
 
 		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 		int likeStatus = viewService.getLikeStatus(myIdx, boardIdx);
 		
-		// 모델에 저장
 		model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));
 		model.addAttribute("likeStatus", likeStatus);
 
 		return "/feed/feedEdit";
 
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public String postFeedEdit(
 			@PathVariable("boardIdx") int boardIdx,
@@ -51,7 +48,6 @@ public class FeedEditController {
 		
 		// 피드 수정
 		viewService.editFeed(boardIdx, feedEdit, request);
-		
 		model.addAttribute("boardDiscription", feedEdit.getBoardDiscription());
 		model.addAttribute("hashtag", feedEdit.getHashtag());
 		model.addAttribute("tag", feedEdit.getTag());
@@ -59,14 +55,11 @@ public class FeedEditController {
 		// 피드 상세보기
 		FeedView feedview = viewService.getFeedView(boardIdx);
 		model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));
-		System.out.println("feedview controller => " + feedview);
 		
-		//	좋아요
+		// 좋아요
 		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 		int likeStatus = viewService.getLikeStatus(myIdx, boardIdx);
 		int totalLikeCount = viewService.getTotalLikeCount(boardIdx);
-		
-		// 모델에 저장
 		model.addAttribute("likeStatus", likeStatus);
 		model.addAttribute("totalLikeCount", totalLikeCount);
 		

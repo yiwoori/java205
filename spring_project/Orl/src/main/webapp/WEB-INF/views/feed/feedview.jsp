@@ -48,6 +48,11 @@
 
 				<!-- 피드 이미지 -->
 				<img src="<c:url value="/images/feed/feedw/uploadfile/${selectFeedView.boardPhoto}"/>" alt="feed-img">
+				
+				<!-- 해시태그 -->
+						<div class="hashTag">
+							<!-- 해시태그 리스트 -->
+						</div>
 
 				<!-- 태그 버튼 -->
 				<button>
@@ -96,10 +101,7 @@
 					<div class="contents">
 						<!-- 게시글 -->
 						<textarea readonly>${selectFeedView.boardDiscription}</textarea>
-						<!-- 해시태그 -->
-						<div class="hashTag">
-							<!-- 해시태그 리스트 -->
-						</div>
+
 					</div>
 
 				</div>
@@ -423,10 +425,8 @@
         
 </script>
 
-
-
-	<!-- 좋아요 이벤트 -->
-	<script>
+   <!-- 좋아요 이벤트 -->
+   <script>
       function clickLike(click){
          
          console.log(click);
@@ -434,13 +434,16 @@
          if(click == 'insert'){
             //비동기 통신 시작
             
-            
+            // myIdx 파라미터로 추가0918, url 수정
+            // url경로 boot 로 수정
             $.ajax({
-               url:'<c:url value="/feed/likeButtonClick"/>',
-                 type:'POST',
+               //url:'<c:url value="/feed/likeButtonClick"/>',
+               url: bootUrl+'/feed/likeButtonClick',
+               type:'POST',
                data:{
                   likeChange:'1',
-                  boardIdx:'${selectFeedView.boardIdx}'
+                  boardIdx:'${selectFeedView.boardIdx}',
+                  myIdx:'${sessionScope.memberVo.memberIdx}'
                },
                success:function(data){
                   //좋아요 누르기 성공
@@ -470,13 +473,15 @@
             });/* ajax 끝*/
          }else{
             // click == 'delete'
-            
+            // 내 idx 파라미터로 추가
             $.ajax({
-               url:'<c:url value="/feed/likeButtonClick"/>',
-                 type:'POST',
+               //url:'<c:url value="/feed/likeButtonClick"/>',
+               url: bootUrl+'/feed/likeButtonClick',
+               type:'POST',
                data:{
                   likeChange:'-1',
-                  boardIdx:'${selectFeedView.boardIdx}'
+                  boardIdx:'${selectFeedView.boardIdx}',
+                  myIdx:'${sessionScope.memberVo.memberIdx}'
                },
                success:function(data){
                   //좋아요 취소하기 성공
@@ -509,11 +514,12 @@
 
 
 
-	<!--  카카오톡으로 공유하기   ㅡ0914추가-->
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script type="text/javascript">
+   <!--  카카오톡으로 공유하기   ㅡ0914추가-->
+   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+   <script type="text/javascript">
      function sendLink(memberIdx,boardIdx,totalLikeCount) {
         /* hashtag도 파라미터로 받기 */
+        
       Kakao.init("daeecdc3ce37abac4a9a3f8ad3e05b0a");
       
        Kakao.Link.sendDefault({
@@ -523,7 +529,7 @@
            description: '오를래',
            imageUrl:'https://ifh.cc/g/Mtgj7e.jpg',
            link: {
-             mobileWebUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+             mobileWebUrl:'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
              webUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
            },
          },
@@ -536,14 +542,17 @@
            {
              title: '웹으로 보기',
              link: {
-               mobileWebUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
-               webUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+               mobileWebUrl: '/feed/feedview/'+memberIdx+'&'+boardIdx,
+               webUrl: '/feed/feedview/'+memberIdx+'&'+boardIdx,
              },
            }
          ],
        })
      }
    </script>
+
+
+	
 
 
 </body>
