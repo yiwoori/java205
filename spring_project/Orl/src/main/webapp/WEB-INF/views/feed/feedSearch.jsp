@@ -58,7 +58,7 @@
                            
                            <!-- 닉네임 -->
                            <a href="<c:url value="/feed/userfeed/${list.memberIdx}"/>">
-                           <span>${list.memberNickname}</span>
+                           <span><p>${list.memberNickname}</p></span>
                            </a>
                          </div>
                     </c:forEach>

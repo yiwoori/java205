@@ -13,7 +13,7 @@ button, input {
 	border: 0;
 	background-color: #00ff0000;
 }
-button:hover, input:hover, a:hover, span:hover {
+button:hover, input:hover, a:hover {
 	cursor: pointer;
 }
 textarea {

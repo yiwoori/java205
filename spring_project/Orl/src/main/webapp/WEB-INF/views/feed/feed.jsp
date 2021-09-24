@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,7 +113,7 @@
 		                           
 		                           	<!-- 피드 작성일 -->
 		                           	<div>
-		                              	<p>${feedOrderByLike.boardDate}</p>
+		                              	<p><fmt:formatDate pattern="yyyy.MM.dd" value="${feedOrderByLike.boardDate}"/></p>
 		                           	</div>
 		                           
 		                        </div>
@@ -152,7 +153,7 @@
 		/* ajax 최신순 피드 리스트 */
 		$.ajax({
 			url : bootUrl+'/feed/feedmain/selectNewFeed',
-			type : 'get',
+			type : 'GET',
 			success : function(data) {
 				
 				var memberIdx = '${sessionScope.memberVo.memberIdx}';
