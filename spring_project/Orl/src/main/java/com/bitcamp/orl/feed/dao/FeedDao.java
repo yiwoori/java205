@@ -25,6 +25,10 @@ public interface FeedDao {
 
 	// 피드 상세보기
 	FeedView selectFeedView(int boardIdx);
+	
+	// 추가 (09.25.우리)
+	// 피드 존재 여부 체크
+	int selectFeedChk(@Param("memberIdx") int memberIdx, @Param("boardIdx") int boardIdx);
 
 		
 		
