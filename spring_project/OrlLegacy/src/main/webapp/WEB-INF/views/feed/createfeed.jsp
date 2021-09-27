@@ -20,7 +20,7 @@
 <body>
 
 	<!-- 피드 작성 폼 -->
-	<form method="post" enctype="multipart/form-data" id="feedform">
+	<form method="post" enctype="multipart/form-data" id="feedform" accept-charset="UTF-8">
 		
 		<!-- 모달창 시작 -->
 		<section class="container_create">
