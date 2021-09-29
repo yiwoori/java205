@@ -35,6 +35,7 @@ public class FeedViewController {
 		//피드 존재여부 체크
 		int feedChk = viewService.selectFeedChk(memberIdx, boardIdx);
 		
+		//존재하는 피드일 경우
 		if(feedChk != 0) {
 			
 			//피드 상세
@@ -50,6 +51,7 @@ public class FeedViewController {
 			feedpath = "/feed/feedview";
 			
 		} else {
+			//존재하지 않는 피드일 경우 예외 페이지로
 			throw new NullPointerException();
 		}
 		
@@ -71,6 +73,7 @@ public class FeedViewController {
 		return "redirect:/feed/feedview/"+memberIdx+"&"+boardIdx;
 	}
 	
+	//예외 페이지
 	@ExceptionHandler(NullPointerException.class)
 	public String handleNullPointerException(NullPointerException e) {
 
