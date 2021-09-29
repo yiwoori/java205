@@ -90,6 +90,7 @@ public class FeedEditController {
 
 	}
 	
+	//예외 페이지
 	@ExceptionHandler(NullPointerException.class)
 	public String handleNullPointerException(NullPointerException e) {
 
