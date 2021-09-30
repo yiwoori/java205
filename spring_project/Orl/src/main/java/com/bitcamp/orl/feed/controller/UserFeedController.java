@@ -122,7 +122,6 @@ public class UserFeedController {
    public String handleNullPointerException(NullPointerException e) {
 
       //에러 내용 출력 e.printStackTrace();
-
       return "error/pageNotFound"; 
    }
 

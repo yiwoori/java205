@@ -22,18 +22,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{boardIdx};
 	</delete>
 
-	<!-- 용민 -->
-	<!-- 산별 피드보기 -->
-	<!-- <select id="selectNewFeedByMountain"
-		resultType="com.bitcamp.orl.feed.domain.NewFeedList">
-		select
-		P.boardIdx, P.boardPhoto, P.boardDate, M.memberIdx, M.memberNickname
-		from final.photoBoard as P natural join final.member as M
-		where
-		P.hashtag regexp #{mName}
-		order by P.boardIdx DESC;
-	</select> -->
-
 
 
 <!-- 우리 -->
@@ -182,5 +170,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from final.member
 		where memberNickname regexp #{nickname};
 	</select>
+
+
 
 </mapper>
