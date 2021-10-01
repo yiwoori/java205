@@ -548,7 +548,7 @@
              mobileWebUrl:'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
              webUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
            },
-         },
+         }, 
          social: {
            likeCount:totalLikeCount,
            /* commentCount: 45,
